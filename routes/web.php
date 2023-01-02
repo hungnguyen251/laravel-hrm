@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return view('client_layout');
 });
 
 Route::prefix('staff')->group(function () {
-    Route::get('/index', [StaffController::class, 'index'])->name('index');
-    Route::get('/show/{id}', [StaffController::class, 'show'])->name('show');
-    Route::post('/store', [StaffController::class, 'store'])->name('create');
-    Route::put('/update/{id}', [StaffController::class, 'update'])->name('edit');
-    Route::delete('/destroy/{id}', [StaffController::class, 'destroy'])->name('delete');
+    Route::get('/index', [StaffController::class, 'index'])->name('staff.index');
+    Route::get('/show/{id}', [StaffController::class, 'show'])->name('staff.show');
+    Route::post('/store', [StaffController::class, 'store'])->name('staff.create');
+    Route::put('/update/{id}', [StaffController::class, 'update'])->name('staff.edit');
+    Route::delete('/destroy/{id}', [StaffController::class, 'destroy'])->name('staff.delete');
 });
