@@ -15,14 +15,14 @@ interface RepositoryInterface
      * @param $id
      * @return mixed
      */
-    public function getById($id);
+    public function getById(int $id);
 
     /**
      * Create
      * @param array $attributes
      * @return mixed
      */
-    public function store($attrs = []);
+    public function store(array $attrs);
 
     /**
      * Update
@@ -30,12 +30,12 @@ interface RepositoryInterface
      * @param array $attributes
      * @return mixed
      */
-    public function update($id, $attrs = []);
+    public function update(int $id, array $attrs);
 
     /**
      * Delete
      * @param $id
      * @return mixed
      */
-    public function deleteById($id);
+    public function deleteById(int $id);
 }

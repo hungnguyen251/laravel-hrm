@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('decentralization_id')->default('1');
             $table->enum('status', array('active','inactive','suspended','deleted'))->default('active');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

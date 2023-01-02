@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::get('/product', function () {
-    return view('niit.product');
-})->name('niit.product');
-
-Route::get('/home', function () {
-    return view('niit.homepage');
-})->name('niit.homepage');
+Route::prefix('staff')->group(function () {
+    Route::get('/index', [StaffController::class, 'index'])->name('index');
+    Route::get('/show/{id}', [StaffController::class, 'show'])->name('show');
+    Route::post('/store', [StaffController::class, 'store'])->name('create');
+    Route::put('/update/{id}', [StaffController::class, 'update'])->name('edit');
+    Route::delete('/destroy/{id}', [StaffController::class, 'destroy'])->name('delete');
+});

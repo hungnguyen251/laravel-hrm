@@ -231,4 +231,5 @@ return [
 
     ],
 
+    'limit_results_returned' => 10,
 ];
