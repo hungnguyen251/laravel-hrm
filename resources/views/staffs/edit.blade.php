@@ -35,12 +35,12 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Họ </label>
-                                    <input type="text" class="form-control" value="{{ $staff->last_name }}" name="last_name" placeholder="Nhập vào tiêu đề bài đăng">
+                                    <input type="text" class="form-control" value="{{ $staff->last_name }}" name="last_name" placeholder="Nhập vào họ của nhân viên">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputContent">Tên đệm và tên </label>
-                                    <input type="text" class="form-control" value="{{ $staff->first_name }}" name="first_name"  placeholder="Nhập vào nội dung bài đăng">
+                                    <input type="text" class="form-control" value="{{ $staff->first_name }}" name="first_name"  placeholder="Nhập vào tên đệm và tên nhân viên">
                                 </div>
 
                                 <div class="form-group">
@@ -75,7 +75,7 @@
 
                                 <div class="form-group">
                                     <label for="inputName">Địa chỉ </label>
-                                    <input type="text" class="form-control" value="{{ $staff->address }}" name="address" placeholder="Nhập vào tiêu đề bài đăng">
+                                    <input type="text" class="form-control" value="{{ $staff->address }}" name="address" placeholder="Nhập vào địa chỉ">
                                 </div>
 
                                 <div class="form-group">
