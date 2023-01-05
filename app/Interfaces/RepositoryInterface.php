@@ -30,7 +30,7 @@ interface RepositoryInterface
      * @param array $attributes
      * @return mixed
      */
-    public function update(int $id, array $attrs);
+    public function updateById(int $id, array $attrs);
 
     /**
      * Delete

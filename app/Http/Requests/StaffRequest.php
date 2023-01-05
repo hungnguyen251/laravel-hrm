@@ -34,6 +34,8 @@ class StaffRequest extends FormRequest
                 'department_id' => 'required',
                 'diploma_id' => 'required',
                 'marriage_status' => 'required',
+                'avatar' => 'required',
+                'address' => 'required',
                 'start_date' => 'required'
             ]
         ];
@@ -57,6 +59,8 @@ class StaffRequest extends FormRequest
             'diploma_id.required' => 'Bằng cấp là bắt buộc',
             'marriage_status.required' => 'Tình trạng hôn nhân là bắt buộc',
             'start_date.required' => 'Ngày bắt đầu là bắt buộc',
+            'address.required' => 'Địa chỉ là bắt buộc',
+            'avatar.required' => 'Ảnh đại diện là bắt buộc',
         ];
     }
 }
