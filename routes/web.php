@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DiplomaController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +40,25 @@ Route::prefix('departments')->group(function () {
     Route::post('/edit/{id}', [DepartmentController::class, 'edit'])->name('departments.edit');
     Route::delete('/destroy/{id}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
 });
+
+Route::prefix('positions')->group(function () {
+    Route::get('/index', [PositionController::class, 'index'])->name('positions.index');
+    Route::get('/show/{id}', [PositionController::class, 'show'])->name('positions.show');
+    Route::get('/create', [PositionController::class, 'create'])->name('positions.create');
+    Route::post('/store', [PositionController::class, 'store'])->name('positions.store');
+    Route::put('/update/{id}', [PositionController::class, 'update'])->name('positions.update');
+    Route::post('/edit/{id}', [PositionController::class, 'edit'])->name('positions.edit');
+    Route::delete('/destroy/{id}', [PositionController::class, 'destroy'])->name('positions.destroy');
+});
+
+Route::prefix('diplomas')->group(function () {
+    Route::get('/index', [DiplomaController::class, 'index'])->name('diplomas.index');
+    Route::get('/show/{id}', [DiplomaController::class, 'show'])->name('diplomas.show');
+    Route::get('/create', [DiplomaController::class, 'create'])->name('diplomas.create');
+    Route::post('/store', [DiplomaController::class, 'store'])->name('diplomas.store');
+    Route::put('/update/{id}', [DiplomaController::class, 'update'])->name('diplomas.update');
+    Route::post('/edit/{id}', [DiplomaController::class, 'edit'])->name('diplomas.edit');
+    Route::delete('/destroy/{id}', [DiplomaController::class, 'destroy'])->name('diplomas.destroy');
+});
+
 

@@ -98,6 +98,20 @@
                 </li>
 
                 <li class="nav-item menu-open">
+                    <a href="{{ route('positions.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-house-user"></i>
+                        <p>Danh sách chức danh</p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open">
+                    <a href="{{ route('diplomas.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-house-user"></i>
+                        <p>Danh sách bằng cấp</p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Bảng chấm công</p>
