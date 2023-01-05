@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\StaffRequest;
 use App\Interfaces\RepositoryInterface;
 use App\Models\Staff;
 use Exception;
+use Illuminate\Support\Facades\Config;
 
 class StaffRepository implements RepositoryInterface
 {
@@ -18,7 +18,7 @@ class StaffRepository implements RepositoryInterface
 
     public function getAll()
     {
-        return $this->staff->all();
+        return $this->staff->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)
@@ -37,7 +37,7 @@ class StaffRepository implements RepositoryInterface
         }
     }
 
-    public function update(int $id, array $attrs)
+    public function updateById(int $id, $attrs)
     {
         try {
             $data =  $this->staff->findOrFail($id);

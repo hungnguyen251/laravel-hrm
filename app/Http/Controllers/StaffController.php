@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StaffRequest;
-use App\Repositories\StaffRepository;
+use App\Services\StaffService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class StaffController extends Controller
 {
+    protected $staffs;
+
     /**
      * Controller constructor.
      *
      * @param  \App\  $staffs
      */
-    public function __construct(StaffRepository $staffs)
+    public function __construct(StaffService $staffService)
     {
-        $this->staffs = $staffs;
+        $this->staffs = $staffService;
     }
 
     /**
@@ -24,24 +26,23 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(StaffRequest $request): JsonResponse
+    public function index()
     {
-        $staffs = $this->staffs->getAll($request);
+        $staffs = $this->staffs->getAllStaff();
 
-        return response()->json($staffs, Response::HTTP_OK);
+        return view('staffs.show', compact('staffs'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(StaffRequest $request): JsonResponse
+    public function store(StaffRequest $request)
     {
-        $staff = $this->staffs->store($request->all());
+        $this->staffs->createStaff($request->all());
 
-        return response()->json($staff, Response::HTTP_CREATED);
+        return redirect()->route('staffs.index')->with('success', 'Thêm nhân viên thành công');
     }
 
     /**
@@ -52,7 +53,7 @@ class StaffController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $staff = $this->staffs->getById($id);
+        $staff = $this->staffs->getStaffById($id);
 
         return response()->json($staff, Response::HTTP_OK);
     }
@@ -64,11 +65,11 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StaffRequest $request, int $id): JsonResponse
+    public function update(int $id, StaffRequest $request)
     {
-        $staff = $this->staffs->updateById($id, $request->all());
+        $this->staffs->updateStaffById($id, $request->all());
 
-        return response()->json($staff, Response::HTTP_OK);
+        return redirect()->route('staffs.index')->with('success', 'Cập nhật nhân viên thành công'); 
     }
 
     /**
@@ -79,9 +80,37 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        $this->staffs->deleteById($id);
+        $this->staffs->deleteStaffById($id);
 
-        return response()->json(null, Response::HTTP_NO_CONTENT);
+        return redirect()->route('staffs.index')->with('success', 'Xóa nhân viên thành công'); 
+    }
+
+    /**
+     * Edit a staff.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int                       $id
+     *  
+     */
+    public function edit(int $id)
+    {
+        $staff = $this->staffs->getStaffById($id);
+        $infoClassification = $this->staffs->getInfoClassification();
+
+        return view('staffs.edit', compact(['staff', 'infoClassification']));
+    }
+
+    /**
+     * Create a staff.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function create()
+    {
+        $infoClassification = $this->staffs->getInfoClassification();
+
+        return view('staffs.create', compact('infoClassification'));
     }
 }
 
