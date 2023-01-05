@@ -9,7 +9,7 @@ class Department extends Model
 {
     use HasFactory;
 
-    protected $table = 'deparments';
+    protected $table = 'departments';
 
     /**
      * The attributes that are mass assignable.
