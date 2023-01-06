@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('client_layout');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->name('dashboard');
+
 Route::prefix('users')->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('users.index');
     Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show');
