@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('companies.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-building"></i>
                         <p>Thông tin công ty</p>
                     </a>

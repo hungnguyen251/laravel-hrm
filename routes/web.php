@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
 use App\Http\Controllers\PositionController;
@@ -83,4 +84,12 @@ Route::prefix('rewards')->group(function () {
     Route::delete('/destroy/{id}', [RewardController::class, 'destroy'])->name('rewards.destroy');
 });
 
-
+Route::prefix('companies')->group(function () {
+    Route::get('/index', [CompanyController::class, 'index'])->name('companies.index');
+    Route::get('/show/{id}', [CompanyController::class, 'show'])->name('companies.show');
+    Route::get('/create', [CompanyController::class, 'create'])->name('companies.create');
+    Route::post('/store', [CompanyController::class, 'store'])->name('companies.store');
+    Route::put('/update/{id}', [CompanyController::class, 'update'])->name('companies.update');
+    Route::post('/edit/{id}', [CompanyController::class, 'edit'])->name('companies.edit');
+    Route::delete('/destroy/{id}', [CompanyController::class, 'destroy'])->name('companies.destroy');
+});
