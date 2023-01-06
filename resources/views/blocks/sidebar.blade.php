@@ -112,9 +112,9 @@
                 </li>
 
                 <li class="nav-item menu-open">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('rewards.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Bảng chấm công</p>
+                        <p>Danh sách giải thưởng</p>
                     </a>
                 </li>
 
@@ -122,6 +122,13 @@
                     <a href={{ route('users.index') }} class="nav-link">
                         <i class="nav-icon fas fa-user-shield"></i>
                         <p>Danh sách tài khoản</p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Bảng chấm công</p>
                     </a>
                 </li>
 

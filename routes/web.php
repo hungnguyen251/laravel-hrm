@@ -3,6 +3,7 @@
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\RewardController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -70,6 +71,16 @@ Route::prefix('diplomas')->group(function () {
     Route::put('/update/{id}', [DiplomaController::class, 'update'])->name('diplomas.update');
     Route::post('/edit/{id}', [DiplomaController::class, 'edit'])->name('diplomas.edit');
     Route::delete('/destroy/{id}', [DiplomaController::class, 'destroy'])->name('diplomas.destroy');
+});
+
+Route::prefix('rewards')->group(function () {
+    Route::get('/index', [RewardController::class, 'index'])->name('rewards.index');
+    Route::get('/show/{id}', [RewardController::class, 'show'])->name('rewards.show');
+    Route::get('/create', [RewardController::class, 'create'])->name('rewards.create');
+    Route::post('/store', [RewardController::class, 'store'])->name('rewards.store');
+    Route::put('/update/{id}', [RewardController::class, 'update'])->name('rewards.update');
+    Route::post('/edit/{id}', [RewardController::class, 'edit'])->name('rewards.edit');
+    Route::delete('/destroy/{id}', [RewardController::class, 'destroy'])->name('rewards.destroy');
 });
 
 
