@@ -120,6 +120,15 @@
                                         <option {{ $staff->marriage_status == 'Đã kết hôn' ? 'selected' : ''}}>Đã kết hôn</option>
                                     </select>
                                 </div>
+
+                                <div class="form-group d-flex flex-column">
+                                    <label>Trạng thái</label>
+                                    <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-focused bootstrap-switch-animate bootstrap-switch-on" style="width: 86px;">
+                                        <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;">
+                                            <input type="checkbox" name="status" {{ $staff->status == "inactive" ? "" : "checked" }} data-bootstrap-switch="">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="card-footer">

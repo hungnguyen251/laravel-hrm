@@ -1,18 +1,19 @@
 @extends('client_layout')
-@section('title', 'Nhân viên')
+@section('title', 'Tài khoản')
 
 @section('content')
+<!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Danh sách nhân viên</h1>
+                    <h1>Danh sách tài khoản</h1>
                 </div>
                 </div>
-            </div>
+            </div><!-- /.container-fluid -->
         </section>
-
 
         @if (Session::has('success'))
             <div class="alert alert-success alert-dismissible">
@@ -33,54 +34,53 @@
         <section class="content-header">
             <div class="card">
                 <div class="card-header d-flex" style="height: 65px;">
-                    <a href="{{ route('staffs.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
                 </div>
-
+                <!-- /.card-header -->
+                <!-- /.card-body -->
                 <div class="card-body">
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Tên nhân viên</th>
-                                <th>Ngày sinh</th>
-                                <th>Địa chỉ</th>
-                                <th>Vị trí</th>
-                                <th>Phòng ban</th>
-                                <th>Bằng cấp</th>
-                                <th>Kiểu nhân viên</th>
-                                <th>Ngày bắt đầu</th>
+                                <th>Mã nhân viên</th>
+                                <th>Tên</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Phân quyền</th>
                                 <th>Trạng thái</th>
+                                <th>Ngày tạo</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($staffs as $item)
+                            @foreach ($users as $item)
                             <tr>
-                                <td>{{ $item->code }}</td>
-                                <td>{{ $item->last_name . ' ' . $item->first_name }}</td>
-                                <td>{{ date('d/m/Y', strtotime($item->date_of_birth)) }}</td>
-                                <td>{{ $item->address }}</td>
-                                <td>{{ $item->position->name }}</td>
-                                <td>{{ $item->department->name }}</td>
-                                <td>{{ $item->diploma->name }}</td>
-                                <td>{{ $item->type }}</td>
-                                <td>{{ date('d/m/Y', strtotime($item->start_date)) }}</td>
+                                <td>{{ $item->staff->code }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
                                 <td>
-                                    @if ($item->status == 'active') 
-                                        <span style="background-color:#C6F6E4;color:#06C935;padding: 5px 10px;border-radius:15px;"><i class="fa fa-circle" aria-hidden="true" style="font-size: 8px;"></i>Đang làm việc</span>
+                                    @if ('super_admin' == $item->decentralization)
+                                        {{ 'Trùm cuối' }}
+                                    @elseif ('admin' == $item->decentralization)
+                                        {{ 'Quản trị viên' }}
+                                    @elseif ('accountant' == $item->decentralization)
+                                        {{ 'Kế toán' }}
                                     @else
-                                        <span style="background-color:#F8B9B1;color:#E72108;padding: 5px 10px;border-radius:15px;"><i class="fa fa-circle" aria-hidden="true" style="font-size: 8px;"></i>Đã nghỉ việc</span>
+                                        {{ 'Nhân viên' }}
                                     @endif
                                 </td>
+                                <td>{{ $item->status == 'active' ? 'Đang hoạt đông' : 'Đã xóa' }}</td>
+                                <td>{{ $item->created_at }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    <form action="{{ url('/staffs/edit', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ url('/users/edit', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
 
-                                    <form action="{{ url('/staffs/destroy', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ url('/users/destroy', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
@@ -92,15 +92,18 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- /.card-footer -->
 
                 <div class="card-footer clearfix">
-                    {{ $staffs->links() }}
+                    {{ $users->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}
                 </style>
-
             </div>
+          <!-- /.card -->
         </section>
+        <!-- /.content -->
     </div>
+<!-- /.content-wrapper -->
 @endsection

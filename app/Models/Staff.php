@@ -37,14 +37,6 @@ class Staff extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
     public function position()
     {
         return $this->belongsTo(Position::class, 'position_id');

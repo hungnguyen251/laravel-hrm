@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'decentralization',
+        'staff_id',
+        'status'
     ];
 
     /**
@@ -43,10 +47,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
      */
     public function staff()
     {
-        return $this->hasOne(Staff::class, 'staff_id');
+        return $this->belongsTo(Staff::class, 'staff_id');
     }
 }

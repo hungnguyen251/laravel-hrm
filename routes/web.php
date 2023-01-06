@@ -4,6 +4,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('client_layout');
+});
+
+Route::prefix('users')->group(function () {
+    Route::get('/index', [UserController::class, 'index'])->name('users.index');
+    Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/store', [UserController::class, 'store'])->name('users.store');
+    Route::put('/update/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::post('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
 Route::prefix('staffs')->group(function () {

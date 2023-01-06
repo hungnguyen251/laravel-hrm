@@ -119,7 +119,7 @@
                 </li>
 
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                    <a href={{ route('users.index') }} class="nav-link">
                         <i class="nav-icon fas fa-user-shield"></i>
                         <p>Danh sách tài khoản</p>
                     </a>

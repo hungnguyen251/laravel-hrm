@@ -81,18 +81,20 @@ class StaffService
             $attrs['diploma_id'] = $diplomaId->id;
         }
 
-        if (isset($attrs['status'])) {
-            $attrs['status'] = 'on' ? 'active' : 'inactive';
+        if (isset($attrs['status']) && 'on' == $attrs['status']) {
+            $attrs['status'] = 'active';
+        } else {
+            $attrs['status'] = 'inactive';
         }
+
 
         if (isset($attrs['start_date'])) {
             $startDate = str_replace('/', '-', $attrs['start_date']);
             $attrs['start_date'] = date('Y-m-d', strtotime($startDate));
         }
 
-        if (!isset($attrs['user_id'])) {
-            //Set user_id test
-            $attrs['user_id'] = 100;
+        if (!isset($attrs['code'])) {
+            $attrs['code'] = 'GV' . rand(1000,9999);
         }
 
         //Lưu file ảnh
