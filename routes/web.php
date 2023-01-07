@@ -106,3 +106,13 @@ Route::prefix('companies')->group(function () {
     Route::post('/edit/{id}', [CompanyController::class, 'edit'])->name('companies.edit');
     Route::delete('/destroy/{id}', [CompanyController::class, 'destroy'])->name('companies.destroy');
 });
+
+Route::prefix('notifications')->group(function () {
+    Route::get('/index', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::get('/show/{id}', [NotificationController::class, 'show'])->name('notifications.show');
+    Route::get('/create', [NotificationController::class, 'create'])->name('notifications.create');
+    Route::post('/store', [NotificationController::class, 'store'])->name('notifications.store');
+    Route::put('/update/{id}', [NotificationController::class, 'update'])->name('notifications.update');
+    Route::post('/edit/{id}', [NotificationController::class, 'edit'])->name('notifications.edit');
+    Route::delete('/destroy/{id}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
+});

@@ -1,3 +1,4 @@
+@if(Auth::check())
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,3 +21,7 @@
     </div>
 </body>
 </html>
+@else
+    @include('blocks.header')
+    @include('forms.navigation')
+@endif
