@@ -3,6 +3,9 @@
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RewardController;
 use App\Http\Controllers\StaffController;
@@ -27,6 +30,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->name('dashboard');
+
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [LoginController::class, 'login'])->name('auth.login');
+    Route::post('/login', [LoginController::class, 'authenticateUser'])->name('auth.authenticateUser');
+    Route::get('/logout', [LogoutController::class, 'logout'])->name('auth.logout');
+});
 
 Route::prefix('users')->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('users.index');

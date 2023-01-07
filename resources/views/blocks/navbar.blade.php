@@ -10,6 +10,8 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Liên hệ</a>
         </li>
-        <button type="button" class="btn btn-block btn-warning" style="position:absolute;right:20px;width:100px;"><a href="" style="color:black;">Đăng xuất</a></button>
+        <form action="" method="post">
+            <a href="{{ route('auth.logout') }}" type="submit" name="back" class="btn btn-warning" style="position:absolute;right:20px;width:100px;">Đăng xuất</a>
+        </form>
     </ul>
 </nav>
