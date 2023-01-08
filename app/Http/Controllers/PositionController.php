@@ -42,7 +42,7 @@ class PositionController extends Controller
     {
         $this->positions->store($request->all());
 
-        return redirect()->route('positions.index')->with('success', 'Thêm phòng ban thành công');
+        return redirect()->route('positions.index')->with('success', 'Thêm chức danh thành công');
     }
 
     /**
@@ -69,7 +69,7 @@ class PositionController extends Controller
     {
         $this->positions->updateById($id, $request->all());
 
-        return redirect()->route('positions.index')->with('success', 'Cập nhật nhân viên thành công'); 
+        return redirect()->route('positions.index')->with('success', 'Cập nhật chức danh thành công'); 
     }
 
     /**
@@ -82,7 +82,7 @@ class PositionController extends Controller
     {
         $this->positions->deleteById($id);
 
-        return redirect()->route('positions.index')->with('success', 'Xóa nhân viên thành công'); 
+        return redirect()->route('positions.index')->with('success', 'Xóa chức danh thành công'); 
     }
 
     /**

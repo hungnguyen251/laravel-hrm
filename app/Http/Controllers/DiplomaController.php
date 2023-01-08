@@ -42,7 +42,7 @@ class DiplomaController extends Controller
     {
         $this->diplomas->store($request->all());
 
-        return redirect()->route('diplomas.index')->with('success', 'Thêm phòng ban thành công');
+        return redirect()->route('diplomas.index')->with('success', 'Thêm bằng cấp thành công');
     }
 
     /**
@@ -69,7 +69,7 @@ class DiplomaController extends Controller
     {
         $this->diplomas->updateById($id, $request->all());
 
-        return redirect()->route('diplomas.index')->with('success', 'Cập nhật nhân viên thành công'); 
+        return redirect()->route('diplomas.index')->with('success', 'Cập nhật bằng cấp thành công'); 
     }
 
     /**
@@ -82,7 +82,7 @@ class DiplomaController extends Controller
     {
         $this->diplomas->deleteById($id);
 
-        return redirect()->route('diplomas.index')->with('success', 'Xóa nhân viên thành công'); 
+        return redirect()->route('diplomas.index')->with('success', 'Xóa bằng cấp thành công'); 
     }
 
     /**

@@ -69,7 +69,7 @@ class DepartmentController extends Controller
     {
         $this->departments->updateById($id, $request->all());
 
-        return redirect()->route('departments.index')->with('success', 'Cập nhật nhân viên thành công'); 
+        return redirect()->route('departments.index')->with('success', 'Cập nhật phòng ban thành công'); 
     }
 
     /**
@@ -82,7 +82,7 @@ class DepartmentController extends Controller
     {
         $this->departments->deleteById($id);
 
-        return redirect()->route('departments.index')->with('success', 'Xóa nhân viên thành công'); 
+        return redirect()->route('departments.index')->with('success', 'Xóa phòng ban thành công'); 
     }
 
     /**

@@ -82,7 +82,7 @@ class RewardController extends Controller
     {
         $this->rewards->deleteById($id);
 
-        return redirect()->route('rewards.index')->with('success', 'Xóa nhân viên thành công'); 
+        return redirect()->route('rewards.index')->with('success', 'Xóa giải thưởng thành công'); 
     }
 
     /**

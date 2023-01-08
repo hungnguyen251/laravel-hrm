@@ -43,7 +43,7 @@ class NotificationController extends Controller
     {
         $this->notifications->createNotification($request->all());
 
-        return redirect()->route('notifications.index')->with('success', 'Thêm phòng ban thành công');
+        return redirect()->route('notifications.index')->with('success', 'Thêm thông báo thành công');
     }
 
     /**

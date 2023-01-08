@@ -42,7 +42,7 @@ class CompanyController extends Controller
     {
         $this->companies->createCompany($request->all());
 
-        return redirect()->route('companies.index')->with('success', 'Thêm phòng ban thành công');
+        return redirect()->route('companies.index')->with('success', 'Thêm thông tin công ty thành công');
     }
 
     /**
