@@ -9,6 +9,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RewardController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -120,3 +121,13 @@ Route::prefix('notifications')->group(function () {
 });
 
 Route::get('/organization', [OrganizationController::class, 'getPersonnelOrganization'])->name('organization.show');
+
+Route::prefix('salaries')->group(function () {
+    Route::get('/index', [SalaryController::class, 'index'])->name('salaries.index');
+    Route::get('/show/{id}', [SalaryController::class, 'show'])->name('salaries.show');
+    Route::get('/create', [SalaryController::class, 'create'])->name('salaries.create');
+    Route::post('/store', [SalaryController::class, 'store'])->name('salaries.store');
+    Route::put('/update/{id}', [SalaryController::class, 'update'])->name('salaries.update');
+    Route::post('/edit/{id}', [SalaryController::class, 'edit'])->name('salaries.edit');
+    Route::delete('/destroy/{id}', [SalaryController::class, 'destroy'])->name('salaries.destroy');
+});

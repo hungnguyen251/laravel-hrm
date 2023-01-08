@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'Phòng ban')
+@section('title', 'Bảng lương')
 
 @section('content')
     <div class="content-wrapper">
@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Danh sách phòng ban</h1>
+                    <h1>Danh sách bảng lương</h1>
                 </div>
                 </div>
             </div>
@@ -33,34 +33,40 @@
         <section class="content-header">
             <div class="card">
                 <div class="card-header d-flex" style="height: 65px;">
-                    <a href="{{ route('positions.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
+                    {{-- <a href="{{ route('salaries.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a> --}}
                 </div>
 
                 <div class="card-body">
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Tên chức danh</th>
+                                <th>Mã nhân viên</th>
+                                <th>Tên</th>
+                                <th>Phòng ban</th>
+                                <th>Tiền lương</th>
+                                <th>Ghi chú</th>
                                 <th>Ngày tạo</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($positions as $item)
+                            @foreach ($salaries as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ isset($item->staff->code) ? $item->staff->code : 'ERROR' }}</td>
+                                <td>{{ isset($item->staff->last_name) ? $item->staff->last_name . ' ' . $item->staff->first_name : 'ERROR' }}</td>
+                                <td>{{ isset($item->staff->department->name) ? $item->staff->department->name : 'ERROR' }}</td>
+                                <td>{{ number_format($item->amount, 0) }} đ</td>
+                                <td>{{ $item->note }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    <form action="{{ url('/positions/edit', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ url('/salaries/edit', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
 
-                                    <form action="{{ url('/positions/destroy', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ url('/salaries/destroy', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
@@ -74,7 +80,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $positions->links() }}
+                    {{ $salaries->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}
