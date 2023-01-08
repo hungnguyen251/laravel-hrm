@@ -148,7 +148,7 @@
                 </li>
                 
                 <li class="nav-item menu-open">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('organization.show') }}" class="nav-link">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>Tổ chức nhân sự</p>
                     </a>

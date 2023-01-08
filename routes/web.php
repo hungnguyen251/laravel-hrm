@@ -6,6 +6,7 @@ use App\Http\Controllers\DiplomaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RewardController;
 use App\Http\Controllers\StaffController;
@@ -117,3 +118,5 @@ Route::prefix('notifications')->group(function () {
     Route::post('/edit/{id}', [NotificationController::class, 'edit'])->name('notifications.edit');
     Route::delete('/destroy/{id}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
 });
+
+Route::get('/organization', [OrganizationController::class, 'getPersonnelOrganization'])->name('organization.show');
