@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password')->unique()->nullable();
-            $table->string('phone')->unique()->nullable();
+            $table->string('phone');
             $table->string('decentralization_id')->default('1');
             $table->enum('status', array('active','inactive','suspended','deleted'))->default('active');
             $table->rememberToken();

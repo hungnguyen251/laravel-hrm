@@ -77,7 +77,7 @@
                 </li>
 
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('notifications.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-bell"></i>
                         <p>Thông báo</p>
                     </a>

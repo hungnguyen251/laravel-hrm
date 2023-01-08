@@ -53,4 +53,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Staff::class, 'staff_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'user_id');
+    }
 }
