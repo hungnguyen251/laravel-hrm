@@ -51,11 +51,11 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id): JsonResponse
+    public function show(int $id)
     {
         $staff = $this->staffs->getStaffById($id);
 
-        return response()->json($staff, Response::HTTP_OK);
+        return view('profiles.show', compact('staff'));
     }
 
     /**
