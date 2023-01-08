@@ -111,6 +111,7 @@ Route::prefix('notifications')->group(function () {
     Route::get('/index', [NotificationController::class, 'index'])->name('notifications.index');
     Route::get('/show/{id}', [NotificationController::class, 'show'])->name('notifications.show');
     Route::get('/create', [NotificationController::class, 'create'])->name('notifications.create');
+    Route::post('/leave', [NotificationController::class, 'requestLeave'])->name('notifications.leave');
     Route::post('/store', [NotificationController::class, 'store'])->name('notifications.store');
     Route::put('/update/{id}', [NotificationController::class, 'update'])->name('notifications.update');
     Route::post('/edit/{id}', [NotificationController::class, 'edit'])->name('notifications.edit');

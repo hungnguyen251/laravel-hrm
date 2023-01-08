@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NotificationRequest;
 use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class NotificationController extends Controller
@@ -108,5 +109,18 @@ class NotificationController extends Controller
     public function create()
     {
         return view('notifications.create');
+    }
+
+    /**
+     * Request for leave.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function requestLeave(Request $request)
+    {
+        $this->notifications->createRequestLeave($request->all());
+
+        return redirect()->route('notifications.index')->with('success', 'Tạo đơn xin nghỉ phép thành công');
     }
 }
