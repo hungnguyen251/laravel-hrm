@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\Department;
 use App\Models\Diploma;
 use App\Models\Position;
+use App\Models\Salary;
+use App\Models\Staff;
 use App\Repositories\StaffRepository;
 
 class StaffService
@@ -103,6 +105,10 @@ class StaffService
             $attrs['avatar'] = $attrs['avatar']->getClientOriginalName();
         }
 
+        if (isset($attrs['amount'])) {
+            unset($attrs['amount']);
+        }
+
         return $attrs;
     }
 
@@ -136,5 +142,17 @@ class StaffService
         ];
 
         return $infoClassification;
+    }
+
+    public function storeStaffSalary($amount)
+    {
+        $staffId = Staff::select('id')->orderBy('id', 'DESC')->first();
+
+        $attrs = [
+            'staff_id' => $staffId->id,
+            'amount' => $amount
+        ];
+
+        return Salary::create($attrs);
     }
 }

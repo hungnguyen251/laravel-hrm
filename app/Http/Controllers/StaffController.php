@@ -42,6 +42,8 @@ class StaffController extends Controller
     {
         $this->staffs->createStaff($request->all());
 
+        $this->createStaffSalary($request->amount);
+
         return redirect()->route('staffs.index')->with('success', 'Thêm nhân viên thành công');
     }
 
@@ -111,6 +113,17 @@ class StaffController extends Controller
         $infoClassification = $this->staffs->getInfoClassification();
 
         return view('staffs.create', compact('infoClassification'));
+    }
+
+    /**
+     * Create a staff salary.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function createStaffSalary($data)
+    {
+        return $this->staffs->storeStaffSalary($data);
     }
 }
 

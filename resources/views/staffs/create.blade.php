@@ -170,6 +170,11 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="inputContent">Tiền lương </label>
+                                    <input type="text" class="form-control" value="{{ old('amount') }}" name="amount"  placeholder="Nhập vào tiền lương mỗi tháng" required>                                 
+                                </div>
+
                                 <div class="form-group d-flex flex-column">
                                     <label>Trạng thái</label>
                                     <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-focused bootstrap-switch-animate bootstrap-switch-on" style="width: 86px;">
