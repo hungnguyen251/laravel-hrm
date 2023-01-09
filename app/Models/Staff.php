@@ -30,6 +30,7 @@ class Staff extends Model
         'position_id',
         'department_id',
         'diploma_id',
+        'leave_annual',
         'marriage_status',
         'start_date',
         'status'
