@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PositionController;
@@ -34,9 +33,9 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::prefix('auth')->group(function () {
-    Route::get('/login', [LoginController::class, 'login'])->name('auth.login');
-    Route::post('/login', [LoginController::class, 'authenticateUser'])->name('auth.authenticateUser');
-    Route::get('/logout', [LogoutController::class, 'logout'])->name('auth.logout');
+    Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
+    Route::post('/login', [AuthController::class, 'store'])->name('auth.authenticateUser');
+    Route::get('/logout', [AuthController::class, 'destroy'])->name('auth.logout');
 });
 
 Route::prefix('users')->group(function () {

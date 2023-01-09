@@ -56,7 +56,7 @@
                         <tbody>
                             @foreach ($users as $item)
                             <tr>
-                                <td>{{ $item->staff->code }}</td>
+                                <td>{{ isset($item->staff->code) ? $item->staff->code : 'ERROR' }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
