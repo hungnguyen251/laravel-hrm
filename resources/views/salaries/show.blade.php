@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'Bảng lương')
+@section('title', 'Bảng tính lương')
 
 @section('content')
     <div class="content-wrapper">
@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Danh sách bảng lương</h1>
+                    <h1>Bảng tính lương</h1>
                 </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
         <section class="content-header">
             <div class="card">
                 <div class="card-header d-flex" style="height: 65px;">
-                    {{-- <a href="{{ route('salaries.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a> --}}
+                    <a href="{{ route('salaries.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
                 </div>
 
                 <div class="card-body">

@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'Bảng lương')
+@section('title', 'Lương nhân viên')
 
 @section('content')
 <div class="wrapper">
