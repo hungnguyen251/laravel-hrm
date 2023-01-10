@@ -75,12 +75,12 @@
                                 <td>{{ $item->created_at }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    <form action="{{ url('/users/edit', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('users.edit', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
 
-                                    <form action="{{ url('/users/destroy', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('users.destroy', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />

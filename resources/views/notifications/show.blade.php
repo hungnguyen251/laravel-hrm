@@ -73,13 +73,13 @@
                                 <td>
                                 <div class="btn-group">
                                     @if('waiting' == $item->status)
-                                    <form action="{{ url('/notifications/edit', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('notifications.edit', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
                                     @endif
 
-                                    <form action="{{ url('/notifications/destroy', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('notifications.destroy', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />

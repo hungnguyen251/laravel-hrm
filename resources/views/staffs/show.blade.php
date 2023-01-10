@@ -75,12 +75,12 @@
                                 </td>
                                 <td>
                                 <div class="btn-group">
-                                    <form action="{{ url('/staffs/edit', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('staffs.edit', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
 
-                                    <form action="{{ url('/staffs/destroy', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('staffs.destroy', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />

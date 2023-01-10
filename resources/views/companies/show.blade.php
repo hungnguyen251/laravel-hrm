@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="card card-green">
                             <div class="card-header">
-                                <form action="{{ url('/companies/edit', ['id' => $companies[0]->id]) }}" method="POST">
+                                <form action="{{ route('companies.edit', ['id' => $companies[0]->id]) }}" method="POST">
                                     @csrf
                                     <input class="btn btn-warning float-right" type="submit" value="Sửa" />
                                 </form>

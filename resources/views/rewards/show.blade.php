@@ -55,12 +55,12 @@
                                 <td>{{ $item->prime }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    <form action="{{ url('/rewards/edit', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('rewards.edit', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
 
-                                    <form action="{{ url('/rewards/destroy', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('rewards.destroy', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />

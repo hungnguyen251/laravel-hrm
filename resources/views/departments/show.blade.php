@@ -55,12 +55,12 @@
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    <form action="{{ url('/departments/edit', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('departments.edit', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
 
-                                    <form action="{{ url('/departments/destroy', ['id' => $item->id]) }}" method="POST">
+                                    <form action="{{ route('departments.destroy', ['id' => $item->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
