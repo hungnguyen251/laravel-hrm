@@ -134,9 +134,9 @@
                 </li>
 
                 <li class="nav-item menu-open">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('timesheets.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Bảng chấm công</p>
+                        <p>Bảng tính lương</p>
                     </a>
                 </li>
 

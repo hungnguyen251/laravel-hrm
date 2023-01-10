@@ -10,6 +10,7 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RewardController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TimesheetsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -129,4 +130,15 @@ Route::prefix('salaries')->group(function () {
     Route::put('/update/{id}', [SalaryController::class, 'update'])->name('salaries.update');
     Route::post('/edit/{id}', [SalaryController::class, 'edit'])->name('salaries.edit');
     Route::delete('/destroy/{id}', [SalaryController::class, 'destroy'])->name('salaries.destroy');
+});
+
+Route::prefix('timesheets')->group(function () {
+    Route::get('/index', [TimesheetsController::class, 'index'])->name('timesheets.index');
+    Route::get('/show/{id}', [TimesheetsController::class, 'show'])->name('timesheets.show');
+    Route::get('/create', [TimesheetsController::class, 'create'])->name('timesheets.create');
+    Route::post('/automatic', [TimesheetsController::class, 'automaticSalary'])->name('timesheets.automatic');
+    Route::post('/store', [TimesheetsController::class, 'store'])->name('timesheets.store');
+    Route::put('/update/{id}', [TimesheetsController::class, 'update'])->name('timesheets.update');
+    Route::post('/edit/{id}', [TimesheetsController::class, 'edit'])->name('timesheets.edit');
+    Route::delete('/destroy/{id}', [TimesheetsController::class, 'destroy'])->name('timesheets.destroy');
 });
