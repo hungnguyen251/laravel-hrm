@@ -24,6 +24,15 @@ trait QueryFilterable
             $filters = array_merge($this->filterable, $filters);
         }
 
+        if ($this->exactFilterable != null && count($this->exactFilterable) > 0) {
+            $exactFilters = [];
+            foreach($this->exactFilterable as $ef) {
+                $exactFilters[] = AllowedFilter::custom($ef,  new FiltersExactOrNotExact(true));
+            }
+
+            $filters = array_merge($exactFilters, $filters);
+        }
+
         if ($this->scopeFilterable != null && count($this->scopeFilterable) > 0) {
             $scopeFilters = [];
             foreach($this->scopeFilterable as $sf) {
