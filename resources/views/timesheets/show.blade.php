@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $timesheets->links() }}
+                    {{ $timesheets->appends($_GET)->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}

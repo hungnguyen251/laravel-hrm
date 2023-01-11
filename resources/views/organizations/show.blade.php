@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $data->links() }}
+                    {{ $data->appends($_GET)->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}

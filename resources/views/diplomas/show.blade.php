@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $diplomas->links() }}
+                    {{ $diplomas->appends($_GET)->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}

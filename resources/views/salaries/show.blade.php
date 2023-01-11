@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $salaries->links() }}
+                    {{ $salaries->appends($_GET)->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}

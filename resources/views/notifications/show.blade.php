@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $notifications->links() }}
+                    {{ $notifications->appends($_GET)->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}

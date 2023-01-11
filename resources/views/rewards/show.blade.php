@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $rewards->links() }}
+                    {{ $rewards->appends($_GET)->links() }}
                 </div>
                 <style>
                     .card-footer ul {float: right;}
