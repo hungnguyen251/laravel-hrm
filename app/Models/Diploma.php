@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\QueryFilterable;
 
 class Diploma extends Model
 {
-    use HasFactory;
+    use HasFactory, QueryFilterable;
 
     protected $table = 'diplomas';
 
@@ -18,6 +19,34 @@ class Diploma extends Model
      */
     protected $fillable = [
         'name'
+    ];
+
+        /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'name'
+    ];
+
+
+    /**
+     * The fields that should be sortable by query.
+     *
+     * @var array
+     */
+    protected $sortable = [
+        'name'
+    ];
+
+    /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $includable = [
+        'staffs'
     ];
 
     /**

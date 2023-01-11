@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\QueryFilterable;
 
 class Staff extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, QueryFilterable;
 
     protected $table = 'staffs';
 
@@ -34,6 +35,34 @@ class Staff extends Model
         'marriage_status',
         'start_date',
         'status'
+    ];
+
+        /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'user_id', 'code', 'position_id', 'department_id', 'diploma_id', 'status'
+    ];
+
+
+    /**
+     * The fields that should be sortable by query.
+     *
+     * @var array
+     */
+    protected $sortable = [
+        'user_id', 'code', 'position_id', 'department_id', 'status', 'leave_annual'
+    ];
+
+    /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $includable = [
+        'position', 'department', 'diploma'
     ];
 
     /**

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\QueryFilterable;
 
 class Notification extends Model
 {
-    use HasFactory;
+    use HasFactory, QueryFilterable;
 
     protected $table = 'notifications';
 
@@ -22,6 +23,34 @@ class Notification extends Model
         'user_id',
         'department_id',
         'status'
+    ];
+
+        /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'title', 'content', 'user_id', 'department_id'
+    ];
+
+
+    /**
+     * The fields that should be sortable by query.
+     *
+     * @var array
+     */
+    protected $sortable = [
+        'title', 'user_id', 'department_id'
+    ];
+
+    /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $includable = [
+        'user', 'departments'
     ];
 
     /**

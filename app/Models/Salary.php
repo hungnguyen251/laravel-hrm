@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\QueryFilterable;
 
 class Salary extends Model
 {
-    use HasFactory;
+    use HasFactory, QueryFilterable;
 
     protected $table = 'salaries';
 
@@ -20,6 +21,34 @@ class Salary extends Model
         'staff_id',
         'amount',
         'note'
+    ];
+
+    /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'staff_id', 'amount'
+    ];
+
+
+    /**
+     * The fields that should be sortable by query.
+     *
+     * @var array
+     */
+    protected $sortable = [
+        'staff_id', 'amount'
+    ];
+
+    /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $includable = [
+        'staff'
     ];
 
     /**

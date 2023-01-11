@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\QueryFilterable;
 
 class Reward extends Model
 {
-    use HasFactory;
+    use HasFactory, QueryFilterable;
 
     protected $table = 'rewards';
 
@@ -19,6 +20,33 @@ class Reward extends Model
     protected $fillable = [
         'name',
         'prime'
+    ];
+
+        /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'name', 'prime'
+    ];
+
+
+    /**
+     * The fields that should be sortable by query.
+     *
+     * @var array
+     */
+    protected $sortable = [
+        'name', 'prime'
+    ];
+
+    /**
+     * The fields that should be filterable by query.
+     *
+     * @var array
+     */
+    protected $includable = [
     ];
 
 }
