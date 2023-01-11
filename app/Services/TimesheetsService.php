@@ -6,6 +6,7 @@ use App\Models\Salary;
 use App\Models\Timesheets;
 use Illuminate\Support\Facades\Config;
 use App\Repositories\TimesheetsRepository;
+use Carbon\Carbon;
 
 class TimesheetsService
 {
@@ -118,7 +119,6 @@ class TimesheetsService
     }
 
     function salaryCalculationFormula($salaryAmount, $allowance, $advance, $workingDay, $monthLeave, $remainingLeave) {
-
         $received = 0;
         //Trường hợp ngày nghỉ phép có lương hoặc không nghỉ phép
         if ((0 == $monthLeave) || ($remainingLeave > $monthLeave)) {
@@ -132,5 +132,16 @@ class TimesheetsService
         }
 
         return $received;
+    }
+
+    function handleMonthSelection() {
+        //Month start calculation
+        $start = explode('-', Config::get('app.month_start_calculation'));
+        $startMonth = Carbon::create($start[0], $start[1], $start[2], 0);
+        $now = Carbon::create(date('Y'), date('m'), 1, 0);
+
+        $diff = $startMonth->diffInMonths($now);
+
+        return $diff;
     }
 }

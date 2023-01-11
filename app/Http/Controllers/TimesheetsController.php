@@ -124,4 +124,17 @@ class TimesheetsController extends Controller
             return redirect()->route('timesheets.index')->with('failed', 'Đã có lỗi xảy ra khi tạo bảng lương'); 
         }
     }
+
+    /**
+     * Month selection.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function monthSelection()
+    {
+        $times = $this->timesheets->handleMonthSelection();
+
+        return view('timesheets.month_selection', compact('times'));
+    }
 }

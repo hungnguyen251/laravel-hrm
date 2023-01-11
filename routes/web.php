@@ -136,6 +136,7 @@ Route::prefix('timesheets')->group(function () {
     Route::get('/index', [TimesheetsController::class, 'index'])->name('timesheets.index');
     Route::get('/show/{id}', [TimesheetsController::class, 'show'])->name('timesheets.show');
     Route::get('/create', [TimesheetsController::class, 'create'])->name('timesheets.create');
+    Route::get('/month_selection', [TimesheetsController::class, 'monthSelection'])->name('timesheets.monthSelection');
     Route::post('/automatic', [TimesheetsController::class, 'automaticSalary'])->name('timesheets.automatic');
     Route::post('/store', [TimesheetsController::class, 'store'])->name('timesheets.store');
     Route::put('/update/{id}', [TimesheetsController::class, 'update'])->name('timesheets.update');
