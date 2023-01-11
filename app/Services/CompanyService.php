@@ -13,9 +13,9 @@ class CompanyService
         $this->companies = $companyRepository;
     }
 
-    public function getAllCompany()
+    public function getAllCompany($attrs)
     {
-        return $this->companies->getAll();
+        return $this->companies->getAll($attrs);
     }
 
     public function getCompanyById(int $id)

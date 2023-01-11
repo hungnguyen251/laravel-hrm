@@ -6,6 +6,7 @@ use App\Http\Requests\RewardRequest;
 use App\Repositories\RewardRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class RewardController extends Controller
 {
@@ -26,9 +27,9 @@ class RewardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rewards = $this->rewards->getAll();
+        $rewards = $this->rewards->getAll($request);
 
         return view('rewards.show', compact('rewards'));
     }

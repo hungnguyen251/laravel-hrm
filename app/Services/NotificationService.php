@@ -15,9 +15,9 @@ class NotificationService
         $this->notifications = $notificationRepository;
     }
 
-    public function getAllNotification()
+    public function getAllNotification($attrs)
     {
-        return $this->notifications->getAll();
+        return $this->notifications->getAll($attrs);
     }
 
     public function getNotificationById(int $id)

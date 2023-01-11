@@ -16,9 +16,9 @@ class UserRepository implements RepositoryInterface
         $this->users = $users;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->users->paginate(Config::get('app.limit_results_returned'));
+        return $this->users->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

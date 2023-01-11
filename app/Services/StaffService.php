@@ -18,9 +18,9 @@ class StaffService
         $this->staffs = $staffRepository;
     }
 
-    public function getAllStaff()
+    public function getAllStaff($attrs)
     {
-        return $this->staffs->getAll();
+        return $this->staffs->getAll($attrs);
     }
 
     public function getStaffById(int $id)

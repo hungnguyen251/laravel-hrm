@@ -16,9 +16,9 @@ class CompanyRepository implements RepositoryInterface
         $this->companies = $companies;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->companies->paginate(Config::get('app.limit_results_returned'));
+        return $this->companies->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

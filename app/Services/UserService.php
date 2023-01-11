@@ -15,9 +15,9 @@ class UserService
         $this->users = $userRepository;
     }
 
-    public function getAllUser()
+    public function getAllUser($attrs)
     {
-        return $this->users->getAll();
+        return $this->users->getAll($attrs);
     }
 
     public function getUserById(int $id)

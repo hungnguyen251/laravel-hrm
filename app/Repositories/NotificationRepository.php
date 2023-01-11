@@ -16,9 +16,9 @@ class NotificationRepository implements RepositoryInterface
         $this->notifications = $notifications;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->notifications->orderBy('id', 'desc')->paginate(Config::get('app.limit_results_returned'));
+        return $this->notifications->filter($attrs)->orderBy('id', 'desc')->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

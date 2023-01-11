@@ -6,6 +6,7 @@ use App\Http\Requests\DiplomaRequest;
 use App\Repositories\DiplomaRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class DiplomaController extends Controller
 {
@@ -26,9 +27,9 @@ class DiplomaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $diplomas = $this->diplomas->getAll();
+        $diplomas = $this->diplomas->getAll($request);
 
         return view('diplomas.show', compact('diplomas'));
     }

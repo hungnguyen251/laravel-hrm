@@ -27,9 +27,9 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $notifications = $this->notifications->getAllNotification();
+        $notifications = $this->notifications->getAllNotification($request);
 
         return view('notifications.show', compact('notifications'));
     }

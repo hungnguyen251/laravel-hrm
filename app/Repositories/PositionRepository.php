@@ -16,9 +16,9 @@ class PositionRepository implements RepositoryInterface
         $this->positions = $positions;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->positions->paginate(Config::get('app.limit_results_returned'));
+        return $this->positions->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

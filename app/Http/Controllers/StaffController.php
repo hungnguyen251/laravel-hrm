@@ -6,6 +6,7 @@ use App\Http\Requests\StaffRequest;
 use App\Services\StaffService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class StaffController extends Controller
 {
@@ -26,9 +27,9 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $staffs = $this->staffs->getAllStaff();
+        $staffs = $this->staffs->getAllStaff($request);
 
         return view('staffs.show', compact('staffs'));
     }

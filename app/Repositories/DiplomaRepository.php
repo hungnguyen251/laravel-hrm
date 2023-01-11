@@ -16,9 +16,9 @@ class DiplomaRepository implements RepositoryInterface
         $this->diplomas = $diplomas;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->diplomas->paginate(Config::get('app.limit_results_returned'));
+        return $this->diplomas->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

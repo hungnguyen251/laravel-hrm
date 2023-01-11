@@ -6,6 +6,7 @@ use App\Http\Requests\PositionRequest;
 use App\Repositories\PositionRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
@@ -26,9 +27,9 @@ class PositionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $positions = $this->positions->getAll();
+        $positions = $this->positions->getAll($request);
 
         return view('positions.show', compact('positions'));
     }

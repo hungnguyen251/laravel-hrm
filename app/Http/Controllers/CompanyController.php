@@ -6,6 +6,7 @@ use App\Http\Requests\CompanyRequest;
 use App\Services\CompanyService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
@@ -26,9 +27,9 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $companies = $this->companies->getAllCompany();
+        $companies = $this->companies->getAllCompany($request);
 
         return view('companies.show', compact('companies'));
     }

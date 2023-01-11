@@ -16,9 +16,9 @@ class StaffRepository implements RepositoryInterface
         $this->staff = $staff;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->staff->paginate(Config::get('app.limit_results_returned'));
+        return $this->staff->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

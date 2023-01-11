@@ -16,9 +16,9 @@ class RewardRepository implements RepositoryInterface
         $this->rewards = $rewards;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->rewards->paginate(Config::get('app.limit_results_returned'));
+        return $this->rewards->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

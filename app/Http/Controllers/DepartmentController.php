@@ -6,6 +6,7 @@ use App\Http\Requests\DepartmentRequest;
 use App\Repositories\DepartmentRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -26,9 +27,9 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $departments = $this->departments->getAll();
+        $departments = $this->departments->getAll($request);
 
         return view('departments.show', compact('departments'));
     }

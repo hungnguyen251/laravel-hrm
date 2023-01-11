@@ -16,9 +16,9 @@ class DepartmentRepository implements RepositoryInterface
         $this->departments = $departments;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->departments->paginate(Config::get('app.limit_results_returned'));
+        return $this->departments->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

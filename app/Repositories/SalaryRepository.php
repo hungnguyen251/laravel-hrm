@@ -16,9 +16,9 @@ class SalaryRepository implements RepositoryInterface
         $this->salaries = $salaries;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->salaries->paginate(Config::get('app.limit_results_returned'));
+        return $this->salaries->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)
