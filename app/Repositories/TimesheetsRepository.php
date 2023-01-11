@@ -16,9 +16,9 @@ class TimesheetsRepository implements RepositoryInterface
         $this->timesheets = $timesheets;
     }
 
-    public function getAll()
+    public function getAll($attrs)
     {
-        return $this->timesheets->paginate(Config::get('app.limit_results_returned'));
+        return $this->timesheets->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)

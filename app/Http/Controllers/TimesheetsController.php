@@ -25,9 +25,9 @@ class TimesheetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $timesheets = $this->timesheets->getAllTimesheets();
+        $timesheets = $this->timesheets->getAllTimesheets($request);
 
         return view('timesheets.show', compact('timesheets'));
     }

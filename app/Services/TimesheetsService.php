@@ -17,9 +17,9 @@ class TimesheetsService
         $this->timesheets = $timesheetsRepository;
     }
 
-    public function getAllTimesheets()
+    public function getAllTimesheets($attrs)
     {
-        return $this->timesheets->getAll();
+        return $this->timesheets->getAll($attrs);
     }
 
     public function getTimesheetsById(int $id)
