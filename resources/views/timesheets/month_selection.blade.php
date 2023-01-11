@@ -54,7 +54,7 @@
                                 <td>Hàng tháng</td>
                                 <td>Bảng lương {{ date('m/Y', mktime(0, 0, 0, date($month[1])+$i  , date($month[2]), date($month[0]))) }}</td>
                                 <td>{{ date('d/m/Y', mktime(0, 0, 0, date($month[1])+$i  , date('15'), date($month[0]))) }}</td>
-                                <td><a href="{{ route('timesheets.index') }}" class="btn btn-info">Xem</a></td>
+                                <td><a href="{{ route('timesheets.index', ['filter[month]' => ltrim(date('m', mktime(0, 0, 0, date($month[1])+$i  , date('15'), date($month[0]))),'0')]) }}" class="btn btn-info">Xem</a></td>
                             </tr>
                             @endfor
                         </tbody>
