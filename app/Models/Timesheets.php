@@ -40,6 +40,9 @@ class Timesheets extends Model
         'code', 'staff_id', 'month'
     ];
 
+    protected $exactFilterable = [
+        'month'
+    ];
 
     /**
      * The fields that should be sortable by query.
