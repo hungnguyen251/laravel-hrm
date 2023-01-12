@@ -49,8 +49,7 @@
                                 <th>Phụ cấp</th>
                                 <th>Ngày công</th>
                                 <th>Ứng trước</th>
-                                <th>BHXH (Nhân viên)</th>
-                                <th>BHXH (Công ty)</th>
+                                <th>Mức đóng BHXH</th>
                                 <th>Thực nhận</th>
                                 <th>Tháng</th>
                                 <th>Số ngày nghỉ</th>
@@ -63,23 +62,18 @@
 
                         <tbody>
                             @foreach ($timesheets as $item)
-                            @php
-                                $issuranceStaff = isset($item->salary->amount) ? 0.105 * $item->salary->amount : 0;
-                                $issuranceCompany = isset($item->salary->amount) ? 0.205 * $item->salary->amount : 0;
-                            @endphp
                             <tr>
                                 <td>{{ isset($item->staff->code) ? $item->staff->code : 'ERROR' }}</td>
                                 <td>{{ $item->code }}</td>
-                                <td>{{ isset($item->salary->amount) ? number_format($item->salary->amount, 0) : 'ERROR' }} đ</td>
-                                <td>{{ number_format($item->allowance, 0) }} đ</td>
+                                <td>{{ isset($item->salary->amount) ? number_format($item->salary->amount, 0, ',', '.') : 'ERROR' }} đ</td>
+                                <td>{{ number_format($item->allowance, 0, ',', '.') }} đ</td>
                                 <td>{{ $item->work_day }}</td>
                                 <td>{{ number_format($item->advance, 0) }} đ</td>
-                                <td>{{ number_format($issuranceStaff, 0) }} đ</td>
-                                <td>{{ number_format($issuranceCompany, 0) }} đ</td>
-                                <td>{{ number_format($item->received, 0) }} đ</td>
+                                <td>{{ isset($item->salary->insurance_amount) ? number_format($item->salary->insurance_amount, 0, ',', '.') : 'ERROR' }} đ</td>
+                                <td>{{ number_format($item->received, 0, ',', '.') }} đ</td>
                                 <td>{{ $item->month }}</td>
-                                <td>{{ number_format($item->month_leave, 1) }}</td>
-                                <td>{{ number_format($item->remaining_leave, 1) }}</td>
+                                <td>{{ number_format($item->month_leave, 1, ',', '.') }}</td>
+                                <td>{{ number_format($item->remaining_leave, 1, ',', '.') }}</td>
                                 <td>{{ $item->note }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
@@ -100,6 +94,12 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="mt-2">
+                        <b>Chú ý: </b> 
+                        <i>Mức đóng BHXH kể trên là mức tối thiểu, NLĐ sẽ phải đóng BHXH + BHYT là 10.5%, công ty đóng là 21% theo quyết định 959/QĐ-BHXH </i>
+                    </div>
+
                 </div>
 
                 <div class="card-footer clearfix">
