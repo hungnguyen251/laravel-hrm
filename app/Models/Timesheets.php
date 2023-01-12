@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\QueryFilterable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Timesheets extends Model
 {
-    use HasFactory, QueryFilterable;
+    use HasFactory, QueryFilterable, SoftDeletes;
 
     protected $table = 'timesheets';
 
@@ -26,6 +27,7 @@ class Timesheets extends Model
         'advance',
         'received',
         'month',
+        'year',
         'month_leave',
         'remaining_leave',
         'note'
@@ -37,11 +39,11 @@ class Timesheets extends Model
      * @var array
      */
     protected $filterable = [
-        'code', 'staff_id', 'month'
+        'code', 'staff_id', 'month', 'year'
     ];
 
     protected $exactFilterable = [
-        'month'
+        'month', 'year'
     ];
 
     /**
@@ -50,7 +52,7 @@ class Timesheets extends Model
      * @var array
      */
     protected $sortable = [
-        'code', 'staff_id', 'salary_id', 'received', 'month'
+        'code', 'staff_id', 'salary_id', 'received', 'month', 'year'
     ];
 
     /**
