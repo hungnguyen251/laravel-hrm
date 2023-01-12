@@ -7,6 +7,7 @@ use App\Models\Timesheets;
 use Illuminate\Support\Facades\Config;
 use App\Repositories\TimesheetsRepository;
 use Carbon\Carbon;
+use Exception;
 
 class TimesheetsService
 {
@@ -62,38 +63,59 @@ class TimesheetsService
 
     public function automaticSalaryCalculation($data)
     {
-        //$data format m/Y
-        $time = explode('/', $data);
-        $workingDay = $this->getWorkingDayInMonth($time[0], $time[1]);
-        $salaries = Salary::select('id', 'staff_id', 'amount')->get();
-        $input = [];
+        if ($this->deleteTimesheetsExistToCalculation($data)) {
+            //$data format m/Y
+            $time = explode('/', $data);
+            $workingDay = $this->getWorkingDayInMonth($time[0], $time[1]);
+            $salaries = Salary::select('id', 'staff_id', 'amount')->get();
+            $input = [];
 
-        foreach ($salaries as $salary) {
-            $timesheets = [];
-            $timesheetsCode = $salary->staff->code . $time[0] . $time[1];
+            foreach ($salaries as $salary) {
+                $timesheets = [];
+                $timesheetsCode = $salary->staff->code . $time[0] . $time[1];
 
-            if ('active' == $salary->staff->status) {
-                $timesheets['code'] = strval($timesheetsCode);
-                $timesheets['staff_id'] = intval($salary->staff_id);
-                $timesheets['salary_id'] = intval($salary->id);
-                $timesheets['allowance'] = 0;
-                $timesheets['work_day'] = intval($workingDay);
-                $timesheets['advance'] = 0;
-                //Salary calculation formula : 10,5% tiền bảo hiểm do nhân viên đóng
-                $timesheets['received'] = doubleval($this->salaryCalculationFormula($salary->amount, $timesheets['allowance'], $timesheets['advance'], $workingDay, 0, 0));
-                $timesheets['month'] = intval($time[0]);
-                $timesheets['month_leave'] = 0;
-                $timesheets['remaining_leave'] = 0; //Tính lại
-                $timesheets['note'] = 'Lương tháng ' . $data;
+                if ('active' == $salary->staff->status) {
+                    $timesheets['code'] = strval($timesheetsCode);
+                    $timesheets['staff_id'] = intval($salary->staff_id);
+                    $timesheets['salary_id'] = intval($salary->id);
+                    $timesheets['allowance'] = 0;
+                    $timesheets['work_day'] = intval($workingDay);
+                    $timesheets['advance'] = 0;
+                    //Salary calculation formula : 10,5% tiền bảo hiểm do nhân viên đóng
+                    $timesheets['received'] = doubleval($this->salaryCalculationFormula($salary->amount, $timesheets['allowance'], $timesheets['advance'], $workingDay, 0, 0));
+                    $timesheets['month'] = intval($time[0]);
+                    $timesheets['year'] = intval($time[1]);
+                    $timesheets['month_leave'] = 0;
+                    $timesheets['remaining_leave'] = 0; //Tính lại
+                    $timesheets['note'] = 'Lương tháng ' . $data;
 
-                array_push($input, $timesheets);
+                    array_push($input, $timesheets);
+                }
+            }
+
+            if (Timesheets::insert($input)) {
+                return true;
+            } else {
+                return false;
             }
         }
-        // dd(array_values($input));
-        if (Timesheets::insert($input)) {
+
+        return false;
+    }
+
+    /**
+     * Delete the records that existed before the automatic salary calculation for the month 
+     * before the automatic salary calculation for the month 
+     */
+    function deleteTimesheetsExistToCalculation($time) {
+        $time = explode('/', $time);
+
+        try {
+            Timesheets::where('month', ltrim($time[0], '0'))->where('year', $time[1])->delete();
             return true;
-        } else {
-            return false;
+
+        } catch(Exception $e) {
+            return $e->getMessage();
         }
     }
 
