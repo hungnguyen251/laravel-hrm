@@ -116,6 +116,7 @@ Route::prefix('notifications')->group(function () {
     Route::get('/create', [NotificationController::class, 'create'])->name('notifications.create');
     Route::post('/leave', [NotificationController::class, 'requestLeave'])->name('notifications.leave');
     Route::post('/store', [NotificationController::class, 'store'])->name('notifications.store');
+    Route::post('/approve/{id}', [NotificationController::class, 'changeApproveStatus'])->name('notifications.changeApproveStatus');
     Route::put('/update/{id}', [NotificationController::class, 'update'])->name('notifications.update');
     Route::post('/edit/{id}', [NotificationController::class, 'edit'])->name('notifications.edit');
     Route::delete('/destroy/{id}', [NotificationController::class, 'destroy'])->name('notifications.destroy');

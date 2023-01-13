@@ -113,4 +113,13 @@ class NotificationService
 
         return $handleData;
     }
+
+    public function changeNotificationApproveStatus($id)
+    {
+        $data = [
+            'status' => 'approve'
+        ];
+
+        return $this->notifications->updateById($id, $data);
+    }
 }

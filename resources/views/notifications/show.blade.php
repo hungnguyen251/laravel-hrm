@@ -77,6 +77,11 @@
                                         @csrf
                                         <input class="btn btn-warning" type="submit" value="Sửa" />
                                     </form>
+
+                                    <form action="{{ route('notifications.changeApproveStatus', ['id' => $item->id]) }}" method="POST">
+                                        @csrf
+                                        <input onclick="return confirm('Bạn muốn phê duyệt thông báo này?')" class="btn btn-primary" type="submit" value="Phê duyệt" />
+                                    </form>
                                     @endif
 
                                     <form action="{{ route('notifications.destroy', ['id' => $item->id]) }}" method="POST">

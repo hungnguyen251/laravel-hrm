@@ -123,4 +123,17 @@ class NotificationController extends Controller
 
         return redirect()->route('notifications.index')->with('success', 'Tạo đơn xin nghỉ phép thành công');
     }
+
+    /**
+     * Change status.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function changeApproveStatus($id)
+    {
+        $this->notifications->changeNotificationApproveStatus($id);
+
+        return redirect()->route('notifications.index')->with('success', 'Phê duyệt thông báo thành công');
+    }
 }
