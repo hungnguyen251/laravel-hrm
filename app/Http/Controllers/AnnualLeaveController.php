@@ -42,7 +42,7 @@ class AnnualLeaveController extends Controller
     {
         $this->leave->createLeave($request->all());
 
-        return redirect()->route('leave.index')->with('success', 'Thêm thông tin công ty thành công');
+        return redirect()->route('leave.index')->with('success', 'Tạo ngày phép thành công');
     }
 
     /**
