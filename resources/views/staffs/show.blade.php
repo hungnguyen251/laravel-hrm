@@ -49,6 +49,7 @@
                                 <th>Bằng cấp</th>
                                 <th>Kiểu nhân viên</th>
                                 <th>Ngày bắt đầu</th>
+                                <th>Số ngày phép</th>
                                 <th>Trạng thái</th>
                                 <th>Thao tác</th>
                             </tr>
@@ -66,6 +67,7 @@
                                 <td>{{ $item->diploma->name }}</td>
                                 <td>{{ $item->type }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->start_date)) }}</td>
+                                <td><a href="{{ route('leave.index', ['filter[staff_id]' => $item->id]) }}" class="btn btn-block btn-primary">Xem</a></td>
                                 <td>
                                     @if ($item->status == 'active') 
                                         <span style="background-color:#C6F6E4;color:#06C935;padding: 5px 10px;border-radius:15px;"><i class="fa fa-circle" aria-hidden="true" style="font-size: 8px;"></i>Đang làm việc</span>

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\AnnualLeave;
 use App\Models\Department;
 use App\Models\Diploma;
 use App\Models\Position;
@@ -32,7 +33,17 @@ class StaffService
     {
         $data = $this->handleFieldInput($attrs);
 
-        return $this->staffs->store($data);
+        if ($this->staffs->store($data)) {
+            $staffInfo = Staff::select('id')->where('code', strval($data['code']))->first();
+            $staffId = $staffInfo->id;
+        
+            $this->storeStaffLeave($staffId);
+            $this->storeStaffSalary($staffId, $attrs['amount']);
+
+            return true;
+        }
+
+        return false;
     }
 
     public function updateStaffById(int $id, array $attrs)
@@ -144,15 +155,24 @@ class StaffService
         return $infoClassification;
     }
 
-    public function storeStaffSalary($amount)
+    public function storeStaffSalary($staffId, $amount)
     {
-        $staffId = Staff::select('id')->orderBy('id', 'DESC')->first();
-
         $attrs = [
-            'staff_id' => $staffId->id,
+            'staff_id' => $staffId,
             'amount' => $amount
         ];
 
         return Salary::create($attrs);
+    }
+
+    public function storeStaffLeave($staffId)
+    {
+        $attrs = [
+            'staff_id' => $staffId,
+            'number' => 0,
+            'working_time' => 0
+        ];
+
+        return AnnualLeave::create($attrs);
     }
 }

@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Họ </label>
-                                    <input type="text" class="form-control" value="{{ old('last_name') }}" name="last_name" placeholder="Nhập vào họ và tên nhân viêng">
+                                    <input type="text" class="form-control" value="{{ old('last_name') }}" name="last_name" placeholder="Nhập vào họ và tên nhân viên">
                                     @if ($errors->has('last_name'))
                                         <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                     @endif                                    

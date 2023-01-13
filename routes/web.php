@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnualLeaveController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
@@ -142,4 +143,14 @@ Route::prefix('timesheets')->group(function () {
     Route::put('/update/{id}', [TimesheetsController::class, 'update'])->name('timesheets.update');
     Route::post('/edit/{id}', [TimesheetsController::class, 'edit'])->name('timesheets.edit');
     Route::delete('/destroy/{id}', [TimesheetsController::class, 'destroy'])->name('timesheets.destroy');
+});
+
+Route::prefix('leave')->group(function () {
+    Route::get('/index', [AnnualLeaveController::class, 'index'])->name('leave.index');
+    Route::get('/show/{id}', [AnnualLeaveController::class, 'show'])->name('leave.show');
+    Route::get('/create', [AnnualLeaveController::class, 'create'])->name('leave.create');
+    Route::post('/store', [AnnualLeaveController::class, 'store'])->name('leave.store');
+    Route::put('/update/{id}', [AnnualLeaveController::class, 'update'])->name('leave.update');
+    Route::post('/edit/{id}', [AnnualLeaveController::class, 'edit'])->name('leave.edit');
+    Route::delete('/destroy/{id}', [AnnualLeaveController::class, 'destroy'])->name('leave.destroy');
 });

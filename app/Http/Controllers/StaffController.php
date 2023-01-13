@@ -41,11 +41,12 @@ class StaffController extends Controller
      */
     public function store(StaffRequest $request)
     {
-        $this->staffs->createStaff($request->all());
-
-        $this->createStaffSalary($request->amount);
-
-        return redirect()->route('staffs.index')->with('success', 'Thêm nhân viên thành công');
+        if ($this->staffs->createStaff($request->all())) {
+            return redirect()->route('staffs.index')->with('success', 'Thêm nhân viên thành công');
+            
+        } else {
+            return redirect()->route('staffs.index')->with('failed', 'Thêm nhân viên thất bại');
+        }
     }
 
     /**
@@ -114,17 +115,6 @@ class StaffController extends Controller
         $infoClassification = $this->staffs->getInfoClassification();
 
         return view('staffs.create', compact('infoClassification'));
-    }
-
-    /**
-     * Create a staff salary.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *  
-     */
-    public function createStaffSalary($data)
-    {
-        return $this->staffs->storeStaffSalary($data);
     }
 }
 

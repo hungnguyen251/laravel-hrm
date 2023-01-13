@@ -134,6 +134,13 @@
                 </li>
 
                 <li class="nav-item menu-open">
+                    <a href="{{ route('leave.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Thông kê ngày phép</p>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-open">
                     <a href="{{ route('timesheets.monthSelection') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Bảng tính lương</p>
