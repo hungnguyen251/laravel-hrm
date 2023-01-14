@@ -117,11 +117,13 @@ class TimesheetsController extends Controller
      */
     public function automaticSalary(Request $request)
     {
+        $month = explode('/', $request->salary_month);
+        
         if ($this->timesheets->automaticSalaryCalculation($request->salary_month)) {
-            return redirect()->route('timesheets.index')->with('success', 'Thêm bảng lương tháng ' . $request->salary_month . ' thành công'); 
+            return redirect()->route('timesheets.index',['filter[month]'=> $month[0]])->with('success', 'Thêm bảng lương tháng ' . $request->salary_month . ' thành công'); 
 
         } else {
-            return redirect()->route('timesheets.index')->with('failed', 'Đã có lỗi xảy ra khi tạo bảng lương'); 
+            return redirect()->route('timesheets.index',['filter[month]'=> $month[0]])->with('failed', 'Đã có lỗi xảy ra khi tạo bảng lương'); 
         }
     }
 

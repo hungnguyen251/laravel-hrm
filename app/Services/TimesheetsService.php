@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\AnnualLeave;
+use App\Models\Notification;
 use App\Models\Salary;
 use App\Models\Timesheets;
+use App\Models\User;
 use Illuminate\Support\Facades\Config;
 use App\Repositories\TimesheetsRepository;
 use Carbon\Carbon;
@@ -66,30 +69,38 @@ class TimesheetsService
         if ($this->deleteTimesheetsExistToCalculation($data)) {
             //$data format m/Y
             $time = explode('/', $data);
-            $workingDay = $this->getWorkingDayInMonth($time[0], $time[1]);
+            $month = $time[0];
+            $year = $time[1];
+            $workingDay = $this->getWorkingDayInMonth($month, $year);
             $salaries = Salary::select('id', 'staff_id', 'amount')->get();
             $input = [];
 
             foreach ($salaries as $salary) {
-                $timesheets = [];
-                $timesheetsCode = $salary->staff->code . $time[0] . $time[1];
+                if (!empty($salary->staff)) {
+                    $timesheets = [];
+                    $timesheetsCode = $salary->staff->code . $month . $year;
+                    $remainingLeave = $this->getRemainingLeave($salary->staff->id);
+                    $leaveInMonth = $this->caclculateLeave($salary->staff->id, $month, $year);
+                    $workingDayActual = $this->caclculateWorkingDay($salary->staff->id, $remainingLeave, $leaveInMonth, $workingDay);
+                    $received = $this->salaryCalculationFormula($salary->amount, 0, 0, $workingDay, $leaveInMonth, $remainingLeave);
 
-                if ('active' == $salary->staff->status) {
-                    $timesheets['code'] = strval($timesheetsCode);
-                    $timesheets['staff_id'] = intval($salary->staff_id);
-                    $timesheets['salary_id'] = intval($salary->id);
-                    $timesheets['allowance'] = 0;
-                    $timesheets['work_day'] = intval($workingDay);
-                    $timesheets['advance'] = 0;
-                    //Salary calculation formula : 10,5% tiền bảo hiểm do nhân viên đóng
-                    $timesheets['received'] = doubleval($this->salaryCalculationFormula($salary->amount, $timesheets['allowance'], $timesheets['advance'], $workingDay, 0, 0));
-                    $timesheets['month'] = intval($time[0]);
-                    $timesheets['year'] = intval($time[1]);
-                    $timesheets['month_leave'] = 0;
-                    $timesheets['remaining_leave'] = 0; //Tính lại
-                    $timesheets['note'] = 'Lương tháng ' . $data;
+                    if ('active' == $salary->staff->status) {
+                        $timesheets['code'] = strval($timesheetsCode);
+                        $timesheets['staff_id'] = intval($salary->staff_id);
+                        $timesheets['salary_id'] = intval($salary->id);
+                        $timesheets['allowance'] = 0;
+                        $timesheets['work_day'] = !empty($workingDayActual) ? doubleval($workingDayActual) : 0;
+                        $timesheets['advance'] = 0;
+                        //Salary calculation formula : 10,5% tiền bảo hiểm do nhân viên đóng
+                        $timesheets['received'] = !empty($received) ? doubleval($received) : 0;
+                        $timesheets['month'] = intval($month);
+                        $timesheets['year'] = intval($year);
+                        $timesheets['month_leave'] = !empty($leaveInMonth) ? doubleval($leaveInMonth) : 0;
+                        $timesheets['remaining_leave'] = !empty($remainingLeave) ? doubleval($remainingLeave) : 0;
+                        $timesheets['note'] = 'Lương tháng ' . $data;
 
-                    array_push($input, $timesheets);
+                        array_push($input, $timesheets);
+                    }
                 }
             }
 
@@ -131,23 +142,25 @@ class TimesheetsService
         for($d = 29; $d <= $lastDay; $d++) {
             $wd = date("w", mktime(0, 0, 0, $month ,$d, $year));
             
-            if($wd > 0 && $wd < 6) $weekDays++;
-            
-
+            if($wd > 0 && $wd < 6) {
+                $weekDays++;
+            }
         }
+
         $workingDay = $weekDays + 20;
 
         return $workingDay;
     }
 
-    function salaryCalculationFormula($salaryAmount, $allowance, $advance, $workingDay, $monthLeave, $remainingLeave) {
+    function salaryCalculationFormula($salaryAmount, $allowance = 0, $advance = 0, $workingDay, $monthLeave, $remainingLeave) {
         $received = 0;
         //Trường hợp ngày nghỉ phép có lương hoặc không nghỉ phép
         if ((0 == $monthLeave) || ($remainingLeave > $monthLeave)) {
             $received = $salaryAmount + $allowance - $advance - Config::get('app.amount_insurance_staff') * $salaryAmount;
+
         } else {
             //Trường hợp ngày nghỉ phép không lương
-            $unpaidDay = abs($remainingLeave - $remainingLeave);
+            $unpaidDay = abs($remainingLeave - $monthLeave);
             $salaryAmount = ($salaryAmount/$workingDay)*($workingDay - $unpaidDay);
 
             $received = $salaryAmount + $allowance - $advance - Config::get('app.amount_insurance_staff') * $salaryAmount;
@@ -165,5 +178,62 @@ class TimesheetsService
         $diff = $startMonth->diffInMonths($now);
 
         return $diff;
+    }
+
+    function getRemainingLeave($staffId) {
+        $leaveNumber = AnnualLeave::select('number')->where('staff_id', $staffId)->first();
+        $remainingLeave = 0;
+
+        if (!empty($leaveNumber)) {
+            $remainingLeave = $leaveNumber->number;
+        } 
+
+        return $remainingLeave;
+    }
+
+    function caclculateLeave($staffId, $month, $year) {
+        $userId = User::where('staff_id', intval($staffId))->where('status', 'active')->firstOrFail();
+        $leaveCalculate = 0;
+
+        if(!is_null($userId)) {
+            $noti = Notification::where('user_id', $userId->id)->whereMonth('created_at', strval($month))->whereYear('created_at', strval($year))->get();
+
+            if (!is_null($noti)) {
+                foreach($noti as $item) {
+
+                    if ('approve' == strval($item->status)) {
+                        
+                        if ('Đơn xin nghỉ phép' == $item->title) {
+                            //get number of leave
+                            $content = strval($item->content);
+                            $contentArr = explode(',', $content);
+                            $leaveArr = explode(':', $contentArr[2]);
+                            $numberLeave = doubleval($leaveArr[1]);
+                            $leaveCalculate += $numberLeave;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $leaveCalculate;
+    }
+
+    function caclculateWorkingDay($staffId, $remainingLeave, $leaveCalculate, $workingDay) {
+        $diff = $remainingLeave - $leaveCalculate; 
+        $workingDayActual = $workingDay;
+
+        if (is_numeric($diff) && $diff > 0) {
+            //Recalculate leave days and update data in annual_leave table
+            AnnualLeave::where('staff_id', $staffId)->update(['number' => $diff]);
+
+        } else {
+            $workingDayActual = $workingDay - abs($diff);
+
+            //Recalculate leave days and update data in annual_leave table  
+            AnnualLeave::where('staff_id', $staffId)->update(['number' => 0]);
+        }
+
+        return $workingDayActual;
     }
 }

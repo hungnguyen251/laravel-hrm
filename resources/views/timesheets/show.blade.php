@@ -62,6 +62,7 @@
 
                         <tbody>
                             @foreach ($timesheets as $item)
+                            @if('active' == $item->staff->status) 
                             <tr>
                                 <td>{{ isset($item->staff->code) ? $item->staff->code : 'ERROR' }}</td>
                                 <td>{{ $item->code }}</td>
@@ -91,6 +92,7 @@
                                 </div>
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
