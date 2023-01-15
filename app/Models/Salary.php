@@ -20,7 +20,8 @@ class Salary extends Model
     protected $fillable = [
         'staff_id',
         'amount',
-        'note'
+        'note',
+        'insurance_amount'
     ];
 
     /**
@@ -29,7 +30,7 @@ class Salary extends Model
      * @var array
      */
     protected $filterable = [
-        'staff_id', 'amount'
+        'staff_id', 'amount', 'insurance_amount'
     ];
 
 
@@ -39,7 +40,7 @@ class Salary extends Model
      * @var array
      */
     protected $sortable = [
-        'staff_id', 'amount'
+        'staff_id', 'amount', 'insurance_amount'
     ];
 
     /**

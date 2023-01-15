@@ -39,6 +39,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="inputInsuranceAmount">Mức đóng BHXH </label>
+                                    <input type="text" class="form-control" value="{{ $salary->insurance_amount }}" name="insurance_amount" placeholder="Nhập vào mức đóng BHXH">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="inputAmount">Ghi chú </label>
                                     <input type="text" class="form-control" value="{{ $salary->note }}" name="note" placeholder="Nhập vào ghi chú nếu có quyết định tăng lương dd/mm/YYYY">
                                 </div>

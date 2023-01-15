@@ -44,6 +44,7 @@
                                 <th>Tên</th>
                                 <th>Phòng ban</th>
                                 <th>Tiền lương</th>
+                                <th>Mức đóng BHXH</th>
                                 <th>Ghi chú</th>
                                 <th>Ngày tạo</th>
                                 <th>Thao tác</th>
@@ -57,6 +58,7 @@
                                 <td>{{ isset($item->staff->last_name) ? $item->staff->last_name . ' ' . $item->staff->first_name : 'ERROR' }}</td>
                                 <td>{{ isset($item->staff->department->name) ? $item->staff->department->name : 'ERROR' }}</td>
                                 <td>{{ number_format($item->amount, 0) }} đ</td>
+                                <td>{{ number_format($item->insurance_amount, 0) }} đ</td>
                                 <td>{{ $item->note }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>

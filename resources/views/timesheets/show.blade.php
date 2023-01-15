@@ -33,8 +33,11 @@
         <section class="content-header">
             <div class="card">
                 <div class="card-header" style="height: 65px;">
-                    <button type="submit" onclick="return confirm('Bạn có muốn xóa dữ liệu hiện có và tính toán tự động ?')" class="btn btn-info"  data-toggle="modal" data-target="#modal-auto" style="color:white;">Tính tự động</button>
-                    <button type="submit" class="btn btn-info" onclick="showStaffList()"  data-toggle="modal" data-target="#modal-manual" style="color:white;">Tính thủ công</button>
+
+                    @if (ltrim($_REQUEST['filter']['month'], 0) == ltrim(date('m', strtotime('last month')), 0)) 
+                        <button type="submit" onclick="return confirm('Bạn có muốn xóa dữ liệu hiện có và tính toán tự động ?')" class="btn btn-info"  data-toggle="modal" data-target="#modal-auto" style="color:white;">Tính tự động</button>
+                        <button type="submit" class="btn btn-info" onclick="showStaffList()"  data-toggle="modal" data-target="#modal-manual" style="color:white;">Tính thủ công</button>
+                    @endif
                     <button type="submit" class="btn btn-info float-right"><a href="{{ route('timesheets.create') }}" style="color:white;">Thêm</a></button>
                     <button type="submit" class="btn btn-warning float-right"><a href="{{ route('timesheets.monthSelection') }}" style="color:white;">Quay lại</a></button>
                 </div>

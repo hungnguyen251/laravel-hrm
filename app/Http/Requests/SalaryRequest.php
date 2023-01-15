@@ -24,14 +24,16 @@ class SalaryRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => 'required'
+            'amount' => 'required',
+            'insurance_amount' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'amount.required' => 'Tiền lương là bắt buộc'
+            'amount.required' => 'Tiền lương là bắt buộc',
+            'insurance_amount.required' => 'Mức đóng bảo hiểm là bắt buộc'
         ];
     }
 }

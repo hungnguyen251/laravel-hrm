@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputContent">Số tiền </label>
+                                    <label for="inputAmount">Số tiền </label>
                                     <input type="text" class="form-control" value="{{ old('amount') }}" name="amount"  placeholder="Nhập vào số tiền">
                                     @if ($errors->has('amount'))
                                         <span class="text-danger">{{ $errors->first('amount') }}</span>
@@ -49,7 +49,15 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputContent">Số tiền </label>
+                                    <label for="inputInsurance">Mức đóng BHXH </label>
+                                    <input type="text" class="form-control" value="{{ old('insurance_amount') }}" name="insurance_amount"  placeholder="Nhập vào mức đóng BHXH">
+                                    @if ($errors->has('insurance_amount'))
+                                        <span class="text-danger">{{ $errors->first('insurance_amount') }}</span>
+                                    @endif                                    
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="inputNote">Ghi chú </label>
                                     <input type="text" class="form-control" value="{{ old('note') }}" name="note"  placeholder="Ghi chú nếu có quyết định tăng lương ngày/tháng/năm">                                  
                                 </div>
                             </div>
