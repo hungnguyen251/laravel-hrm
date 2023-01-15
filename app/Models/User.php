@@ -53,9 +53,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $filterable = [
-        'email', 'phone', 'decentralization', 'staff_id'
+        'email', 'phone', 'decentralization', 'staff_id', 'status'
     ];
 
+    protected $exactFilterable = [
+        'status'
+    ];
 
     /**
      * The fields that should be sortable by query.

@@ -46,6 +46,9 @@ class Staff extends Model
         'user_id', 'code', 'position_id', 'department_id', 'diploma_id', 'status'
     ];
 
+    protected $exactFilterable = [
+        'status'
+    ];
 
     /**
      * The fields that should be sortable by query.
