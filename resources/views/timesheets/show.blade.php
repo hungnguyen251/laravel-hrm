@@ -40,6 +40,7 @@
                     @endif
                     <button type="submit" class="btn btn-info float-right"><a href="{{ route('timesheets.create') }}" style="color:white;">Thêm</a></button>
                     <button type="submit" class="btn btn-warning float-right"><a href="{{ route('timesheets.monthSelection') }}" style="color:white;">Quay lại</a></button>
+                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn chốt sổ lương?')" class="btn btn-primary float-right"><a href="{{ route('timesheets.payrollConfirmation') }}" style="color:white;">Chốt sổ</a></button>
                 </div>
 
                 <div class="card-body">

@@ -172,9 +172,6 @@ class TimesheetsService
             $received = $salaryAmount + $allowance - $advance - Config::get('app.amount_insurance_staff') * $salaryAmount;
         }
 
-        //Update leave of staff after calculate
-        $this->updateRemainingLeave($staffId, $diff);
-
         return $received;
     }
 
@@ -313,19 +310,6 @@ class TimesheetsService
         return false;
     }
 
-    function updateRemainingLeave($staffId, $remainingLeave) {
-        if ($remainingLeave < 0) {
-            $remainingLeave = 0;
-        }
-
-        AnnualLeave::where('staff_id', $staffId)->update([
-            'number' => $remainingLeave,
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-
-        return true;
-    }
-
     function updateInsuranceAmount($staffId, $insuranceAmount) {
         Salary::where('staff_id', $staffId)->update([
             'insurance_amount' => $insuranceAmount,
@@ -333,5 +317,37 @@ class TimesheetsService
         ]);
 
         return true;
+    }
+
+    function updateStatusWhenConfirmation() {
+        $month = ltrim(date('m', strtotime('last month')), 0);
+        $year = date('Y', strtotime('last month'));
+        $payroll = Timesheets::select('id', 'remaining_leave', 'salary_id', 'status')->where('month', $month)->where('year', $year)->get();
+        
+        if (!empty($payroll)) {
+            $payrollId =  [];
+
+            foreach ($payroll as $item) {
+
+                if ('processing' == $item->status) {
+                    array_push($payrollId, $item->id);
+
+                    AnnualLeave::where('staff_id', $item->salary_id)->update([
+                        'number' => $item->remaining_leave,
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]);
+                }
+            }
+
+            Timesheets::whereIn('id', $payrollId)->update([
+                'status' => 'closed',
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            return true;
+
+        } else {
+            return false;
+        }
     }
 }

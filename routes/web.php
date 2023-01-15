@@ -146,6 +146,7 @@ Route::prefix('timesheets')->group(function () {
     Route::delete('/destroy/{id}', [TimesheetsController::class, 'destroy'])->name('timesheets.destroy');
     Route::get('/manual/{id}', [TimesheetsController::class, 'manualView'])->name('timesheets.manualView');
     Route::post('/manual', [TimesheetsController::class, 'manualSalaryCalculation'])->name('timesheets.manualSalaryCalculation');
+    Route::get('/payroll-confirmation', [TimesheetsController::class, 'payrollConfirmation'])->name('timesheets.payrollConfirmation');
 });
 
 Route::prefix('leave')->group(function () {

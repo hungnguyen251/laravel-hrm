@@ -168,4 +168,20 @@ class TimesheetsController extends Controller
             return redirect()->route('timesheets.monthSelection')->with('failed', 'Đã có lỗi xảy ra khi tạo bảng lương'); 
         }
     }
+
+    /**
+     * Payroll confirmation.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function payrollConfirmation()
+    {
+        if ($this->timesheets->updateStatusWhenConfirmation()) {
+            return redirect()->route('timesheets.index',['filter[month]'=> ltrim(date('m', strtotime('last month')), 0)])->with('success', 'Chốt sổ lương tháng '.date('m/Y', strtotime('last month')).' thành công'); 
+
+        } else {
+            return redirect()->route('timesheets.index',['filter[month]'=> ltrim(date('m', strtotime('last month')), 0)])->with('failed', 'Đã có lỗi xảy ra khi chốt sổ lương'); 
+        }
+    }
 }
