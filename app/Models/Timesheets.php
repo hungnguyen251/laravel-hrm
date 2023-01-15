@@ -30,7 +30,8 @@ class Timesheets extends Model
         'year',
         'month_leave',
         'remaining_leave',
-        'note'
+        'note',
+        'status'
     ];
 
     /**
@@ -39,11 +40,11 @@ class Timesheets extends Model
      * @var array
      */
     protected $filterable = [
-        'code', 'staff_id', 'month', 'year'
+        'code', 'staff_id', 'month', 'year', 'status'
     ];
 
     protected $exactFilterable = [
-        'month', 'year'
+        'month', 'year', 'status'
     ];
 
     /**
@@ -52,7 +53,7 @@ class Timesheets extends Model
      * @var array
      */
     protected $sortable = [
-        'code', 'staff_id', 'salary_id', 'received', 'month', 'year'
+        'code', 'staff_id', 'salary_id', 'received', 'month', 'year', 'status'
     ];
 
     /**

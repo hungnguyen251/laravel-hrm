@@ -58,6 +58,7 @@
                                 <th>Số ngày nghỉ</th>
                                 <th>Ngày phép còn</th>
                                 <th>Ghi chú</th>
+                                <th>Trạng thái</th>
                                 <th>Ngày tạo</th>
                                 <th>Thao tác</th>
                             </tr>
@@ -79,19 +80,22 @@
                                 <td>{{ number_format($item->month_leave, 1, ',', '.') }}</td>
                                 <td>{{ number_format($item->remaining_leave, 1, ',', '.') }}</td>
                                 <td>{{ $item->note }}</td>
+                                <td>{{ $item->status == 'processing' ? 'Đang xử lý' : 'Chốt lương' }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    <form action="{{ route('timesheets.edit', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        <input class="btn btn-warning" type="submit" value="Sửa" />
-                                    </form>
+                                    @if ('closed' != $item->status)
+                                        <form action="{{ route('timesheets.edit', ['id' => $item->id]) }}" method="POST">
+                                            @csrf
+                                            <input class="btn btn-warning" type="submit" value="Sửa" />
+                                        </form>
 
-                                    <form action="{{ route('timesheets.destroy', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
-                                    </form>
+                                        <form action="{{ route('timesheets.destroy', ['id' => $item->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
+                                        </form>
+                                    @endif
                                 </div>
                                 </td>
                             </tr>
