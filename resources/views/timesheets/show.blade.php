@@ -33,8 +33,8 @@
         <section class="content-header">
             <div class="card">
                 <div class="card-header" style="height: 65px;">
-                    <button type="submit" onclick="return confirm('Bạn có muốn xóa dữ liệu hiện có và tính toán tự động ?')"class="btn btn-info"  data-toggle="modal" data-target="#modal-auto" style="color:white;">Tính tự động</button>
-                    <button type="submit" class="btn btn-info"><a href="{{ route('timesheets.create') }}" style="color:white;">Tính thủ công</a></button>
+                    <button type="submit" onclick="return confirm('Bạn có muốn xóa dữ liệu hiện có và tính toán tự động ?')" class="btn btn-info"  data-toggle="modal" data-target="#modal-auto" style="color:white;">Tính tự động</button>
+                    <button type="submit" class="btn btn-info" onclick="showStaffList()"  data-toggle="modal" data-target="#modal-manual" style="color:white;">Tính thủ công</button>
                     <button type="submit" class="btn btn-info float-right"><a href="{{ route('timesheets.create') }}" style="color:white;">Thêm</a></button>
                     <button type="submit" class="btn btn-warning float-right"><a href="{{ route('timesheets.monthSelection') }}" style="color:white;">Quay lại</a></button>
                 </div>
@@ -132,7 +132,7 @@
                                     <label>Chọn tháng (*)</label>
                                     <select class="form-control" name="salary_month">
                                         <option>{{ date('m/Y', strtotime('last month')) }}</option>
-                                        <option>{{ date('m/Y') }}</option>
+                                        {{-- <option>{{ date('m/Y') }}</option> --}}
                                     </select>
                                 </div>
                             </div>
@@ -147,4 +147,79 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal-manual">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tạo tính lương thủ công tháng {{ date('m/Y', strtotime('last month')) }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    {{-- <form method="" action="#"> --}}
+                        <div class="card-body">
+                            <div class="form-group d-flex">
+                                <div class="form-group col-sm-12 px-0">
+                                    <label>Chọn nhân viên (*)</label>
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%" style="text-align:center;">Mã nhân viên</th>
+                                                <th width="6%" style="text-align:center;">Tên nhân viên</th>
+                                                <th width="10%" style="text-align:center;">Phòng ban</th>
+                                                <th width="10%" style="text-align:center;">Tháng</th>
+                                                <th width="9%" style="text-align:center;">Tính lương</th>
+                                            </tr>
+                                        </thead>
+        
+                                        <tbody id="staff-list">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" name="" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            {{-- <button type="submit" class="btn btn-primary">Xác nhận</button> --}}
+                        </div>
+                    {{-- </form> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showStaffList() {
+            $.ajax({
+                type: "GET",
+                url: '/ajax/staffs?filter[status]=active',
+                success: function(data) {
+                    let body = '';
+                    var month = '{{ date('m/Y', strtotime('last month')) }}';
+
+                    if(data !== null && data !== undefined) {
+
+                        for (i = 0; i < data.length; i++) {
+                            var route = '{{ route("timesheets.manualView", ":id") }}';
+                            route = route.replace(':id', data[i].id);
+
+                            body += `
+                                        <tr class="gradeA">
+                                            <td style="text-align:center;">`+data[i].code+`</td>
+                                            <td style="text-align:center;">`+data[i].last_name+` `+data[i].first_name+`</td>
+                                            <td style="text-align:center;">`+data[i].department.name+`</td>
+                                            <td style="text-align:center;">`+month+`</td>
+                                            <td style="text-align:center;"><a href="`+route+`">Chọn</a></td>
+                                        </tr>
+                                    `;
+                        }
+                    }
+
+                    $('#staff-list').html(body);
+                }
+            });
+        }
+    </script>
 @endsection

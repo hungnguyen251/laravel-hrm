@@ -139,4 +139,33 @@ class TimesheetsController extends Controller
 
         return view('timesheets.month_selection', compact('times'));
     }
+
+    /**
+     * Manual Calculation View.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function manualView($id)
+    {
+        $staff = $this->timesheets->getStaffInfo($id);
+
+        return view('timesheets.manual_calculation', compact(['staff']));
+    }
+
+    /**
+     * Manual salary calculation.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function manualSalaryCalculation(Request $request)
+    {
+        if($this->timesheets->manualSalaryCalculationById($request->all())) {
+            return redirect()->route('timesheets.monthSelection')->with('success', 'Thêm bảng lương tháng ' . $request->month_salary . ' - '. $request->code . ' thành công'); 
+
+        } else {
+            return redirect()->route('timesheets.monthSelection')->with('failed', 'Đã có lỗi xảy ra khi tạo bảng lương'); 
+        }
+    }
 }

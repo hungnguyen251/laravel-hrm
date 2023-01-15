@@ -44,16 +44,17 @@
                             </tr>
                         </thead>
                         @php
+                        //month_start_calculation Y-m-d
                             $month =  $start = explode('-', Config::get('app.month_start_calculation'));
                         @endphp
                         <tbody>
                             
-                            @for($i = 0; $i <= $times; $i++)
+                            @for($i = 0; $i < $times; $i++)
                             <tr>
                                 <td>{{ date('m/Y', mktime(0, 0, 0, date($month[1])+$i  , date($month[2]), date($month[0]))) }}</td>
                                 <td>Hàng tháng</td>
                                 <td>Bảng lương {{ date('m/Y', mktime(0, 0, 0, date($month[1])+$i  , date($month[2]), date($month[0]))) }}</td>
-                                <td>{{ date('d/m/Y', mktime(0, 0, 0, date($month[1])+$i  , date('15'), date($month[0]))) }}</td>
+                                <td>{{ date('d/m/Y', mktime(0, 0, 0, date($month[1])+$i+1  , date('15'), date($month[0]))) }}</td>
                                 <td><a href="{{ route('timesheets.index', ['filter[month]' => ltrim(date('m', mktime(0, 0, 0, date($month[1])+$i  , date('15'), date($month[0]))),'0')]) }}" class="btn btn-info">Xem</a></td>
                             </tr>
                             @endfor

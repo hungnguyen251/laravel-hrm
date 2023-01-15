@@ -116,6 +116,19 @@ class StaffController extends Controller
 
         return view('staffs.create', compact('infoClassification'));
     }
+
+    /**
+     * Ajax get all.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function ajaxGetAll(Request $request): JsonResponse
+    {
+        $staffs = $this->staffs->ajaxGetAllStaffActive($request);
+
+        return response()->json($staffs);
+    }
 }
 
 

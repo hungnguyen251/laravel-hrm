@@ -144,6 +144,8 @@ Route::prefix('timesheets')->group(function () {
     Route::put('/update/{id}', [TimesheetsController::class, 'update'])->name('timesheets.update');
     Route::post('/edit/{id}', [TimesheetsController::class, 'edit'])->name('timesheets.edit');
     Route::delete('/destroy/{id}', [TimesheetsController::class, 'destroy'])->name('timesheets.destroy');
+    Route::get('/manual/{id}', [TimesheetsController::class, 'manualView'])->name('timesheets.manualView');
+    Route::post('/manual', [TimesheetsController::class, 'manualSalaryCalculation'])->name('timesheets.manualSalaryCalculation');
 });
 
 Route::prefix('leave')->group(function () {
@@ -154,4 +156,8 @@ Route::prefix('leave')->group(function () {
     Route::put('/update/{id}', [AnnualLeaveController::class, 'update'])->name('leave.update');
     Route::post('/edit/{id}', [AnnualLeaveController::class, 'edit'])->name('leave.edit');
     Route::delete('/destroy/{id}', [AnnualLeaveController::class, 'destroy'])->name('leave.destroy');
+});
+
+Route::prefix('ajax')->group(function () {
+    Route::get('/staffs', [StaffController::class, 'ajaxGetAll'])->name('ajax.getAllStaff');
 });

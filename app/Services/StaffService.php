@@ -175,4 +175,11 @@ class StaffService
 
         return AnnualLeave::create($attrs);
     }
+
+    public function ajaxGetAllStaffActive($request)
+    {
+        $staffs = Staff::with('department')->filter($request)->get();
+
+        return $staffs;
+    }
 }
