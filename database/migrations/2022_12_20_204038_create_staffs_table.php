@@ -28,7 +28,7 @@ class CreateStaffsTable extends Migration
             $table->integer('diploma_id');
             $table->enum('marriage_status', array('single','married'))->default('single');
             $table->date('start_date');
-            $table->enum('status', array('active','inactive'))->default('single');
+            $table->enum('status', array('active','inactive'))->default('active');
             $table->softDeletes();
             $table->timestamps();
         });
