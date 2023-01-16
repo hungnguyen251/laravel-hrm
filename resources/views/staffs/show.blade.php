@@ -32,6 +32,28 @@
 
         <section class="content-header">
             <div class="card">
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <form action="#" id="search">
+                            <div class="input-group mt-3">
+                                <div class="col-md-2">
+                                    <select name="option" class="custom-select custom-select-lg" id="validationDefault04" style="font-size:18px;" required>
+                                      <option selected disabled value="">Chọn</option>
+                                      <option value="code">Mã nhân viên</option>
+                                      <option value="code">Tên</option>
+                                      <option value="code">Trạng thái</option>
+                                    </select>
+                                </div>
+
+                                <input name="keyword" type="search" class="form-control form-control-lg" placeholder="Tìm kiếm">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default"><i class="fa fa-search"></i></button>
+                                    <input type="button" value="Đặt Lại" class="btn btn-lg btn-default mx-2" style="font-size:18px;" onClick="window.location.href='index'"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="card-header d-flex" style="height: 65px;">
                     <a href="{{ route('staffs.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
                 </div>
