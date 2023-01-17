@@ -18,7 +18,8 @@ class Diploma extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name'
+        'name',
+        'created_at'
     ];
 
         /**
@@ -37,7 +38,7 @@ class Diploma extends Model
      * @var array
      */
     protected $sortable = [
-        'name'
+        'name', 'created_at'
     ];
 
     /**

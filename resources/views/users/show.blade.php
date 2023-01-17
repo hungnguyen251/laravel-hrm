@@ -67,13 +67,49 @@
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th>Mã nhân viên</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'staff_id', 'route' => 'users.index' ]) }}">
+                                    Mã nhân viên
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'staff_id' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'staff_id' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
-                                <th>Phân quyền</th>
-                                <th>Trạng thái</th>
-                                <th>Ngày tạo</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'decentralization', 'route' => 'users.index' ]) }}">
+                                    Phân quyền
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'decentralization' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'decentralization' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'status', 'route' => 'users.index' ]) }}">
+                                    Trạng thái
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'status' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'status' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'created_at', 'route' => 'users.index' ]) }}">
+                                    Ngày tạo
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>

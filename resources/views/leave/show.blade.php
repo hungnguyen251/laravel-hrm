@@ -63,11 +63,38 @@
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th>Mã nhân viên</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'staff_id', 'route' => 'leave.index' ]) }}">
+                                    Mã nhân viên
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'staff_id' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'staff_id' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Tên</th>
                                 <th>Phòng ban</th>
-                                <th>Số ngày phép</th>
-                                <th>Số ngày làm việc</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'number', 'route' => 'leave.index' ]) }}">
+                                    Số ngày phép
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'number' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'number' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'working_time', 'route' => 'leave.index' ]) }}">
+                                    Thời gian làm việc
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'working_time' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'working_time' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>

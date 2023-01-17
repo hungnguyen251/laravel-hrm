@@ -49,7 +49,7 @@
                                 <input name="route_name" type="hidden" value="timesheets.index">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-lg btn-default"><i class="fa fa-search"></i></button>
-                                    <input type="button" value="Đặt Lại" class="btn btn-lg btn-default mx-2" style="font-size:18px;" onClick="window.location.href='index'"/>
+                                    <input type="button" value="Đặt Lại" class="btn btn-lg btn-default mx-2" style="font-size:18px;" onClick="window.location.href='month_selection'"/>
                                 </div>
                             </div>
                         </form>
@@ -70,6 +70,10 @@
                     @endif
                     <button type="submit" class="btn btn-warning float-right"><a href="{{ route('timesheets.monthSelection') }}" style="color:white;">Quay lại</a></button>
                 </div>
+                
+                @php
+                    $queryString = !empty($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
+                @endphp
 
                 <div class="card-body">
                     <table class="table table-bordered" style="text-align: center;">
@@ -82,13 +86,31 @@
                                 <th>Ngày công</th>
                                 <th>Ứng trước</th>
                                 <th>Mức đóng BHXH</th>
-                                <th>Thực nhận</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'received', 'route' => 'timesheets.index', 'query_default' => $queryString ]) }}">
+                                    Thực nhận
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'received' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'received' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Tháng</th>
                                 <th>Số ngày nghỉ</th>
                                 <th>Ngày phép còn</th>
                                 <th>Ghi chú</th>
                                 <th>Trạng thái</th>
-                                <th>Ngày tạo</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'created_at', 'route' => 'timesheets.index', 'query_default' => $queryString ]) }}">
+                                    Ngày tạo
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>

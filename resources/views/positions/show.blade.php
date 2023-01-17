@@ -63,8 +63,26 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Tên chức danh</th>
-                                <th>Ngày tạo</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'name', 'route' => 'positions.index' ]) }}">
+                                    Tên chức danh
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'name' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'name' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'created_at', 'route' => 'positions.index' ]) }}">
+                                    Ngày tạo 
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>

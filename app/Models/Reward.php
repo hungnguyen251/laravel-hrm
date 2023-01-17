@@ -19,7 +19,8 @@ class Reward extends Model
      */
     protected $fillable = [
         'name',
-        'prime'
+        'prime',
+        'created_at'
     ];
 
         /**
@@ -38,7 +39,7 @@ class Reward extends Model
      * @var array
      */
     protected $sortable = [
-        'name', 'prime'
+        'name', 'prime', 'created_at'
     ];
 
     /**

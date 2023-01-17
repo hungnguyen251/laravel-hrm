@@ -31,7 +31,8 @@ class Timesheets extends Model
         'month_leave',
         'remaining_leave',
         'note',
-        'status'
+        'status',
+        'created_at'
     ];
 
     /**
@@ -53,7 +54,7 @@ class Timesheets extends Model
      * @var array
      */
     protected $sortable = [
-        'code', 'staff_id', 'salary_id', 'received', 'month', 'year', 'status'
+        'code', 'staff_id', 'salary_id', 'received', 'month', 'year', 'status', 'created_at'
     ];
 
     /**

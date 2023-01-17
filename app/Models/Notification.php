@@ -22,7 +22,8 @@ class Notification extends Model
         'content',
         'user_id',
         'department_id',
-        'status'
+        'status',
+        'created_at'
     ];
 
         /**
@@ -41,7 +42,7 @@ class Notification extends Model
      * @var array
      */
     protected $sortable = [
-        'title', 'user_id', 'department_id'
+        'title', 'user_id', 'department_id', 'created_at'
     ];
 
     /**

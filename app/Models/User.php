@@ -25,7 +25,8 @@ class User extends Authenticatable
         'phone',
         'decentralization',
         'staff_id',
-        'status'
+        'status',
+        'created_at'
     ];
 
     /**
@@ -66,7 +67,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $sortable = [
-        'email', 'phone', 'decentralization', 'staff_id'
+        'email', 'phone', 'decentralization', 'staff_id', 'created_at', 'status'
     ];
 
     /**

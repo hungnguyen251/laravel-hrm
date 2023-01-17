@@ -63,13 +63,40 @@
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th>Mã nhân viên</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'staff_id', 'route' => 'salaries.index' ]) }}">
+                                    Mã nhân viên
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'staff_id' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'staff_id' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Tên</th>
                                 <th>Phòng ban</th>
-                                <th>Tiền lương</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'amount', 'route' => 'salaries.index' ]) }}">
+                                    Tiền lương
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'amount' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'amount' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Mức đóng BHXH</th>
                                 <th>Ghi chú</th>
-                                <th>Ngày tạo</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'created_at', 'route' => 'salaries.index' ]) }}">
+                                    Ngày tạo
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -80,8 +107,8 @@
                                 <td>{{ isset($item->staff->code) ? $item->staff->code : 'ERROR' }}</td>
                                 <td>{{ isset($item->staff->last_name) ? $item->staff->last_name . ' ' . $item->staff->first_name : 'ERROR' }}</td>
                                 <td>{{ isset($item->staff->department->name) ? $item->staff->department->name : 'ERROR' }}</td>
-                                <td>{{ number_format($item->amount, 0) }} đ</td>
-                                <td>{{ number_format($item->insurance_amount, 0) }} đ</td>
+                                <td>{{ number_format($item->amount, 0, ',', '.') }} đ</td>
+                                <td>{{ number_format($item->insurance_amount, 0, ',', '.') }} đ</td>
                                 <td>{{ $item->note }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>

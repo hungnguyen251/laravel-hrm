@@ -22,6 +22,7 @@ class AnnualLeave extends Model
         'staff_id',
         'number',
         'working_time',
+        'created_at'
     ];
 
     /**
@@ -30,7 +31,7 @@ class AnnualLeave extends Model
      * @var array
      */
     protected $filterable = [
-        'staff_id', 'staff.code', 'staff.first_name'
+        'staff_id', 'staff.code', 'staff.first_name', 'staff.code'
     ];
 
 
@@ -40,7 +41,7 @@ class AnnualLeave extends Model
      * @var array
      */
     protected $sortable = [
-        'staff_id', 'number', 'working_time'
+        'staff_id', 'number', 'working_time', 'created_at'
     ];
 
     /**

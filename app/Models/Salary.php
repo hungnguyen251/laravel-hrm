@@ -21,7 +21,8 @@ class Salary extends Model
         'staff_id',
         'amount',
         'note',
-        'insurance_amount'
+        'insurance_amount',
+        'created_at'
     ];
 
     /**
@@ -40,7 +41,7 @@ class Salary extends Model
      * @var array
      */
     protected $sortable = [
-        'staff_id', 'amount', 'insurance_amount'
+        'staff_id', 'amount', 'insurance_amount', 'created_at'
     ];
 
     /**
