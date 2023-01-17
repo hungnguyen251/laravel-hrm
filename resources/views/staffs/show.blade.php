@@ -62,17 +62,53 @@
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'code' ]) }}">Mã NV @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'code' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') <i class="fas fa-sort-amount-down-alt"></i> @else <i class="fas fa-sort-amount-up-alt"></i> @endif</a></th>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'first_name' ]) }}">Tên @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'first_name' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') <i class="fas fa-sort-amount-down-alt"></i> @else <i class="fas fa-sort-amount-up-alt"></i> @endif</a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'code' ]) }}">
+                                    Mã NV 
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'code' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'code' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'first_name' ]) }}">
+                                    Tên 
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'first_name' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'first_name' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Ngày sinh</th>
                                 <th>Địa chỉ</th>
                                 <th>Vị trí</th>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'department_id' ]) }}">Phòng ban @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'department_id' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') <i class="fas fa-sort-amount-down-alt"></i> @else <i class="fas fa-sort-amount-up-alt"></i> @endif</a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'department_id' ]) }}">
+                                    Phòng ban 
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'department_id' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                    <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'department_id' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Bằng cấp</th>
                                 <th>Kiểu nhân viên</th>
                                 <th>Ngày bắt đầu</th>
                                 <th>Số ngày phép</th>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'status' ]) }}">Trạng thái @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'status' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') <i class="fas fa-sort-amount-down-alt"></i> @else <i class="fas fa-sort-amount-up-alt"></i> @endif</a></th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'status' ]) }}">
+                                    Trạng thái 
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'status' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'status' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
