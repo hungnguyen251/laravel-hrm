@@ -16,4 +16,23 @@ class FilterController extends Controller
             'filter['.$option.']' => $keyword,
         ]);
     }
+
+    public function sort(Request $request) 
+    {
+        $orderBy = $request->input('orderBy') !== null ? $request->input('orderBy') : '';
+        $sortBy = $request->input('sortBy') !== null ? $request->input('sortBy') : '';
+
+        if ('-' == $orderBy) {
+            $orderBy = '';
+
+        } else {
+            $orderBy = '-';
+        }
+
+        return redirect()->route('staffs.index', [
+            'orderBy' => $orderBy,
+            'sortBy' => $sortBy,
+            'sort' => $orderBy . $sortBy
+        ]);
+    }
 }
