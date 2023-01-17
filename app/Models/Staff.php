@@ -34,20 +34,21 @@ class Staff extends Model
         'leave_annual',
         'marriage_status',
         'start_date',
-        'status'
+        'status',
+        'created_at'
     ];
 
-        /**
+    /**
      * The fields that should be filterable by query.
      *
      * @var array
      */
     protected $filterable = [
-        'user_id', 'code', 'position_id', 'department_id', 'diploma_id', 'status'
+        'user_id', 'code', 'position_id', 'department_id', 'diploma_id', 'status', 'first_name'
     ];
 
     protected $exactFilterable = [
-        'status'
+        'status', 'code'
     ];
 
     /**
@@ -56,7 +57,7 @@ class Staff extends Model
      * @var array
      */
     protected $sortable = [
-        'user_id', 'code', 'position_id', 'department_id', 'status', 'leave_annual'
+        'user_id', 'code', 'position_id', 'department_id', 'status', 'leave_annual', 'first_name', 'created_at'
     ];
 
     /**

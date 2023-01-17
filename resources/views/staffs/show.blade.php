@@ -34,18 +34,18 @@
             <div class="card">
                 <div class="row">
                     <div class="col-md-6 offset-md-2">
-                        <form action="#" id="search">
+                        <form action="{{ route('filter.search') }}" id="search">
                             <div class="input-group mt-3">
                                 <div class="col-md-2">
                                     <select name="option" class="custom-select custom-select-lg" id="validationDefault04" style="font-size:18px;" required>
-                                      <option selected disabled value="">Chọn</option>
-                                      <option value="code">Mã nhân viên</option>
-                                      <option value="code">Tên</option>
-                                      <option value="code">Trạng thái</option>
+                                        <option selected disabled value="">Chọn</option>
+                                        <option value="code">Mã nhân viên</option>
+                                        <option value="first_name">Tên</option>
                                     </select>
                                 </div>
 
                                 <input name="keyword" type="search" class="form-control form-control-lg" placeholder="Tìm kiếm">
+                                <input name="route_name" type="hidden" value="staffs.index">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-lg btn-default"><i class="fa fa-search"></i></button>
                                     <input type="button" value="Đặt Lại" class="btn btn-lg btn-default mx-2" style="font-size:18px;" onClick="window.location.href='index'"/>
@@ -62,8 +62,8 @@
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Tên nhân viên</th>
+                                <th>Mã NV</th>
+                                <th>Tên</th>
                                 <th>Ngày sinh</th>
                                 <th>Địa chỉ</th>
                                 <th>Vị trí</th>

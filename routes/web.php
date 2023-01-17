@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PositionController;
@@ -161,4 +162,8 @@ Route::prefix('leave')->group(function () {
 
 Route::prefix('ajax')->group(function () {
     Route::get('/staffs', [StaffController::class, 'ajaxGetAll'])->name('ajax.getAllStaff');
+});
+
+Route::prefix('filter')->group(function () {
+    Route::get('/search', [FilterController::class, 'search'])->name('filter.search');
 });
