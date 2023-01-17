@@ -40,7 +40,7 @@ class Timesheets extends Model
      * @var array
      */
     protected $filterable = [
-        'code', 'staff_id', 'month', 'year', 'status'
+        'code', 'staff_id', 'month', 'year', 'status', 'staff.code'
     ];
 
     protected $exactFilterable = [

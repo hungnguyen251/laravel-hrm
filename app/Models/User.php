@@ -53,7 +53,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $filterable = [
-        'email', 'phone', 'decentralization', 'staff_id', 'status'
+        'email', 'phone', 'decentralization', 'staff_id', 'status', 'staff.code'
     ];
 
     protected $exactFilterable = [

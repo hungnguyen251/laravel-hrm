@@ -30,7 +30,7 @@ class Salary extends Model
      * @var array
      */
     protected $filterable = [
-        'staff_id', 'amount', 'insurance_amount'
+        'staff_id', 'amount', 'insurance_amount', 'staff.code', 'staff.first_name'
     ];
 
 

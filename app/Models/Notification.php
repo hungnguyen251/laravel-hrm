@@ -31,7 +31,7 @@ class Notification extends Model
      * @var array
      */
     protected $filterable = [
-        'title', 'content', 'user_id', 'department_id'
+        'title', 'content', 'user_id', 'department_id', 'user.staff.first_name'
     ];
 
 

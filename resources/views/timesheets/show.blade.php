@@ -32,9 +32,32 @@
 
         <section class="content-header">
             <div class="card">
-                <div class="card-header" style="height: 65px;">
+                <div class="row">
+                    <div class="col-md-6 offset-md-2">
+                        <form action="{{ route('filter.search') }}" id="search">
+                            <div class="input-group mt-3">
+                                <div class="col-md-2">
+                                    <select name="option" class="custom-select custom-select-lg" id="validationDefault04" style="font-size:18px;" required>
+                                        <option selected disabled value="">Chọn</option>
+                                        <option value="staff.code">Mã nhân viên</option>
+                                        <option value="code">Mã phiếu lương</option>
+                                        <option value="month">Tháng</option>
+                                    </select>
+                                </div>
 
-                    @if (ltrim($_REQUEST['filter']['month'], 0) == ltrim(date('m', strtotime('last month')), 0)) 
+                                <input name="keyword" type="search" class="form-control form-control-lg" placeholder="Tìm kiếm">
+                                <input name="route_name" type="hidden" value="timesheets.index">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default"><i class="fa fa-search"></i></button>
+                                    <input type="button" value="Đặt Lại" class="btn btn-lg btn-default mx-2" style="font-size:18px;" onClick="window.location.href='index'"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card-header" style="height: 65px;">
+                    @if (!empty($_REQUEST['filter']['month']) && ltrim($_REQUEST['filter']['month'], 0) == ltrim(date('m', strtotime('last month')), 0)) 
                         @foreach ($timesheets as $item) 
                             @if ('processing' == $item->status || empty($item->status))
                                 <button type="submit" onclick="return confirm('Bạn có muốn xóa dữ liệu hiện có và tính toán tự động ?')" class="btn btn-info"  data-toggle="modal" data-target="#modal-auto" style="color:white;">Tính tự động</button>

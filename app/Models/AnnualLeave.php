@@ -30,7 +30,7 @@ class AnnualLeave extends Model
      * @var array
      */
     protected $filterable = [
-        'staff_id'
+        'staff_id', 'staff.code', 'staff.first_name'
     ];
 
 
