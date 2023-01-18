@@ -62,7 +62,7 @@
                     <table class="table table-bordered" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'code' ]) }}">
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'code', 'route' => 'staffs.index' ]) }}">
                                     Mã NV 
                                     @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'code' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
                                         <i class="fas fa-sort-amount-down-alt"></i> 
@@ -72,7 +72,7 @@
                                         <i class="fas fa-sort"></i>
                                     @endif
                                 </a></th>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'first_name' ]) }}">
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'first_name', 'route' => 'staffs.index' ]) }}">
                                     Tên 
                                     @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'first_name' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
                                         <i class="fas fa-sort-amount-down-alt"></i> 
@@ -85,7 +85,7 @@
                                 <th>Ngày sinh</th>
                                 <th>Địa chỉ</th>
                                 <th>Vị trí</th>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'department_id' ]) }}">
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'department_id', 'route' => 'staffs.index' ]) }}">
                                     Phòng ban 
                                     @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'department_id' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
                                     <i class="fas fa-sort-amount-down-alt"></i> 
@@ -99,7 +99,7 @@
                                 <th>Kiểu nhân viên</th>
                                 <th>Ngày bắt đầu</th>
                                 <th>Số ngày phép</th>
-                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'status' ]) }}">
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'status', 'route' => 'staffs.index' ]) }}">
                                     Trạng thái 
                                     @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'status' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
                                         <i class="fas fa-sort-amount-down-alt"></i> 

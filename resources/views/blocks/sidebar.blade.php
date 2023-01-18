@@ -61,7 +61,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('positions.index') }}" class="nav-link">
-                                <i class="fal fa-crosshairs"></i>
+                                <i class="fas fa-sitemap"></i>
                                 <p>Chức danh</p>
                             </a>
                         </li>
@@ -93,7 +93,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('salaries.index') }}" class="nav-link">
-                                <i class="fad fa-money-bill-alt"></i>
+                                <i class="fas fa-hand-holding-usd"></i>
                                 <p>Tiền lương</p>
                             </a>
                         </li>
@@ -122,7 +122,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('timesheets.monthSelection') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="fas fa-file-invoice-dollar"></i>
                                 <p>Bảng tính lương</p>
                             </a>
                         </li>

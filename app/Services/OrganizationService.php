@@ -15,12 +15,14 @@ class OrganizationService
         $organization = Department::select('departments.name', DB::raw('COUNT(staffs.department_id) as staffs'))
                         ->leftJoin('staffs', 'staffs.department_id', '=', 'departments.id')
                         ->groupBy('departments.name')
+                        ->where('staffs.status','active')
                         ->paginate(Config::get('app.limit_results_returned'));
 
         $leaderPositionId = Staff::select('departments.name as department_name', 'staffs.last_name', 'staffs.first_name')
                             ->leftJoin('positions', 'staffs.position_id', '=', 'positions.id')
                             ->leftJoin('departments', 'staffs.department_id', '=', 'departments.id')
                             ->where('positions.name','Trưởng phòng')
+                            ->where('staffs.status','active')
                             ->get();
 
         foreach($leaderPositionId as $leader) {
