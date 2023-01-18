@@ -58,7 +58,7 @@
                             </div>
                             <div class="card-body">
                                 <strong><i class="fas fa-book mr-1"></i> Học vấn</strong>
-                                <p class="text-muted">{{ $staff->diploma->name }}</p>
+                                <p class="text-muted">{{ isset($staff->diploma->name) ? $staff->diploma->name : '' }}</p>
                                 <hr>
             
                                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Địa chỉ</strong>
@@ -66,11 +66,11 @@
                                 <hr>
             
                                 <strong><i class="far fa-file-alt mr-1"></i> Vị trí</strong>
-                                <p class="text-muted">{{ $staff->position->name }}</p>
+                                <p class="text-muted">{{ isset($staff->position->name) ? $staff->position->name : '' }}</p>
                                 <hr>
             
                                 <strong><i class="far fa-file-alt mr-1"></i> Phòng Ban</strong>
-                                <p class="text-muted">{{ $staff->department->name }}</p>
+                                <p class="text-muted">{{ isset($staff->department->name) ? $staff->department->name : '' }}</p>
                                 <hr>
             
                                 <strong><i class="far fa-file-alt mr-1"></i> Sở thích</strong>

@@ -22,6 +22,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card card-green">
+
+                        @if(!empty($companies[0]))
                             <div class="card-header">
                                 <form action="{{ route('companies.edit', ['id' => $companies[0]->id]) }}" method="POST">
                                     @csrf
@@ -56,6 +58,8 @@
                                 <a href="{{ $companies[0]->website }}">{{ $companies[0]->website }}</a>
                                 <hr>
                             </div>
+                        @endif
+                        
                         </div>
                     </div>
                 </div>

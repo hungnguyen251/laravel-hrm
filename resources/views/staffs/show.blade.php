@@ -120,9 +120,9 @@
                                 <td>{{ $item->last_name . ' ' . $item->first_name }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->date_of_birth)) }}</td>
                                 <td>{{ $item->address }}</td>
-                                <td>{{ $item->position->name }}</td>
-                                <td>{{ $item->department->name }}</td>
-                                <td>{{ $item->diploma->name }}</td>
+                                <td>{{ isset($item->position->name) ? $item->position->name : '' }}</td>
+                                <td>{{ isset($item->department->name) ? $item->department->name : '' }}</td>
+                                <td>{{ isset($item->diploma->name) ? $item->diploma->name : '' }}</td>
                                 <td>{{ $item->type }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->start_date)) }}</td>
                                 <td><a href="{{ route('leave.index', ['filter[staff_id]' => $item->id]) }}" class="btn btn-block btn-primary">Xem</a></td>
