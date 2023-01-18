@@ -28,8 +28,8 @@
             </div>
         </div>
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <nav class="mt-2 navbar avbar-expand-lg">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
                 <li class="nav-item">
@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('companies.index') }}" class="nav-link">
+                    <a href="{{ route('companies.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-building"></i>
                         <p>Thông tin công ty</p>
                     </a>
@@ -55,13 +55,13 @@
 
                 <li class="nav-item">
                     <a href="{{ route('staffs.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>Danh sách<i class="fas fa-angle-left right"></i></p>
+                        <i class="fas fa-list"></i>
+                        <p> Danh sách<i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('positions.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-house-user"></i>
+                                <i class="fal fa-crosshairs"></i>
                                 <p>Chức danh</p>
                             </a>
                         </li>
@@ -69,7 +69,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('diplomas.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-house-user"></i>
+                                <i class="far fa-file-certificate"></i>
                                 <p>Bằng cấp</p>
                             </a>
                         </li>
@@ -77,7 +77,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('rewards.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="fas fa-gifts"></i>
                                 <p>Giải thưởng</p>
                             </a>
                         </li>
@@ -93,7 +93,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('salaries.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="fad fa-money-bill-alt"></i>
                                 <p>Tiền lương</p>
                             </a>
                         </li>
@@ -116,8 +116,8 @@
 
                 <li class="nav-item">
                     <a href="{{ route('staffs.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>Kế toán <i class="fas fa-angle-left right"></i></p>
+                        <i class="fas fa-file-invoice"></i>
+                        <p> Kế toán <i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -151,7 +151,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('organization.show') }}" class="nav-link">
-                                <i class="nav-icon fas fa-users-cog"></i>
+                                <i class="fas fa-sitemap"></i>
                                 <p>Tổ chức nhân sự</p>
                             </a>
                         </li>
