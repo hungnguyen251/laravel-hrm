@@ -54,8 +54,8 @@
                         </form>
                     </div>
                 </div>
-                <div class="card-header d-flex" style="height: 65px;">
-                    <a href="{{ route('staffs.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
+                <div class="card-header">
+                    <button type="submit" class="btn btn-info float-right"><a href="{{ route('staffs.create') }}" style="width: 100px;color:white"><i class="fas fa-plus"></i></a></button>
                 </div>
                 
                 <div class="card-body">

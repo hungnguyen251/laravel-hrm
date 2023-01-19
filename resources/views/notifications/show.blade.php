@@ -55,9 +55,9 @@
                     </div>
                 </div>
 
-                <div class="card-header d-flex" style="height: 65px;">
-                    <a href="{{ route('notifications.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 100px; right: 40px;">Thêm</a>
-                    <button type="submit"  class="btn btn-block btn-info" style="position: absolute;width: 150px;right: 150px;bottom: 13px;" data-toggle="modal" data-target="#modal-lg">Đơn xin nghỉ phép</button>
+                <div class="card-header">
+                    <button type="submit" class="btn btn-info float-right"><a href="{{ route('notifications.create') }}" style="width: 100px;color:white"><i class="fas fa-plus"></i></a></button>
+                    <button type="submit" class="btn btn-info float-right mx-2" data-toggle="modal" data-target="#modal-lg">Đơn xin nghỉ phép</button>
                 </div>
 
                 <div class="card-body">

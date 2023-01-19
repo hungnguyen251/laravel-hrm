@@ -14,8 +14,8 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        {{-- <div class="card-header d-flex" style="height: 65px;">
-            <a href="{{ route('companies.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
+        {{-- <div class="card-header">
+            <button type="submit" class="btn btn-info float-right"><a href="{{ route('companies.create') }}" style="width: 100px;color:white"><i class="fas fa-plus"></i></a></button>
         </div> --}}
         <section class="content">
             <div class="container-fluid">
@@ -54,7 +54,7 @@
                                 <hr>
 
                                 <strong><i class="far fa-file-alt mr-1"></i> Website</strong>
-                                </br>
+                                <hr>
                                 <a href="{{ $companies[0]->website }}">{{ $companies[0]->website }}</a>
                                 <hr>
                             </div>
