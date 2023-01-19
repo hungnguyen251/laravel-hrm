@@ -16,6 +16,7 @@ class OrganizationService
                         ->leftJoin('staffs', 'staffs.department_id', '=', 'departments.id')
                         ->groupBy('departments.name')
                         ->where('staffs.status','active')
+                        ->where('staffs.deleted_at',null)
                         ->paginate(Config::get('app.limit_results_returned'));
 
         $leaderPositionId = Staff::select('departments.name as department_name', 'staffs.last_name', 'staffs.first_name')
@@ -23,6 +24,7 @@ class OrganizationService
                             ->leftJoin('departments', 'staffs.department_id', '=', 'departments.id')
                             ->where('positions.name','Trưởng phòng')
                             ->where('staffs.status','active')
+                            ->where('staffs.deleted_at',null)
                             ->get();
 
         foreach($leaderPositionId as $leader) {
