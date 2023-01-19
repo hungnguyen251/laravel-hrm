@@ -55,13 +55,13 @@
 
                 <li class="nav-item">
                     <a href="{{ route('staffs.index') }}" class="nav-link">
-                        <i class="fas fa-list"></i>
-                        <p> Danh sách<i class="fas fa-angle-left right"></i></p>
+                        <i class="nav-icon fas fa-window-restore"></i>
+                        <p>Danh sách<i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('positions.index') }}" class="nav-link">
-                                <i class="fas fa-sitemap"></i>
+                                <i class="nav-icon fas fa-sitemap"></i>
                                 <p>Chức danh</p>
                             </a>
                         </li>
@@ -69,7 +69,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('diplomas.index') }}" class="nav-link">
-                                <i class="far fa-file-certificate"></i>
+                                <i class="nav-icon fas fa-certificate"></i>
                                 <p>Bằng cấp</p>
                             </a>
                         </li>
@@ -77,7 +77,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('rewards.index') }}" class="nav-link">
-                                <i class="fas fa-gifts"></i>
+                                <i class="nav-icon fas fa-gifts"></i>
                                 <p>Giải thưởng</p>
                             </a>
                         </li>
@@ -93,7 +93,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('salaries.index') }}" class="nav-link">
-                                <i class="fas fa-hand-holding-usd"></i>
+                                <i class="nav-icon fas fa-hand-holding-usd" style="margin-right: 0.2rem;margin-left: 0.05rem;"></i>
                                 <p>Tiền lương</p>
                             </a>
                         </li>
@@ -116,13 +116,13 @@
 
                 <li class="nav-item">
                     <a href="{{ route('staffs.index') }}" class="nav-link">
-                        <i class="fas fa-file-invoice"></i>
+                        <i class="nav-icon fas fa-file-invoice"></i>
                         <p> Kế toán <i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('timesheets.monthSelection') }}" class="nav-link">
-                                <i class="fas fa-file-invoice-dollar"></i>
+                                <i class="nav-icon fas fa-file-invoice-dollar"></i>
                                 <p>Bảng tính lương</p>
                             </a>
                         </li>
@@ -151,7 +151,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('organization.show') }}" class="nav-link">
-                                <i class="fas fa-sitemap"></i>
+                                <i class="nav-icon fas fa-sitemap"></i>
                                 <p>Tổ chức nhân sự</p>
                             </a>
                         </li>
