@@ -95,23 +95,28 @@
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    @if('waiting' == $item->status)
-                                    <form action="{{ route('notifications.edit', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        <input class="btn btn-warning" type="submit" value="Sửa" />
-                                    </form>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i></button>
+                                        <div class="dropdown-menu">
+                                            @if('waiting' == $item->status)
+                                            <form action="{{ route('notifications.edit', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item" type="submit">Sửa</button>
+                                            </form>
 
-                                    <form action="{{ route('notifications.changeApproveStatus', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        <input onclick="return confirm('Bạn muốn phê duyệt thông báo này?')" class="btn btn-primary" type="submit" value="Phê duyệt" />
-                                    </form>
-                                    @endif
+                                            <form action="{{ route('notifications.changeApproveStatus', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item" onclick="return confirm('Bạn muốn phê duyệt thông báo này?')" type="submit">Phê duyệt</button>
+                                            </form>
+                                            @endif
 
-                                    <form action="{{ route('notifications.destroy', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
-                                    </form>
+                                            <form action="{{ route('notifications.destroy', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="dropdown-item">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 </td>
                             </tr>

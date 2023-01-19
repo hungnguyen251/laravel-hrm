@@ -134,18 +134,20 @@
                                     @endif
                                 </td>
                                 <td>
-                                <div class="btn-group">
-                                    <form action="{{ route('staffs.edit', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        <input class="btn btn-warning" type="submit" value="Sửa" />
-                                    </form>
-
-                                    <form action="{{ route('staffs.destroy', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
-                                    </form>
-                                </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i></button>
+                                        <div class="dropdown-menu">
+                                            <form action="{{ route('staffs.edit', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item" type="submit">Sửa</button>
+                                            </form>
+                                            <form action="{{ route('staffs.destroy', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="dropdown-item">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
