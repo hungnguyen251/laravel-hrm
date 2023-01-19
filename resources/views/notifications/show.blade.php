@@ -65,12 +65,30 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Tiêu đề</th>
-                                <th>Nội dung</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'title', 'route' => 'notifications.index' ]) }}">
+                                    Tiêu đề
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'title' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'title' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
+                                <th width="30%">Nội dung</th>
                                 <th>Tên người tạo</th>
                                 <th>Phòng ban</th>
                                 <th>Trạng thái</th>
-                                <th>Ngày tạo</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'created_at', 'route' => 'notifications.index' ]) }}">
+                                    Ngày tạo
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -85,11 +103,11 @@
                                 <td>{{ !empty($item->user->staff->department->name) ? $item->user->staff->department->name : 'ERROR' }}</td>
                                 <td>
                                     @if('waiting' == $item->status)
-                                        {{ 'Chờ phê duyệt' }}
+                                    <span style="background-color:#e4e0b3fd;color:#efad04;padding: 5px 10px;border-radius:15px;">Chờ duyệt</span>
                                     @elseif('approve' == $item->status)
-                                        {{ 'Đã duyệt' }}
+                                    <span style="background-color:#C6F6E4;color:#06C935;padding: 5px 10px;border-radius:15px;">Đã duyệt</span>
                                     @else
-                                        {{ 'Từ chối' }}
+                                    <span style="background-color:#F8B9B1;color:#E72108;padding: 5px 10px;border-radius:15px;">Từ chối</span>
                                     @endif
                                 </td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
