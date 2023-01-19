@@ -55,8 +55,8 @@
                     </div>
                 </div>
 
-                <div class="card-header d-flex" style="height: 65px;">
-                    <a href="{{ route('leave.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
+                <div class="card-header">
+                    <button type="submit" class="btn btn-info float-right"><a href="{{ route('leave.create') }}" style="width: 100px;color:white"><i class="fas fa-plus"></i></a></button>
                 </div>
 
                 <div class="card-body">
@@ -101,7 +101,7 @@
 
                         <tbody>
                             @foreach ($leave as $item)
-                                @if ('active' == $item->staff->status)
+                                @if (!empty($item->staff->status) && 'active' == $item->staff->status)
                                     <tr>
                                         <td>{{ $item->staff->code }}</td>
                                         <td>{{ $item->staff->last_name . ' ' . $item->staff->first_name }}</td>
@@ -109,18 +109,20 @@
                                         <td>{{ $item->number }}</td>
                                         <td>{{ $item->working_time }}</td>
                                         <td>
-                                        <div class="btn-group">
-                                            <form action="{{ route('leave.edit', ['id' => $item->id]) }}" method="POST">
-                                                @csrf
-                                                <input class="btn btn-warning" type="submit" value="Sửa" />
-                                            </form>
-
-                                            <form action="{{ route('leave.destroy', ['id' => $item->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
-                                            </form>
-                                        </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <form action="{{ route('leave.edit', ['id' => $item->id]) }}" method="POST">
+                                                        @csrf
+                                                        <button class="dropdown-item" type="submit">Sửa</button>
+                                                    </form>
+                                                    <form action="{{ route('leave.destroy', ['id' => $item->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="dropdown-item">Xóa</button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endif

@@ -55,9 +55,9 @@
                     </div>
                 </div>
 
-                <div class="card-header d-flex" style="height: 65px;">
-                    <a href="{{ route('notifications.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 100px; right: 40px;">Thêm</a>
-                    <button type="submit"  class="btn btn-block btn-info" style="position: absolute;width: 150px;right: 150px;bottom: 13px;" data-toggle="modal" data-target="#modal-lg">Đơn xin nghỉ phép</button>
+                <div class="card-header">
+                    <button type="submit" class="btn btn-info float-right"><a href="{{ route('notifications.create') }}" style="width: 100px;color:white"><i class="fas fa-plus"></i></a></button>
+                    <button type="submit" class="btn btn-info float-right mx-2" data-toggle="modal" data-target="#modal-lg">Đơn xin nghỉ phép</button>
                 </div>
 
                 <div class="card-body">
@@ -65,12 +65,30 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Tiêu đề</th>
-                                <th>Nội dung</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'title', 'route' => 'notifications.index' ]) }}">
+                                    Tiêu đề
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'title' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'title' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
+                                <th width="30%">Nội dung</th>
                                 <th>Tên người tạo</th>
                                 <th>Phòng ban</th>
                                 <th>Trạng thái</th>
-                                <th>Ngày tạo</th>
+                                <th><a class="text-dark" href="{{ route('filter.sort', ['orderBy' => Request::input('orderBy') !== null ? Request::input('orderBy') : '', 'sortBy' => 'created_at', 'route' => 'notifications.index' ]) }}">
+                                    Ngày tạo
+                                    @if(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') !== null && Request::input('orderBy') == '-') 
+                                        <i class="fas fa-sort-amount-down-alt"></i> 
+                                    @elseif(Request::input('sortBy') !== null && Request::input('sortBy') == 'created_at' && Request::input('orderBy') == null)
+                                        <i class="fas fa-sort-amount-up-alt"></i> 
+                                    @else
+                                        <i class="fas fa-sort"></i>
+                                    @endif
+                                </a></th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -85,33 +103,38 @@
                                 <td>{{ !empty($item->user->staff->department->name) ? $item->user->staff->department->name : 'ERROR' }}</td>
                                 <td>
                                     @if('waiting' == $item->status)
-                                        {{ 'Chờ phê duyệt' }}
+                                    <span style="background-color:#e4e0b3fd;color:#efad04;padding: 5px 10px;border-radius:15px;">Chờ duyệt</span>
                                     @elseif('approve' == $item->status)
-                                        {{ 'Đã duyệt' }}
+                                    <span style="background-color:#C6F6E4;color:#06C935;padding: 5px 10px;border-radius:15px;">Đã duyệt</span>
                                     @else
-                                        {{ 'Từ chối' }}
+                                    <span style="background-color:#F8B9B1;color:#E72108;padding: 5px 10px;border-radius:15px;">Từ chối</span>
                                     @endif
                                 </td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                 <div class="btn-group">
-                                    @if('waiting' == $item->status)
-                                    <form action="{{ route('notifications.edit', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        <input class="btn btn-warning" type="submit" value="Sửa" />
-                                    </form>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i></button>
+                                        <div class="dropdown-menu">
+                                            @if('waiting' == $item->status)
+                                            <form action="{{ route('notifications.edit', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item" type="submit">Sửa</button>
+                                            </form>
 
-                                    <form action="{{ route('notifications.changeApproveStatus', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        <input onclick="return confirm('Bạn muốn phê duyệt thông báo này?')" class="btn btn-primary" type="submit" value="Phê duyệt" />
-                                    </form>
-                                    @endif
+                                            <form action="{{ route('notifications.changeApproveStatus', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item" onclick="return confirm('Bạn muốn phê duyệt thông báo này?')" type="submit">Phê duyệt</button>
+                                            </form>
+                                            @endif
 
-                                    <form action="{{ route('notifications.destroy', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
-                                    </form>
+                                            <form action="{{ route('notifications.destroy', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="dropdown-item">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 </td>
                             </tr>

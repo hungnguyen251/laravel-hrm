@@ -54,8 +54,8 @@
                         </form>
                     </div>
                 </div>
-                <div class="card-header d-flex" style="height: 65px;">
-                    <a href="{{ route('staffs.create') }}" class="btn btn-block btn-info" style="position: absolute;width: 150px; right: 40px;">Thêm</a>
+                <div class="card-header">
+                    <button type="submit" class="btn btn-info float-right"><a href="{{ route('staffs.create') }}" style="width: 100px;color:white"><i class="fas fa-plus"></i></a></button>
                 </div>
                 
                 <div class="card-body">
@@ -128,24 +128,26 @@
                                 <td><a href="{{ route('leave.index', ['filter[staff_id]' => $item->id]) }}" class="btn btn-block btn-primary">Xem</a></td>
                                 <td>
                                     @if ($item->status == 'active') 
-                                        <span style="background-color:#C6F6E4;color:#06C935;padding: 5px 10px;border-radius:15px;"><i class="fa fa-circle" aria-hidden="true" style="font-size: 8px;"></i>Đang làm việc</span>
+                                        <span style="background-color:#C6F6E4;color:#06C935;padding: 5px 10px;border-radius:15px;">Đang làm việc</span>
                                     @else
-                                        <span style="background-color:#F8B9B1;color:#E72108;padding: 5px 10px;border-radius:15px;"><i class="fa fa-circle" aria-hidden="true" style="font-size: 8px;"></i>Đã nghỉ việc</span>
+                                        <span style="background-color:#F8B9B1;color:#E72108;padding: 5px 10px;border-radius:15px;">Đã nghỉ việc</span>
                                     @endif
                                 </td>
                                 <td>
-                                <div class="btn-group">
-                                    <form action="{{ route('staffs.edit', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        <input class="btn btn-warning" type="submit" value="Sửa" />
-                                    </form>
-
-                                    <form action="{{ route('staffs.destroy', ['id' => $item->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
-                                    </form>
-                                </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i></button>
+                                        <div class="dropdown-menu">
+                                            <form action="{{ route('staffs.edit', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item" type="submit">Sửa</button>
+                                            </form>
+                                            <form action="{{ route('staffs.destroy', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="dropdown-item">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

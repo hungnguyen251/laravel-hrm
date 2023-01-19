@@ -97,7 +97,7 @@
 
                                 <div class="form-group">
                                     <label for="inputPosition">Phòng ban</label>
-                                    <select class="form-control" name="department_id" value="{{  $staff->department->name }}">
+                                    <select class="form-control" name="department_id" value="{{ $staff->department->name }}">
                                         @foreach ($infoClassification['departments'] as $department)
                                             <option {{ $staff->department->id == $department->id ? 'selected' : ''}}>{{ $department->name }}</option>
                                         @endforeach

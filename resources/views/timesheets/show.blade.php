@@ -134,20 +134,22 @@
                                 <td>{{ $item->status == 'processing' ? 'Đang xử lý' : 'Chốt lương' }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
-                                <div class="btn-group">
-                                    @if ('closed' != $item->status)
-                                        <form action="{{ route('timesheets.edit', ['id' => $item->id]) }}" method="POST">
-                                            @csrf
-                                            <input class="btn btn-warning" type="submit" value="Sửa" />
-                                        </form>
-
-                                        <form action="{{ route('timesheets.destroy', ['id' => $item->id]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="btn btn-danger" type="submit" value="Xóa" />
-                                        </form>
-                                    @endif
-                                </div>
+                                    <div class="btn-group">
+                                        @if ('closed' != $item->status)
+                                        <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i></button>
+                                        <div class="dropdown-menu">
+                                            <form action="{{ route('timesheets.edit', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item" type="submit">Sửa</button>
+                                            </form>
+                                            <form action="{{ route('timesheets.destroy', ['id' => $item->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" class="dropdown-item">Xóa</button>
+                                            </form>
+                                        </div>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                             @endif

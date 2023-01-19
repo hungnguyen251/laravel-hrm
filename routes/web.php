@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnualLeaveController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
 use App\Http\Controllers\FilterController;
@@ -162,6 +163,10 @@ Route::prefix('leave')->group(function () {
 
 Route::prefix('ajax')->group(function () {
     Route::get('/staffs', [StaffController::class, 'ajaxGetAll'])->name('ajax.getAllStaff');
+    Route::get('/count-staff', [DashboardController::class, 'countStaff'])->name('ajax.countStaff');
+    Route::get('/get-noti', [DashboardController::class, 'getNotificationInMonth'])->name('ajax.getNotificationInMonth');
+    Route::get('/get-new-staff', [DashboardController::class, 'getNewStaff'])->name('ajax.getNewStaff');
+    Route::get('/get-organization', [OrganizationController::class, 'ajaxGetPersonnelOrganization'])->name('ajax.getPersonnelOrganization');
 });
 
 Route::prefix('filter')->group(function () {
