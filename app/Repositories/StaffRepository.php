@@ -18,7 +18,7 @@ class StaffRepository implements RepositoryInterface
 
     public function getAll($attrs)
     {
-        return $this->staff->filter($attrs)->paginate(Config::get('app.limit_results_returned'));
+        return $this->staff->filter($attrs)->orderBy('created_at', 'DESC')->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function getById(int $id)
