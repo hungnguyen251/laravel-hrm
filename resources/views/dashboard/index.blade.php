@@ -106,35 +106,13 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="card-footer p-0">
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                        Nhân viên mới
-                                            <span class="float-right text-danger">
-                                                <i class="fas fa-arrow-down text-sm"></i>
-                                            12%</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                        Nhân viên nghỉ việc
-                                            <span class="float-right text-success">
-                                                <i class="fas fa-arrow-up text-sm"></i> 4%
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Custom </h3>
+                                <h3 class="card-title">Tiến độ dự án (%) </h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -149,41 +127,20 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="chart-responsive">
-                                            <canvas id="pieChart1" height="150"></canvas>
+                                            <canvas id="pieChartProject" height="150"></canvas>
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <ul class="chart-legend clearfix">
-                                            <li><i class="far fa-circle text-danger"></i> Custom</li>
-                                            <li><i class="far fa-circle text-success"></i> Custom</li>
-                                            <li><i class="far fa-circle text-warning"></i> Custom</li>
-                                            <li><i class="far fa-circle text-info"></i> Custom</li>
-                                            <li><i class="far fa-circle text-primary"></i> Custom</li>
+                                            <li><i class="far fa-circle text-primary"></i> Booking</li>
+                                            <li><i class="far fa-circle text-primary"></i> Giao hàng</li>
+                                            <li><i class="far fa-circle text-primary"></i> TMĐT</li>
+                                            <li><i class="far fa-circle text-primary"></i> Fintech</li>
+                                            <li><i class="far fa-circle text-primary"></i> Giáo dục</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer p-0">
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                        Custom
-                                            <span class="float-right text-danger">
-                                                <i class="fas fa-arrow-down text-sm"></i>
-                                            12%</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                        Custom
-                                            <span class="float-right text-success">
-                                                <i class="fas fa-arrow-up text-sm"></i> 4%
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -194,7 +151,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Nhân viên mới nhất</h3>
                                 <div class="card-tools">
-                                    <span class="badge badge-danger">8 Nhân viên mới</span>
+                                    <span class="badge badge-danger new-staff"></span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
@@ -206,48 +163,7 @@
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <ul class="users-list clearfix">
-                                    <li>
-                                        <img src="./public/dist/img/user1-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Trần Văn Chiến</a>
-                                        <span class="users-list-date">Hôm nay</span>
-                                    </li>
-                                    <li>
-                                        <img src="./public/dist/img/user5-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Vũ Thị Hợp</a>
-                                        <span class="users-list-date">2 tháng trước</span>
-                                    </li>
-                                    <li>
-                                        <img src="./public/dist/img/user3-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Đặng Thị Kim Anh</a>
-                                        <span class="users-list-date">7 tháng trước</span>
-                                    </li>
-                                    <li>
-                                        <img src="./public/dist/img/user7-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Đỗ Thành Huy</a>
-                                        <span class="users-list-date">1 năm trước</span>
-                                    </li>
-                                    <li>
-                                        <img src="./public/dist/img/user6-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Phạm Hữu Nghĩa</a>
-                                        <span class="users-list-date">2 năm trước</span>
-                                    </li>
-                                    <li>
-                                        <img src="./public/dist/img/user8-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Trần Văn Sử</a>
-                                        <span class="users-list-date">2 năm trước</span>
-                                    </li>
-                                    <li>
-                                        <img src="./public/dist/img/user4-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Nguyễn Thị Hà Thu</a>
-                                        <span class="users-list-date">2 năm trước</span>
-                                    </li>
-                                    <li>
-                                        <img src="./public/dist/img/user1-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Hoàng Quang Mạnh</a>
-                                        <span class="users-list-date">2 năm trước</span>
-                                    </li>
                                 </ul>
-                                <!-- /.users-list -->
                             </div>
                             <div class="card-footer text-center">
                                 <a href="javascript:">Xem tất cả</a>
@@ -258,49 +174,23 @@
 
                 <!-- Timelime example  -->
                 <div class="row">
-                    <div class="col-sm-6">
-                        <h4>Thông báo </h4>
-                    </div>
                     <div class="col-md-12">
-                        <div class="timeline">
-                            <div class="time-label">
-                                <span class="bg-red">02 Nov. 2022</span>
-                            </div>
-
-                            <div>
-                                <i class="fas fa-user bg-red"></i>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
-                                    <h3 class="timeline-header"><a href="#">Đặng Thị Kim Anh</a> đã gửi 1 thông báo</h3>
-
-                                    <div class="timeline-body">
-                                        Đơn xin nghỉ phép
-                                    </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Doanh thu (Đơn vị: USD) </h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                 </div>
                             </div>
-
-                            <div>
-                                <i class="fas fa-user bg-green"></i>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fas fa-clock"></i> 50 mins ago</span>
-                                    <h3 class="timeline-header no-border"><a href="#">Phạm Hữu Nghĩa</a> đã phê duyệt lương tháng 10</h3>
+                            <div class="card-body p-0">
+                                <div id="revenue">
+                                    <canvas id="revenue-statistic"></canvas>
                                 </div>
-                            </div>
-
-                            <div class="time-label">
-                                <span class="bg-green">30 Oct. 2020</span>
-                            </div>
-
-                            <div>
-                                <i class="fas fa-sign-out-alt bg-purple"></i>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fas fa-clock"></i> 2 days ago</span>
-                                    <h3 class="timeline-header"><a href="#">Trần Văn Sử</a> đã xin nghỉ việc</h3>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <i class="fas fa-clock bg-gray"></i>
                             </div>
                         </div>
                     </div>
@@ -336,13 +226,12 @@
                 var pieData = {
                     labels: departmentName,
 
-                    datasets: [
-                        {
-                            data: countStaff,
-                            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#253873', '#5C1D68']
-                        }
-                    ]
+                    datasets: [{
+                        data: countStaff,
+                        backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#253873', '#5C1D68']
+                    }]
                 }
+                
                 var pieOptions = {
                     legend: {
                         display: false
@@ -364,35 +253,37 @@
     
 
     // Create pie or douhnut chart
-    var pieChartCanvas1 = $('#pieChart1').get(0).getContext('2d')
+    var pieChartPjCanvas = $('#pieChartProject').get(0).getContext('2d')
 
-    var pieChart1 = new Chart(pieChartCanvas1, {
-        type: 'doughnut',
-        data: pieData1,
-        options: pieOptions
-    })
-
-    var pieData1 = {
+    var pieDataPj = {
         labels: [
-            'Phòng kĩ thuật',
-            'Phòng tài chính - kế toán',
-            'Phòng Marketing',
-            'Phòng IT',
-            'Ban lãnh đạo'
+            'Booking',
+            'Giao hàng',
+            'TMĐT',
+            'Fintech',
+            'Giáo dục'
         ],
 
         datasets: [
             {
-                data: [10, 3, 4, 6, 4],
+                data: [10, 30, 50, 60, 46],
                 backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc']
             }
         ]
     }
-    var pieOptions = {
+    var pieOptionsPj = {
         legend: {
             display: false
         }
     }
+
+    var pieChartProject = new Chart(pieChartPjCanvas, {
+        type: 'doughnut',
+        data: pieDataPj,
+        options: pieOptionsPj
+    })
+    // end pieChart
+
     $.ajax({
         type: "GET",
         url: '/ajax/count-staff',
@@ -413,6 +304,25 @@
         success: function (data) {
             if(data != null) {
                 $('#new-staff').text(data.length);
+                $('.new-staff').text(data.length + ' nhân viên mới');
+                var html = '';
+
+                for(i = 0; i < data.length; i++) {
+                    var startTime = new Date(data[i].created_at);
+                    var diff = Math.round(new Date() - startTime);
+                    var workingTime = (diff/1000/60/60/24).toFixed();
+
+                    html += `
+                                <li>
+                                    <img src="{{ asset('images/avatar/`+ data[i].avatar +`') }}" alt="User Image" style="width: 100px;height: 100px;">
+                                    <a class="users-list-name" href="#">`+ data[i].last_name + ' ' + data[i].first_name +`</a>
+                                    <span class="users-list-date">`+ workingTime +` ngày</span>
+                                </li>
+                            `;
+
+                }
+                
+                $(".users-list").html(html);
             } else {
                 console.log('Failed to load new staff');
             }
@@ -425,11 +335,51 @@
         data: '',
         success: function (data) {
             if(data != null) {
-                $('#new-notification').text(data.length);
+                let countNotification = 0;
+                for(i = 0; i < data.length; i++) {
+                    countNotification = data.length
+                }
+                $('#new-notification').text(countNotification);
+
             } else {
                 console.log('Failed to load new notification');
             }
         }
     });
+
+    //Chart revenue start
+    var ctx = document.getElementById("revenue-statistic").getContext("2d");
+
+    var data = {
+        labels: ["Jan", "Feb", "Mars", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [
+            {
+                label: "2021",
+                backgroundColor: "#EE2A0F",
+                data: [3000, 2400, 5000, 2000, 5600, 3400, 1200, 5900, 4000, 8000, 20000, 30000]
+            },
+            {
+                label: "2022",
+                backgroundColor: "#08CE38",
+                data: [2000, 5400, 4300, 7600, 15600, 13400, 13200, 12400, 22000, 28000, 32000, 53000]
+            }
+        ]
+    };
+
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            barValueSpacing: 20,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                    }
+                }]
+            }
+        }
+    });
+    // end chart
   </script>
   @endsection

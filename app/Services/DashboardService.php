@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Notification;
 use App\Models\Staff;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardService
 {
@@ -25,9 +26,18 @@ class DashboardService
      */
     public function getNotificationInMonth()
     {
-        $data = Notification::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->get();
+        $data = Notification::whereYear('created_at', Carbon::now()->year)
+                ->whereMonth('created_at', Carbon::now()->month)
+                ->where('status', '!=', 'refuse')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        
+        $data->groupBy(function($item) {
+            return Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('Y-m-d');
+        });
 
         return $data;
+
     }
 
     /**
@@ -39,6 +49,7 @@ class DashboardService
         $data = Staff::whereBetween('created_at', [
             Carbon::now()->locale('en')->subMonth(3),
             Carbon::now()->locale('en')])
+            ->where('status', 'active')
             ->get();
 
         return $data;
