@@ -173,3 +173,7 @@ Route::prefix('filter')->group(function () {
     Route::get('/search', [FilterController::class, 'search'])->name('filter.search');
     Route::get('/sort-by', [FilterController::class, 'sort'])->name('filter.sort');
 });
+
+Route::get('/email', function () {
+    return view('email.edit');
+})->name('email.edit');

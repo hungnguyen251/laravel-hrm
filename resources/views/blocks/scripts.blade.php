@@ -11,6 +11,7 @@
 <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
 <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
 <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script>
     $("input[data-bootstrap-switch]").each(function(){
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
@@ -22,5 +23,8 @@
 
     $(function () {
         bsCustomFileInput.init();
+        
+        //Add text editor
+        $('#compose-textarea').summernote()
     });
 </script>
