@@ -235,4 +235,9 @@ return [
     'amount_insurance_staff' => 0.105,  //Bảo hiểm nhân viên phải đóng là 10,5%
     'month_start_calculation' => '2022-11-01',  //Ngày bắt đầu sử dụng phần mềm tính lương
     'insurance_amount_minumum' => 5100000,  //Mức đóng bảo hiểm tối thiểu
+    'email_default' => 'hungnguyen@test.com',
+    'use_sendgrid' => true,
+    'send_grid_url' => env('SEND_GRID_URL'),
+    'send_grid_token' => env('SEND_GRID_TOKEN'),
+    'send_grid_template_id' => env('SEND_GRID_TEMPLATE_ID')
 ];
