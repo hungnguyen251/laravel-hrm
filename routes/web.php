@@ -269,3 +269,7 @@ Route::prefix('mail')->group(function () {
         Route::post('/send', [MailController::class, 'send'])->name('mail.send');
     });
 });
+
+Route::get('/chat', function () {
+    return view('chat.show');
+})->name('chat.show');
