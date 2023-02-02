@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
 use App\Http\Controllers\FilterController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PositionController;
@@ -174,6 +175,7 @@ Route::prefix('filter')->group(function () {
     Route::get('/sort-by', [FilterController::class, 'sort'])->name('filter.sort');
 });
 
-Route::get('/email', function () {
-    return view('email.edit');
-})->name('email.edit');
+Route::prefix('mail')->group(function () {
+    Route::get('/edit', [MailController::class, 'edit'])->name('mail.edit');
+    Route::post('/send', [MailController::class, 'send'])->name('mail.send');
+});

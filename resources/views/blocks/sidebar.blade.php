@@ -176,7 +176,7 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('email.edit') }}" class="nav-link">
+                            <a href="{{ route('mail.edit') }}" class="nav-link">
                                 <i class="nav-icon fas fa-envelope"></i>
                                 <p>Gửi email</p>
                             </a>
