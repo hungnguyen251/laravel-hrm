@@ -171,7 +171,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -240,5 +240,9 @@ return [
     'use_sendgrid' => true,
     'send_grid_url' => env('SEND_GRID_URL'),
     'send_grid_token' => env('SEND_GRID_TOKEN'),
-    'send_grid_template_id' => env('SEND_GRID_TEMPLATE_ID')
+    'send_grid_template_id' => env('SEND_GRID_TEMPLATE_ID'),
+    'pusher_app_id' => env('PUSHER_APP_ID'),
+    'pusher_app_key' => env('PUSHER_APP_KEY'),
+    'pusher_app_secret' => env('PUSHER_APP_SECRET'),
+    'pusher_app_cluster' => env('PUSHER_APP_CLUSTER')
 ];
