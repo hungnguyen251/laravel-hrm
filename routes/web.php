@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnnualLeaveController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TimesheetsController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -270,6 +272,6 @@ Route::prefix('mail')->group(function () {
     });
 });
 
-Route::get('/chat', function () {
-    return view('chat.show');
-})->name('chat.show');
+Route::get('/chat', [ChatsController::class, 'index'])->name('chat.show');
+Route::get('/messages', [ChatsController::class, 'fetchMessages'])->name('chat.fetchMessages');
+Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('chat.sendMessage');
