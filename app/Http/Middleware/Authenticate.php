@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Validation\UnauthorizedException;
 
 class Authenticate extends Middleware
@@ -46,7 +46,7 @@ class Authenticate extends Middleware
 
         if ('super_admin' != $user->decentralization && $role1 != null && $role1 != $user->decentralization 
             && ($role2 == null || $role2 != $user->decentralization)
-            && ($role3 == null || $role3!= $user->decentralization)) {
+            && ($role3 == null || $role3 != $user->decentralization)) {
             throw new UnauthorizedException();
         }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\AuthService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -38,7 +39,8 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         if($this->auth->authenticateUser($request)) {
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+            return redirect()->route('staffs.show',['id' => $user->id]);
 
         } else {
             return back()->withErrors([
