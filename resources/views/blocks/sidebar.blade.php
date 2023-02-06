@@ -54,7 +54,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('staffs.index') }}" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-window-restore"></i>
                         <p>Danh sách<i class="fas fa-angle-left right"></i></p>
                     </a>
@@ -107,15 +107,48 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('staffs.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Thông tin cá nhân</p>
                     </a>
+                </li> --}}
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Thông tin cá nhân<i class="fas fa-angle-left right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('staffs.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('users.show', ['id' => Auth::user()->id]) }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>Tài khoản</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('timesheets.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>Bảng lương</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('leave.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>Ngày phép</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('staffs.index') }}" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-file-invoice"></i>
                         <p> Kế toán <i class="fas fa-angle-left right"></i></p>
                     </a>
@@ -144,7 +177,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('staffs.index') }}" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user-friends"></i>
                         <p>Nhân sự <i class="fas fa-angle-left right"></i></p>
                     </a>

@@ -53,9 +53,9 @@ class AnnualLeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show(int $staffId)
     {
-        $leave = $this->leave->getLeaveById($id);
+        $leave = $this->leave->getLeaveById($staffId);
 
         return view('leave.show_id', compact('leave'));
     }

@@ -27,9 +27,9 @@ class TimesheetsService
         return $this->timesheets->getAll($attrs);
     }
 
-    public function getTimesheetsById(int $id)
+    public function getTimesheetsById(int $staffId)
     {
-        return $this->timesheets->getById($id);
+        return Timesheets::where('staff_id', $staffId)->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function createTimesheets(array $attrs)

@@ -52,11 +52,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id): JsonResponse
+    public function show(int $id)
     {
         $user = $this->users->getUserById($id);
 
-        return response()->json($user, Response::HTTP_OK);
+        return view('users.show_id', compact('user'));
     }
 
     /**

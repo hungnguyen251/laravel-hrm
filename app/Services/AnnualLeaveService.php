@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\AnnualLeave;
 use App\Models\Staff;
 use App\Repositories\AnnualLeaveRepository;
+use Illuminate\Support\Facades\Config;
 
 class AnnualLeaveService
 {
@@ -19,9 +21,9 @@ class AnnualLeaveService
         return $this->leave->getAll($attrs);
     }
 
-    public function getLeaveById(int $id)
+    public function getLeaveById(int $staffId)
     {
-        return $this->leave->getById($id);
+        return AnnualLeave::where('staff_id', $staffId)->get();
     }
 
     public function createLeave(array $attrs)

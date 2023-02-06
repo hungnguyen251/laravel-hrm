@@ -50,11 +50,11 @@ class TimesheetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show(int $staffId)
     {
-        $timesheets = $this->timesheets->getTimesheetsById($id);
-
-        return view('profiles.show', compact('timesheets'));
+        $timesheets = $this->timesheets->getTimesheetsById($staffId);
+        
+        return view('timesheets.show_id', compact('timesheets'));
     }
 
     /**
