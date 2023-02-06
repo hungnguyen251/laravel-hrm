@@ -40,9 +40,11 @@ class AnnualLeaveController extends Controller
      */
     public function store(Request $request)
     {
-        $this->leave->createLeave($request->all());
-
-        return redirect()->route('leave.index')->with('success', 'Tạo ngày phép thành công');
+        if($this->leave->createLeave($request->all())) {
+            return redirect()->route('leave.index')->with('success', 'Tạo ngày phép thành công');
+        } else {
+            return redirect()->route('leave.index')->with('failed', 'Tạo ngày phép thất bại');
+        }
     }
 
     /**
@@ -51,11 +53,11 @@ class AnnualLeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id): JsonResponse
+    public function show(int $id)
     {
         $leave = $this->leave->getLeaveById($id);
 
-        return response()->json($leave, Response::HTTP_OK);
+        return view('leave.show_id', compact('leave'));
     }
 
     /**

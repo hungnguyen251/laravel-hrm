@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Staff;
 use App\Repositories\AnnualLeaveRepository;
 
 class AnnualLeaveService
@@ -25,7 +26,26 @@ class AnnualLeaveService
 
     public function createLeave(array $attrs)
     {
-        return $this->leave->store($attrs);
+        if (!empty($attrs['staff_id']) && !empty($attrs['working_time'])) {
+            $staffId = Staff::select('id')->where('code', $attrs['staff_id'])->get();
+
+            if (empty($staffId) || count($staffId) == 0) {
+                return false;
+
+            } else {
+                $attrs['staff_id'] = $staffId[0]->id;
+                $date = str_replace('/', '-', $attrs['working_time']);
+                $startDate = date('Y-m-d', strtotime($date));
+                $workingTime = floor((strtotime(date('Y-m-d H:i:s')) - strtotime($startDate))/86400/30);
+                $attrs['working_time'] = round((strtotime(date('Y-m-d H:i:s')) - strtotime($startDate))/86400);
+                $attrs['number'] = doubleval($workingTime);
+    
+                return $this->leave->store($attrs);
+            }
+
+        } else {
+            return false;
+        }
     }
 
     public function updateLeaveById(int $id, array $attrs)

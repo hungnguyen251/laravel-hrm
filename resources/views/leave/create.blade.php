@@ -39,6 +39,16 @@
                                         <span class="text-danger">{{ $errors->first('staff_id') }}</span>
                                     @endif                                    
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="inputContent">Ngày bắt đầu chính thức </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text form-control"><i class="far fa-calendar-alt"></i></span>
+                                        </div>
+                                        <input type="text" name="working_time"  value="{{ old('working_time') }}" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+                                    </div>                                  
+                                </div>
                             </div>
 
                             <div class="card-footer">
