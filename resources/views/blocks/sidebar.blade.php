@@ -119,27 +119,33 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('staffs.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
+                            <a href="{{ route('staffs.show', ['id' => $user->staff->id]) }}" class="nav-link">
                                 <i class="nav-icon fas fa-user-shield"></i>
                                 <p>Profile</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('users.show', ['id' => Auth::user()->id]) }}" class="nav-link">
+                            <a href="{{ route('users.show', ['id' => $user->id]) }}" class="nav-link">
                                 <i class="nav-icon fas fa-user-shield"></i>
                                 <p>Tài khoản</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('timesheets.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
+                            <a href="{{ route('timesheets.show', ['id' => $user->staff->id]) }}" class="nav-link">
                                 <i class="nav-icon fas fa-user-shield"></i>
                                 <p>Bảng lương</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('leave.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
+                            <a href="{{ route('leave.show', ['id' => $user->staff->id]) }}" class="nav-link">
                                 <i class="nav-icon fas fa-user-shield"></i>
                                 <p>Ngày phép</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('notifications.show', ['id' => $user->id]) }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>Thông báo</p>
                             </a>
                         </li>
                     </ul>

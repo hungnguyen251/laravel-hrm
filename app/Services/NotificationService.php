@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\Notification;
 use App\Repositories\NotificationRepository;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class NotificationService
 {
@@ -23,6 +25,11 @@ class NotificationService
     public function getNotificationById(int $id)
     {
         return $this->notifications->getById($id);
+    }
+
+    public function getNotificationByUserId(int $userId)
+    {
+        return Notification::where('user_id', $userId)->orderBy('id', 'desc')->paginate(Config::get('app.limit_results_returned'));
     }
 
     public function createNotification(array $attrs)

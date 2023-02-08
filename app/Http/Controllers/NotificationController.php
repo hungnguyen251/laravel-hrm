@@ -52,11 +52,11 @@ class NotificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id): JsonResponse
+    public function show(int $userId)
     {
-        $notification = $this->notifications->getNotificationById($id);
+        $notifications = $this->notifications->getNotificationByUserId($userId);
 
-        return response()->json($notification, Response::HTTP_OK);
+        return view('notifications.show_id', compact('notifications'));
     }
 
     /**
@@ -121,7 +121,7 @@ class NotificationController extends Controller
     {
         $this->notifications->createRequestLeave($request->all());
 
-        return redirect()->route('notifications.index')->with('success', 'Tạo đơn xin nghỉ phép thành công');
+        return redirect()->route('notifications.show')->with('success', 'Tạo đơn xin nghỉ phép thành công');
     }
 
     /**
