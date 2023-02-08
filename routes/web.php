@@ -63,7 +63,7 @@ Route::prefix('staffs')->group(function () {
         Route::delete('/destroy/{id}', [StaffController::class, 'destroy'])->name('staffs.destroy');
     });
 
-    Route::middleware(['auth:admin'])->group(function () {
+    Route::middleware(['auth:admin,accountant'])->group(function () {
         Route::get('/index', [StaffController::class, 'index'])->name('staffs.index');
         Route::get('/create', [StaffController::class, 'create'])->name('staffs.create');
         Route::post('/store', [StaffController::class, 'store'])->name('staffs.store');
@@ -189,8 +189,11 @@ Route::prefix('salaries')->group(function () {
         Route::delete('/destroy/{id}', [SalaryController::class, 'destroy'])->name('salaries.destroy');
     });
 
-    Route::middleware(['auth:accountant'])->group(function () {
+    Route::middleware(['auth:accountant,admin'])->group(function () {
         Route::get('/index', [SalaryController::class, 'index'])->name('salaries.index');
+    });
+
+    Route::middleware(['auth:accountant'])->group(function () {
         Route::get('/create', [SalaryController::class, 'create'])->name('salaries.create');
         Route::post('/store', [SalaryController::class, 'store'])->name('salaries.store');
         Route::put('/update/{id}', [SalaryController::class, 'update'])->name('salaries.update');
@@ -227,13 +230,17 @@ Route::prefix('timesheets')->group(function () {
 
 Route::prefix('leave')->group(function () {
     Route::middleware(['auth:super_admin'])->group(function () {
-        Route::get('/index', [AnnualLeaveController::class, 'index'])->name('leave.index');
         Route::get('/create', [AnnualLeaveController::class, 'create'])->name('leave.create');
         Route::post('/store', [AnnualLeaveController::class, 'store'])->name('leave.store');
         Route::put('/update/{id}', [AnnualLeaveController::class, 'update'])->name('leave.update');
         Route::post('/edit/{id}', [AnnualLeaveController::class, 'edit'])->name('leave.edit');
         Route::delete('/destroy/{id}', [AnnualLeaveController::class, 'destroy'])->name('leave.destroy');
     });
+
+    Route::middleware(['auth:admin,accountant'])->group(function () {
+        Route::get('/index', [AnnualLeaveController::class, 'index'])->name('leave.index');
+    });
+
     Route::middleware(['auth:admin,staff,accountant'])->group(function () {
         Route::get('/show/{id}', [AnnualLeaveController::class, 'show'])->name('leave.show');
     });

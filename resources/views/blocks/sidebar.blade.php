@@ -1,5 +1,8 @@
 @if (Auth::check())
-<aside class="main-sidebar sidebar-dark-navy elevation-4" style="background-color: #001f3f;">
+@php
+    $user = Auth::user();
+@endphp
+<aside class="main-sidebar sidebar-dark-navy elevation-4" style="background-color: #001f3f;height: 100vh;">
     <!-- Brand Logo -->
     <a href="{{ route('companies.index') }}" class="brand-link">
         <img src="{{ asset('dist/img/logo-gv.png') }}" alt="Logo Brand" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -10,10 +13,10 @@
       <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('images/avatar/' . Auth::user()->staff->avatar) }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('images/avatar/' . $user->staff->avatar) }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ route('staffs.show', ['id' => Auth::user()->staff->id]) }}" class="d-block">{{  Auth::user()->name }}</a>
+                <a href="{{ route('staffs.show', ['id' => $user->staff->id]) }}" class="d-block">{{  $user->name }}</a>
             </div>
         </div>
       <!-- SidebarSearch Form -->
@@ -32,6 +35,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
+                @if('super_admin' == $user->decentralization)
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -40,18 +44,34 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ route('users.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-shield"></i>
+                        <p>Danh sách tài khoản</p>
+                    </a>
+                </li>
+                @endif
+                <li class="nav-item">
                     <a href="{{ route('companies.index') }}" class="nav-link active">
                         <i class="nav-icon fas fa-building"></i>
                         <p>Thông tin công ty</p>
                     </a>
                 </li>
 
+                @if('staff' != $user->decentralization && 'accountant' != $user->decentralization)
                 <li class="nav-item">
                     <a href="{{ route('staffs.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-friends"></i>
                         <p>Nhân viên</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('notifications.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-bell"></i>
+                        <p>Thông báo</p>
+                    </a>
+                </li>
+                @endif
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -90,29 +110,7 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('salaries.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-hand-holding-usd" style="margin-right: 0.2rem;margin-left: 0.05rem;"></i>
-                                <p>Tiền lương</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('notifications.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-bell"></i>
-                        <p>Thông báo</p>
-                    </a>
-                </li>
-
-                {{-- <li class="nav-item">
-                    <a href="{{ route('staffs.show', ['id' => Auth::user()->staff->id]) }}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Thông tin cá nhân</p>
-                    </a>
-                </li> --}}
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -147,6 +145,7 @@
                     </ul>
                 </li>
 
+                @if('super_admin' == $user->decentralization || 'accoutant' == $user->decentralization)
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-file-invoice"></i>
@@ -161,14 +160,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
-                <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-shield"></i>
-                        <p>Danh sách tài khoản</p>
-                    </a>
-                </li>
-
+                @if('staff' != $user->decentralization)
                 <li class="nav-item">
                     <a href="{{ route('leave.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -176,6 +170,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('salaries.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-hand-holding-usd" style="margin-right: 0.2rem;margin-left: 0.05rem;"></i>
+                        <p>Lương nhân viên</p>
+                    </a>
+                </li>
+                @endif
+
+                @if('super_admin' == $user->decentralization || 'admin' == $user->decentralization)
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user-friends"></i>
@@ -216,6 +219,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
             </ul>
         </nav>
       <!-- /.sidebar-menu -->
