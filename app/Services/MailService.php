@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Exception;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Http;
+use SendGrid\Mail\Mail;
 
 class MailService
 {
@@ -16,41 +16,30 @@ class MailService
         if (true === Config::get('app.use_sendgrid')) {
             return $this->sendgrid($to, $subject, $message);
         } else {
-            return false;
+            return redirect()->back()->with('failed', 'Chức năng gửi email không khả dụng');
         }
     }
 
     public function sendgrid($sendTo, $subject, $message) {
-        try {
-            $body = [
-                'from' => [
-                    'email' => Config::get('app.email_default')
-                ],
-                'personalizations' => [
-                    [
-                        'to' => [
-                            [
-                                'email' => $sendTo
-                            ]
-                        ],
-                        'dynamic_template_data' => [
-                            'subject' =>  $subject,
-                            'message' => $message,
-                        ]
-                    ]
-                ],
-                'template_id' =>Config::get('app.send_grid_template_id')
-            ];
+        $email = new Mail();
+        $email->setFrom(Config::get('app.email_default'), Config::get('app.email_name_default'));
+        $email->addTo(
+            $sendTo,
+            'Hung Nguyen',
+            [
+                'subject' => $subject,
+                "message" => $message
+            ],
+        );
+        $email->setTemplateId(Config::get('app.send_grid_template_id'));
+        $sendgrid = new \SendGrid(Config::get('app.send_grid_token'));
 
-            $response = Http::post(Config::get('app.send_grid_url'), [
-                'json' => $body,
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer ' . Config::get('app.send_grid_token'),
-                ]
-            ]);
-        } catch(Exception $e) {
-            return $e->getMessage();
+        try {
+            $response = $sendgrid->send($email);
+            return redirect()->back()->with('success', 'Gửi email thành công. Code: ' . $response->statusCode());
+
+        } catch (Exception $e) {
+            return redirect()->back()->with('failed', $e->getMessage());
         }
     }
 }

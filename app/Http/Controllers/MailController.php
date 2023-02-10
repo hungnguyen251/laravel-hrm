@@ -21,14 +21,7 @@ class MailController extends Controller
 
     public function send(Request $request)
     {
-        $sendMail = $this->mail->sendEmail($request->all());
-
-        if (!$sendMail) {
-            return redirect()->route('mail.edit')->with('failed', 'Gửi email thất bại');
-
-        } else {
-            return redirect()->route('mail.edit')->with('success', 'Gửi email thành công');
-        }
+        return $this->mail->sendEmail($request->all());
     }
 
     public function edit()

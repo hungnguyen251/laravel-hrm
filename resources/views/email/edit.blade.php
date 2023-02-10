@@ -81,8 +81,7 @@
 
                                 <div class="form-group">
                                     <textarea id="compose-textarea" name="message" class="form-control" style="height: 300px; display: none;">
-                                        &lt;h2&gt;Tiêu đề&lt;/h2&gt;
-                                        &lt;p&gt;Nội dung tin nhắn&lt;/p&gt;
+                                        
                                     </textarea>
                                 </div>
                             </div>
