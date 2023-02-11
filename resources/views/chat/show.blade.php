@@ -25,7 +25,7 @@
                 <div class="card m-0">
                     <!-- Row start -->
                     <div class="row no-gutters"  id="app">
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
                             <div class="users-container">
                                 <div class="chat-search-box">
                                     <div class="input-group">
@@ -50,15 +50,15 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
                             <div class="selected-user">
                                 <span>To: <span class="name">Group</span></span>
                             </div>
                             <div class="chat-container">
                                 <chat-messages :messages="messages"></chat-messages>
-                                <div class="flex-grow-0 py-3 px-4 border-top">
-                                    <chat-form v-on:messagesent="addMessage" :user="{{ Auth::user() }}"></chat-form>
-                                </div>
+                            </div>
+                            <div class="flex-grow-0 py-3 px-4 border-top d-flex flex-row bd-highlight mb-3">
+                                <chat-form v-on:messagesent="addMessage" :user="{{ Auth::user() }}"></chat-form>
                             </div>
                         </div>
                     </div>

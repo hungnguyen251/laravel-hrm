@@ -374,3 +374,14 @@ ul {
     margin-bottom: 2rem;
     box-shadow: none;
 }
+
+div.chat-container {
+    margin:4px, 4px;
+    padding:4px;
+    height: 700px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    display: flex;
+    flex-direction: column-reverse;
+}
