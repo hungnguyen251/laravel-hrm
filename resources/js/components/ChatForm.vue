@@ -9,11 +9,9 @@
             v-model="newMessage"
             @keyup.enter="sendMessage"
         />
-            <div class="input-group">
-                <!-- <input type="text" class="form-control" placeholder="Type your message"> -->
-                <button class="btn btn-primary" id="btn-chat" @click="sendMessage">Send</button>
-            </div>
-        </div>
+        <!-- <input type="text" class="form-control" placeholder="Type your message"> -->
+        <button class="btn btn-primary" id="btn-chat" @click="sendMessage">Send</button>
+    </div>
 </template>
 <script>
     export default {
