@@ -6,6 +6,7 @@ use App\Events\MessageSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Message;
+use App\Models\User;
 
 class ChatsController extends Controller
 {
@@ -21,7 +22,10 @@ class ChatsController extends Controller
      */
     public function index()
     {
-        return view('chat.show');
+
+        $users = User::where('status', 'active')->get();
+
+        return view('chat.show', compact('users'));
     }
 
     /**
