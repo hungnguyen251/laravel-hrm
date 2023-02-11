@@ -40,13 +40,28 @@
                                 <ul class="users">
                                     <li class="person" data-chat="person1">
                                         <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                            <img src="{{ asset('dist/img/logo-gv.png') }}" alt="Retail Admin">
                                             <span class="status away"></span>
                                         </div>
                                         <p class="name-time">
                                             <span class="name">Nhóm công ty</span>
                                         </p>
                                     </li>
+                                    @foreach($users as $item)
+                                    <li class="person" data-chat="person1">
+                                        <div class="user">
+                                            @if(!empty($item->staff->avatar))
+                                                <img src="{{ asset('images/avatar/' . $item->staff->avatar) }}" alt="User">
+                                            @else
+                                                <img src="https://www.seekpng.com/png/detail/46-463314_v-th-h-user-profile-icon.png" alt="User">
+                                            @endif
+                                            <span class="status away"></span>
+                                        </div>
+                                        <p class="name-time">
+                                            <span class="name">{{ $item->name }}</span>
+                                        </p>
+                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

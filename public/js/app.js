@@ -12232,8 +12232,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   //Takes the "user" props from <chat-form> … :user="{{ Auth::user() }}"></chat-form> in the parent chat.blade.php.
@@ -35103,7 +35101,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "input-group" }, [
+  return _c("div", { staticClass: "input-group d-flex" }, [
     _c("input", {
       directives: [
         {
@@ -35140,17 +35138,15 @@ var render = function () {
       },
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "input-group" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { id: "btn-chat" },
-          on: { click: _vm.sendMessage },
-        },
-        [_vm._v("Send")]
-      ),
-    ]),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        attrs: { id: "btn-chat" },
+        on: { click: _vm.sendMessage },
+      },
+      [_vm._v("Send")]
+    ),
   ])
 }
 var staticRenderFns = []
