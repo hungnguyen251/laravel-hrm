@@ -69,12 +69,12 @@ class ChatsController extends Controller
         return ['status' => 'Message Sent!'];
     }
 
-    public function privateMessages(User $user)
+    public function privateMessages($id)
     {
         $privateCommunication= Message::with('user')
-        ->where(['user_id'=> auth()->id(), 'receiver_id'=> $user->id])
-        ->orWhere(function($query) use($user){
-            $query->where(['user_id' => $user->id, 'receiver_id' => auth()->id()]);
+        ->where(['user_id'=> auth()->id(), 'receiver_id'=> $id])
+        ->orWhere(function($query) use($id){
+            $query->where(['user_id' => $id, 'receiver_id' => auth()->id()]);
         })
         ->get();
 
