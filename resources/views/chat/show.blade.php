@@ -58,7 +58,7 @@
                                             <span class="status away"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">{{ $item->name }}</span>
+                                            <a href="{{ route('chat.privateChat') }}" class="name">{{ $item->name }}</a>
                                         </p>
                                     </li>
                                     @endforeach
