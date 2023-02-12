@@ -277,5 +277,5 @@ Route::get('/messages', [ChatsController::class, 'fetchMessages'])->name('chat.f
 Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('chat.sendMessage');
 Route::get('/private-chat', [ChatsController::class, 'privateChat'])->name('chat.privateChat');
 Route::get('/users-chat', [ChatsController::class, 'users'])->name('chat.users');
-Route::get('/private-messages/{user}', [ChatsController::class, 'privateMessages'])->name('chat.privateMessages');
+Route::get('/private-messages/{id}', [ChatsController::class, 'privateMessages'])->name('chat.privateMessages');
 Route::post('/private-messages/{id}', [ChatsController::class, 'sendPrivateMessage'])->name('chat.sendPrivateMessage');
