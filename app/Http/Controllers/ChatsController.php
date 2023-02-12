@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\MessageSent;
+use App\Events\PrivateMessageSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Message;
@@ -22,10 +23,19 @@ class ChatsController extends Controller
      */
     public function index()
     {
-
         $users = User::where('status', 'active')->get();
 
         return view('chat.show', compact('users'));
+    }
+
+    /**
+     * Show chats private
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function privateChat()
+    {
+        return view('chat.private');
     }
 
     /**
@@ -35,7 +45,7 @@ class ChatsController extends Controller
      */
     public function fetchMessages()
     {
-        return Message::with('user')->get();
+        return Message::where('receiver_id', 0)->with('user')->get();
     }
 
     /**
@@ -49,11 +59,45 @@ class ChatsController extends Controller
         $user = Auth::user();
 
         $message = $user->messages()->create([
-            'message' => $request->input('message')
+            'message' => $request->input('message'),
+            'user_id' => request()->user()->id,
+            'receiver_id' => !empty(request('receiver_id')) ? request('receiver_id') : 0
         ]);
 
         broadcast(new MessageSent($user, $message))->toOthers();
 
         return ['status' => 'Message Sent!'];
+    }
+
+    public function privateMessages(User $user)
+    {
+        $privateCommunication= Message::with('user')
+        ->where(['user_id'=> auth()->id(), 'receiver_id'=> $user->id])
+        ->orWhere(function($query) use($user){
+            $query->where(['user_id' => $user->id, 'receiver_id' => auth()->id()]);
+        })
+        ->get();
+
+        return $privateCommunication;
+    }
+
+    public function sendPrivateMessage(Request $request, $id)
+    {
+        $input=$request->all();
+        // $input['receiver_id']=$user->id;
+        $message=auth()->user()->messages()->create([
+            'message' => $request->input('message'),
+            'user_id' => request()->user()->id,
+            'receiver_id' => $id
+        ]);
+
+        broadcast(new PrivateMessageSent($message->load('user')))->toOthers();
+        
+        return response(['status'=>'Message private sent successfully','message'=>$message]);
+    }
+
+    public function users()
+    {
+        return User::where('status', 'active')->with('staff')->get();
     }
 }
