@@ -17,7 +17,7 @@
                                     </div>
                                 </div>
                                 <ul class="users">
-                                    <li class="person" data-chat="person1">
+                                    <li class="person" data-chat="person1" @click="chatAll">
                                         <div class="user">
                                             <img src="dist/img/logo-gv.png" alt="User">
                                             <span class="status away"></span>
@@ -30,7 +30,7 @@
                                     <li class="person" data-chat="person1" v-for="friend in friends"
                                         :style="(friend.id==activeFriend)?'background-color:#6CCED6':''"
                                         :key="friend.id"
-                                        @click="activeFriend=friend.id"
+                                        @click="activeFriend=friend.id;sendTo(friend.name)"
                                     >
                                         <div class="user">
                                             <img v-if="friend.staff" :src="'images/avatar/' + friend.staff.avatar" alt="User">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
                             <div class="selected-user">
-                                <span>To: <span class="name">Người dùng</span></span>
+                                <span>To: <span class="name">{{ userName }}</span></span>
                             </div>
                             <div class="chat-container messages" id="privateMessageBox" xs9>
                                 <message-list :user="user" :all-messages="allMessages"></message-list>
@@ -104,6 +104,7 @@
                 typingClock:null,
                 emoStatus:false,
                 users:[],
+                userName: null,
               // token:document.head.querySelector('meta[name="csrf-token"]').content
             }
         },
@@ -185,6 +186,14 @@
 
             toggleEmo(){
                 this.emoStatus= !this.emoStatus;
+            },
+
+            chatAll(){
+                window.location.href = 'chat'
+            },
+
+            sendTo(val){
+                this.userName = val;
             },
 
             onInput(e){
