@@ -272,10 +272,12 @@ Route::prefix('mail')->group(function () {
     });
 });
 
-Route::get('/chat', [ChatsController::class, 'index'])->name('chat.show');
-Route::get('/messages', [ChatsController::class, 'fetchMessages'])->name('chat.fetchMessages');
-Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('chat.sendMessage');
-Route::get('/private-chat', [ChatsController::class, 'privateChat'])->name('chat.privateChat');
-Route::get('/users-chat', [ChatsController::class, 'users'])->name('chat.users');
-Route::get('/private-messages/{id}', [ChatsController::class, 'privateMessages'])->name('chat.privateMessages');
-Route::post('/private-messages/{id}', [ChatsController::class, 'sendPrivateMessage'])->name('chat.sendPrivateMessage');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatsController::class, 'index'])->name('chat.show');
+    Route::get('/messages', [ChatsController::class, 'fetchMessages'])->name('chat.fetchMessages');
+    Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('chat.sendMessage');
+    Route::get('/private-chat', [ChatsController::class, 'privateChat'])->name('chat.privateChat');
+    Route::get('/users-chat', [ChatsController::class, 'users'])->name('chat.users');
+    Route::get('/private-messages/{id}', [ChatsController::class, 'privateMessages'])->name('chat.privateMessages');
+    Route::post('/private-messages/{id}', [ChatsController::class, 'sendPrivateMessage'])->name('chat.sendPrivateMessage');
+});
