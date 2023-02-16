@@ -68,7 +68,7 @@
                             <h3 class="card-title">Soạn tin nhắn mới</h3>
                         </div>
                         
-                        <form method="post" action="{{ route('mail.send') }}" >
+                        <form method="post" action="{{ route('mail.send') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -92,6 +92,14 @@
                                         
                                     </textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="attachment">
+                                    </div>
+                                    <p class="help-block"><i>Max. 10MB<i></p>
+                                </div>
+
                             </div>
                             
                             <div class="card-footer">
