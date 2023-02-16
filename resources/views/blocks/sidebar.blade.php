@@ -226,6 +226,12 @@
                     </ul>
                 </li>
                 @endif
+                <li class="nav-item">
+                    <a href="{{ route('chat.show') }}" class="nav-link">
+                        <i class="nav-icon fas fa-comment-dots"></i>
+                        <p>Chat</p>
+                    </a>
+                </li>
             </ul>
         </nav>
       <!-- /.sidebar-menu -->
