@@ -80,6 +80,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <input class="form-control"name="cc"  placeholder="Cc: example1@gmail.com, example2@gmail.com, ..">
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control"name="bcc"  placeholder="Bcc: example1@gmail.com, example2@gmail.com, ..">
+                                </div>
+
+                                <div class="form-group">
                                     <textarea id="compose-textarea" name="message" class="form-control" style="height: 300px; display: none;">
                                         
                                     </textarea>
