@@ -79,21 +79,6 @@ class StaffService
             $attrs['date_of_birth'] = date('Y-m-d', strtotime($dOB));
         }
 
-        if (isset($attrs['position_id'])) {
-            $positionId = Position::select('id')->where('name', $attrs['position_id'])->first();
-            $attrs['position_id'] = $positionId->id;
-        }
-
-        if (isset($attrs['department_id'])) {
-            $departmentId = Department::select('id')->where('name', $attrs['department_id'])->first();
-            $attrs['department_id'] = $departmentId->id;
-        }
-
-        if (isset($attrs['diploma_id'])) {
-            $diplomaId = Diploma::select('id')->where('name', $attrs['diploma_id'])->first();
-            $attrs['diploma_id'] = $diplomaId->id;
-        }
-
         if (isset($attrs['status']) && 'on' == $attrs['status']) {
             $attrs['status'] = 'active';
         } else {
@@ -125,21 +110,21 @@ class StaffService
 
     public function getDepartmentInfo()
     {
-        $departmentNames = Department::select('name')->get();
+        $departmentNames = Department::select('id', 'name')->get();
 
         return $departmentNames;
     }
 
     public function getDiplomaInfo()
     {
-        $diplomaNames = Diploma::select('name')->get();
+        $diplomaNames = Diploma::select('id', 'name')->get();
 
         return $diplomaNames;
     }
 
     public function getPositionInfo()
     {
-        $positiontNames = Position::select('name')->get();
+        $positiontNames = Position::select('id', 'name')->get();
 
         return $positiontNames;
     }

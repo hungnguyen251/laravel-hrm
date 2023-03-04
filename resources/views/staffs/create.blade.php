@@ -113,7 +113,7 @@
                                     <select class="form-control" name="position_id">
                                         <option></option>
                                         @foreach ($infoClassification['positions'] as $position)
-                                            <option {{ old('position_id') == $position->name ? 'selected' : ''}}>{{ $position->name }}</option>
+                                            <option {{ old('position_id') == $position->name ? 'selected' : ''}} value="{{ $position->id }}">{{ $position->name }}</option>
                                         @endforeach
                                     </select> 
                                     @if ($errors->has('position_id'))
@@ -126,7 +126,7 @@
                                     <select class="form-control" name="department_id">
                                         <option></option>
                                         @foreach ($infoClassification['departments'] as $department)
-                                            <option {{ old('department_id') == $department->name ? 'selected' : ''}}>{{ $department->name }}</option>
+                                            <option {{ old('department_id') == $department->name ? 'selected' : ''}} value="{{ $department->id }}">{{ $department->name }}</option>
                                         @endforeach
                                     </select> 
                                     @if ($errors->has('department_id'))
@@ -138,7 +138,7 @@
                                     <select class="form-control" name="diploma_id">
                                         <option></option>
                                         @foreach ($infoClassification['diplomas'] as $diploma)
-                                            <option {{ old('diploma_id') == $diploma->name ? 'selected' : ''}}>{{ $diploma->name }}</option>
+                                            <option {{ old('diploma_id') == $diploma->name ? 'selected' : ''}} value="{{ $diploma->id }}">{{ $diploma->name }}</option>
                                         @endforeach
                                     </select> 
                                     @if ($errors->has('diploma_id'))

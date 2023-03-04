@@ -90,7 +90,7 @@
                                     <label for="inputPosition">Vị trí</label>
                                     <select class="form-control" name="position_id" value="{{  $staff->position->name }}">
                                         @foreach ($infoClassification['positions'] as $position)
-                                            <option {{ $staff->position->id == $position->id ? 'selected' : ''}}>{{ $position->name }}</option>
+                                            <option {{ $staff->position->id == $position->id ? 'selected' : ''}} value={{ $position->id }}>{{ $position->name }}</option>
                                         @endforeach
                                     </select> 
                                 </div>
@@ -99,7 +99,7 @@
                                     <label for="inputPosition">Phòng ban</label>
                                     <select class="form-control" name="department_id" value="{{ $staff->department->name }}">
                                         @foreach ($infoClassification['departments'] as $department)
-                                            <option {{ $staff->department->id == $department->id ? 'selected' : ''}}>{{ $department->name }}</option>
+                                            <option {{ $staff->department->id == $department->id ? 'selected' : ''}} value={{ $department->id }}>{{ $department->name }}</option>
                                         @endforeach
                                     </select> 
                                 </div>
@@ -108,7 +108,7 @@
                                     <label for="inputPosition">Bằng cấp</label>
                                     <select class="form-control" name="diploma_id" value="{{  $staff->diploma->name }}">
                                         @foreach ($infoClassification['diplomas'] as $diploma)
-                                            <option {{ $staff->diploma->id == $diploma->id ? 'selected' : ''}}>{{ $diploma->name }}</option>
+                                            <option {{ $staff->diploma->id == $diploma->id ? 'selected' : ''}} value={{ $diploma->id }}>{{ $diploma->name }}</option>
                                         @endforeach
                                     </select> 
                                 </div>

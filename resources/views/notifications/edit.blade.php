@@ -52,9 +52,9 @@
                                 <div class="form-group">
                                     <label for="inputType">Trạng thái </label>
                                     <select class="form-control" name="status">
-                                        <option {{ $notification->status == 'waiting' ? 'selected' : ''}}>Chờ phê duyệt</option>
-                                        <option {{ $notification->status == 'approve' ? 'selected' : ''}}>Phê duyệt</option>
-                                        <option {{ $notification->status == 'refuse' ? 'selected' : ''}}>Từ chối</option>
+                                        <option {{ $notification->status == 'waiting' ? 'selected' : ''}} value="waiting">Chờ phê duyệt</option>
+                                        <option {{ $notification->status == 'approve' ? 'selected' : ''}} value="approve">Phê duyệt</option>
+                                        <option {{ $notification->status == 'refuse' ? 'selected' : ''}} value="refuse">Từ chối</option>
                                     </select>
                                 </div>
 

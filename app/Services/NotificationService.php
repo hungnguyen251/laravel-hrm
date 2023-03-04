@@ -62,18 +62,6 @@ class NotificationService
             unset($attrs['_method']);
         }
 
-        if (isset($attrs['status'])) {
-            if ('Chờ phê duyệt' == $attrs['status']) {
-                $attrs['status'] = 'waiting';
-            } else if ('Phê duyệt' == $attrs['status']) {
-                $attrs['status'] = 'approve';
-            } else {
-                $attrs['status'] = 'refuse';
-            }
-        } else {
-            $attrs['status'] = 'waiting';
-        }
-
         if (Auth::check()) {
             if (empty($attrs['user_id'])) {
                 $attrs['user_id'] = Auth::user()->id;

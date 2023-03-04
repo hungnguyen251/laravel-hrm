@@ -65,18 +65,6 @@ class UserService
             $attrs['password'] = Hash::make($attrs['password']);
         }
 
-        if (isset($attrs['decentralization'])) {
-            if ('Trùm' == $attrs['decentralization']) {
-                $attrs['decentralization'] = 'super_admin';
-            } else if ('Quản trị viên' == $attrs['decentralization']) {
-                $attrs['decentralization'] = 'admin';
-            } else if ('Kế toán' == $attrs['decentralization']) {
-                $attrs['decentralization'] = 'accountant';
-            } else {
-                $attrs['decentralization'] = 'staff';
-            }
-        }
-
         if (isset($attrs['staff_id'])) {
             $staffId = Staff::select('id')->where('code', $attrs['staff_id'])->first();
             $attrs['staff_id'] = $staffId->id;

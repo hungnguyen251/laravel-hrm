@@ -78,10 +78,10 @@
                                 <div class="form-group">
                                     <label for="inputDecentralization">Phân quyền </label>
                                     <select class="form-control" name="decentralization">
-                                        <option {{ old('decentralization') == 'Nhân viên' ? 'selected' : ''}}>Nhân viên</option>
-                                        <option {{ old('decentralization') == 'Kế toán' ? 'selected' : ''}}>Kế toán</option>
-                                        <option {{ old('decentralization') == 'Quản trị viên' ? 'selected' : ''}}>Quản trị viên</option>
-                                        <option {{ old('decentralization') == 'Trùm' ? 'selected' : ''}}>Trùm</option>
+                                        <option {{ old('decentralization') == 'staff' ? 'selected' : ''}} value="staff">Nhân viên</option>
+                                        <option {{ old('decentralization') == 'accountant' ? 'selected' : ''}} value="accountant">Kế toán</option>
+                                        <option {{ old('decentralization') == 'admin' ? 'selected' : ''}} value="admin">Quản trị viên</option>
+                                        <option {{ old('decentralization') == 'super_admin' ? 'selected' : ''}} value="super_admin">Trùm</option>
                                     </select>
                                     @if ($errors->has('decentralization'))
                                         <span class="text-danger">{{ $errors->first('decentralization') }}</span>

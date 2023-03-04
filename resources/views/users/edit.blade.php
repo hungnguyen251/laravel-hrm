@@ -56,10 +56,10 @@
                                 <div class="form-group">
                                     <label for="inputDecentralization">Phân quyền </label>
                                     <select class="form-control" name="decentralization">
-                                        <option {{ $user->decentralization == 'staff' ? 'selected' : ''}}>Nhân viên</option>
-                                        <option {{ $user->decentralization == 'accountant' ? 'selected' : ''}}>Kế toán</option>
-                                        <option {{ $user->decentralization == 'admin' ? 'selected' : ''}}>Quản trị viên</option>
-                                        <option {{ $user->decentralization == 'super_admin' ? 'selected' : ''}}>Trùm</option>
+                                        <option {{ $user->decentralization == 'staff' ? 'selected' : ''}} value="staff">Nhân viên</option>
+                                        <option {{ $user->decentralization == 'accountant' ? 'selected' : ''}} value="accountant">Kế toán</option>
+                                        <option {{ $user->decentralization == 'admin' ? 'selected' : ''}} value="admin">Quản trị viên</option>
+                                        <option {{ $user->decentralization == 'super_admin' ? 'selected' : ''}} value="super_admin">Trùm</option>
                                     </select>
                                 </div>
 
