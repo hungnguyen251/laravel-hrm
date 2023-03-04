@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <ul class="users">
-                                    <li class="person" data-chat="person1">
+                                    <li class="person" data-chat="person1" style="background-color: #6CCED6">
                                         <div class="user">
                                             <img src="{{ asset('dist/img/logo-gv.png') }}" alt="Retail Admin">
                                             <span class="status away"></span>
@@ -58,7 +58,7 @@
                                             <span class="status away"></span>
                                         </div>
                                         <p class="name-time">
-                                            <a href="{{ route('chat.privateChat') }}" class="name">{{ $item->name }}</a>
+                                            <a href="{{ route('chat.privateChat') }}" class="name" style="color: black;">{{ $item->name }}</a>
                                         </p>
                                     </li>
                                     @endforeach

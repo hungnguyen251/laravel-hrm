@@ -8,7 +8,7 @@
             <div class="container h-100">
                 <div class="row align-items-center h-100">
                     <div class="col-md-6">
-                        <h1 class="mb-4">Đăng nhập <span class="text-warning">thất bại</span><br><span class="cyan-text">vui lòng</span> đăng ký<br>để sử dụng dịch vụ.</h1>
+                        <h1 class="mb-4">Vui lòng <span class="text-warning">đăng nhập</span>để sử dụng dịch vụ.</h1>
                         <a href="{{ route('auth.login') }}" class="btn btn-block btn-outline-primary btn-lg" style="width: 120px;border-radius: 25px;">Signin</a>
                     </div>
 
