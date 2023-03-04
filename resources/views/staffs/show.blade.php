@@ -123,7 +123,17 @@
                                 <td>{{ isset($item->position->name) ? $item->position->name : '' }}</td>
                                 <td>{{ isset($item->department->name) ? $item->department->name : '' }}</td>
                                 <td>{{ isset($item->diploma->name) ? $item->diploma->name : '' }}</td>
-                                <td>{{ $item->type }}</td>
+                                <td>
+                                    @if($item->type == '0')
+                                        {{ 'Thử việc' }}
+                                    @elseif($item->type == '1')
+                                        {{ 'Nhân viên toàn thời gian' }}
+                                    @elseif($item->type == '2')
+                                        {{ 'Nhân viên part-time' }}
+                                    @else
+                                        {{ 'Thực tập sinh' }}
+                                    @endif
+                                </td>
                                 <td>{{ date('d/m/Y', strtotime($item->start_date)) }}</td>
                                 <td><a href="{{ route('leave.index', ['filter[staff_id]' => $item->id]) }}" class="btn btn-block btn-primary">Xem</a></td>
                                 <td>

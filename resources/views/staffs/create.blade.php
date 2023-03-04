@@ -79,10 +79,10 @@
                                     <label for="inputType">Kiểu nhân viên </label>
                                     <select class="form-control" name="type">
                                         <option></option>
-                                        <option {{ old('type') == 'Toàn thời gian' ? 'selected' : ''}}>Toàn thời gian</option>
-                                        <option {{ old('type') == 'Bán thời gian' ? 'selected' : ''}}>Bán thời gian</option>
-                                        <option {{ old('type') == 'Thực tập sinh' ? 'selected' : ''}}>Thực tập sinh</option>
-                                        <option {{ old('type') == 'Thử việc' ? 'selected' : ''}}>Thử việc</option>
+                                        <option {{ old('type') == 'Toàn thời gian' ? 'selected' : ''}} value="1">Toàn thời gian</option>
+                                        <option {{ old('type') == 'Bán thời gian' ? 'selected' : ''}} value="2">Bán thời gian</option>
+                                        <option {{ old('type') == 'Thực tập sinh' ? 'selected' : ''}} value="3">Thực tập sinh</option>
+                                        <option {{ old('type') == 'Thử việc' ? 'selected' : ''}} value="0">Thử việc</option>
                                     </select>
                                     @if ($errors->has('type'))
                                         <span class="text-danger">{{ $errors->first('type') }}</span>
@@ -100,8 +100,8 @@
                                 <div class="form-group">
                                     <label for="inputDecentralization">Giới tính </label>
                                     <select class="form-control" name="gender">
-                                        <option {{ old('gender') == 'Nam' ? 'selected' : ''}}>Nam</option>
-                                        <option {{ old('gender') == 'Nữ' ? 'selected' : ''}}>Nữ</option>
+                                        <option {{ old('gender') == 'Nam' ? 'selected' : ''}} value="0">Nam</option>
+                                        <option {{ old('gender') == 'Nữ' ? 'selected' : ''}} value="1">Nữ</option>
                                     </select>
                                     @if ($errors->has('gender'))
                                         <span class="text-danger">{{ $errors->first('gender') }}</span>
@@ -149,8 +149,8 @@
                                 <div class="form-group">
                                     <label for="inputCategoryId">Tình trạng hôn nhân </label>
                                     <select class="form-control" name="marriage_status">
-                                        <option {{ old('marriage_status') == 'Độc thân' ? 'selected' : ''}}>Độc thân</option>
-                                        <option {{ old('marriage_status') == 'Đã kết hôn' ? 'selected' : ''}}>Đã kết hôn</option>
+                                        <option {{ old('marriage_status') == 'Độc thân' ? 'selected' : ''}} value="0">Độc thân</option>
+                                        <option {{ old('marriage_status') == 'Đã kết hôn' ? 'selected' : ''}} value="1">Đã kết hôn</option>
                                     </select>
                                     @if ($errors->has('marriage_status'))
                                         <span class="text-danger">{{ $errors->first('marriage_status') }}</span>
