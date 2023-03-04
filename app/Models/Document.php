@@ -41,7 +41,7 @@ class Document extends Model
      * @var array
      */
     protected $sortable = [
-        'type', 'created_at', 'author_id'
+        'type', 'created_at', 'author_id', 'title'
     ];
 
     /**

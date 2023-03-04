@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DiplomaController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotificationController;
@@ -280,4 +281,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users-chat', [ChatsController::class, 'users'])->name('chat.users');
     Route::get('/private-messages/{id}', [ChatsController::class, 'privateMessages'])->name('chat.privateMessages');
     Route::post('/private-messages/{id}', [ChatsController::class, 'sendPrivateMessage'])->name('chat.sendPrivateMessage');
+});
+
+Route::prefix('documents')->group(function () {
+    Route::middleware(['auth:super_admin'])->group(function () {
+        Route::delete('/destroy/{id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
+    });
+
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::get('/show/{id}', [DocumentController::class, 'show'])->name('documents.show');
+        Route::get('/create', [DocumentController::class, 'create'])->name('documents.create');
+        Route::post('/store', [DocumentController::class, 'store'])->name('documents.store');
+        Route::put('/update/{id}', [DocumentController::class, 'update'])->name('documents.update');
+        Route::post('/edit/{id}', [DocumentController::class, 'edit'])->name('documents.edit');
+        Route::get('/index', [DocumentController::class, 'index'])->name('documents.index');
+    });
 });
