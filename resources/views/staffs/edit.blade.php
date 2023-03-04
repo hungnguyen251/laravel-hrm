@@ -66,10 +66,10 @@
                                 <div class="form-group">
                                     <label for="inputType">Kiểu nhân viên </label>
                                     <select class="form-control" name="type">
-                                        <option {{ $staff->type == 'Toàn thời gian' ? 'selected' : ''}}>Toàn thời gian</option>
-                                        <option {{ $staff->type == 'Bán thời gian' ? 'selected' : ''}}>Bán thời gian</option>
-                                        <option {{ $staff->type == 'Thực tập sinh' ? 'selected' : ''}}>Thực tập sinh</option>
-                                        <option {{ $staff->type == 'Thử việc' ? 'selected' : ''}}>Thử việc</option>
+                                        <option {{ $staff->type == '1' ? 'selected' : ''}} value="1">Toàn thời gian</option>
+                                        <option {{ $staff->type == '2' ? 'selected' : ''}} value="2">Bán thời gian</option>
+                                        <option {{ $staff->type == '3' ? 'selected' : ''}} value="3">Thực tập sinh</option>
+                                        <option {{ $staff->type == '0' ? 'selected' : ''}} value="0">Thử việc</option>
                                     </select>
                                 </div>
 
@@ -81,8 +81,8 @@
                                 <div class="form-group">
                                     <label for="inputDecentralization">Giới tính </label>
                                     <select class="form-control" name="gender">
-                                        <option {{ $staff->gender == 'Nam' ? 'selected' : ''}}>Nam</option>
-                                        <option {{ $staff->gender == 'Nữ' ? 'selected' : ''}}>Nữ</option>
+                                        <option {{ $staff->gender == '0' ? 'selected' : ''}} value="0">Nam</option>
+                                        <option {{ $staff->gender == '1' ? 'selected' : ''}} value="1">Nữ</option>
                                     </select>
                                 </div>
 
@@ -116,8 +116,8 @@
                                 <div class="form-group">
                                     <label for="inputCategoryId">Tình trạng hôn nhân </label>
                                     <select class="form-control" name="marriage_status">
-                                        <option {{ $staff->marriage_status == 'Độc thân' ? 'selected' : ''}}>Độc thân</option>
-                                        <option {{ $staff->marriage_status == 'Đã kết hôn' ? 'selected' : ''}}>Đã kết hôn</option>
+                                        <option {{ $staff->marriage_status == '0' ? 'selected' : ''}} value="0">Độc thân</option>
+                                        <option {{ $staff->marriage_status == '1' ? 'selected' : ''}} value="1">Đã kết hôn</option>
                                     </select>
                                 </div>
 
