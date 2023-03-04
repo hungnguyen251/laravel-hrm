@@ -95,7 +95,7 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->title }}</td>
-                                <td>{{ $item->file_name }}</td>
+                                <td><a href="{{ route('documents.download', ['file' => $item->file_name]) }}">{{ $item->file_name }}</a></td>
                                 <td>{{ $item->note }}</td>
                                 <td>{{ $item->user->name }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>

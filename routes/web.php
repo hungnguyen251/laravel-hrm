@@ -295,5 +295,6 @@ Route::prefix('documents')->group(function () {
         Route::put('/update/{id}', [DocumentController::class, 'update'])->name('documents.update');
         Route::post('/edit/{id}', [DocumentController::class, 'edit'])->name('documents.edit');
         Route::get('/index', [DocumentController::class, 'index'])->name('documents.index');
+        Route::get('/download/{file}', [DocumentController::class, 'download'])->name('documents.download');
     });
 });

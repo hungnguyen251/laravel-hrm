@@ -7,6 +7,7 @@ use App\Services\DocumentService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -50,9 +51,9 @@ class DocumentController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $diploma = $this->documents->getDocumentById($id);
+        $document = $this->documents->getDocumentById($id);
 
-        return response()->json($diploma, Response::HTTP_OK);
+        return response()->json($document, Response::HTTP_OK);
     }
 
     /**
@@ -77,7 +78,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Edit a diploma.
+     * Edit a document.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int                       $id
@@ -91,7 +92,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Create a diploma.
+     * Create a document.
      *
      * @param  \Illuminate\Http\Request  $request
      *  
@@ -99,5 +100,16 @@ class DocumentController extends Controller
     public function create()
     {
         return view('documents.create');
+    }
+
+    /**
+     * Download a file.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  
+     */
+    public function download($file)
+    {
+        return Storage::download('contract/' . $file);
     }
 }
