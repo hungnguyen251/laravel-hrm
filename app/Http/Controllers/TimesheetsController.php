@@ -52,7 +52,7 @@ class TimesheetsController extends Controller
      */
     public function show(int $staffId)
     {
-        $timesheets = $this->timesheets->getTimesheetsById($staffId);
+        $timesheets = $this->timesheets->getTimesheetsByStaffId($staffId);
         
         return view('timesheets.show_id', compact('timesheets'));
     }
@@ -118,12 +118,13 @@ class TimesheetsController extends Controller
     public function automaticSalary(Request $request)
     {
         $month = explode('/', $request->salary_month);
-        
+        $monthSelected = ltrim($month[0], '0');
+
         if ($this->timesheets->automaticSalaryCalculation($request->salary_month)) {
-            return redirect()->route('timesheets.index',['filter[month]'=> $month[0]])->with('success', 'Thêm bảng lương tháng ' . $request->salary_month . ' thành công'); 
+            return redirect()->route('timesheets.index',['filter[month]'=> $monthSelected])->with('success', 'Thêm bảng lương tháng ' . $request->salary_month . ' thành công'); 
 
         } else {
-            return redirect()->route('timesheets.index',['filter[month]'=> $month[0]])->with('failed', 'Đã có lỗi xảy ra khi tạo bảng lương'); 
+            return redirect()->route('timesheets.index',['filter[month]'=> $monthSelected])->with('failed', 'Đã có lỗi xảy ra khi tạo bảng lương'); 
         }
     }
 
