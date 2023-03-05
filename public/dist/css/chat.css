@@ -385,3 +385,14 @@ div.chat-container {
     display: flex;
     flex-direction: column-reverse;
 }
+
+ul.user-scroll {
+    margin:4px, 4px;
+    padding:4px;
+    height: 700px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    display: flex;
+    flex-direction: column;
+}

@@ -18533,8 +18533,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "fca8d5e286a9c1190374",
-  cluster: "mt1",
+  key: "869a09bf8e1774d6f16f",
+  cluster: "ap1",
   forceTLS: true
 });
 
@@ -41541,7 +41541,7 @@ var render = function () {
                     _vm._v(" "),
                     _c(
                       "ul",
-                      { staticClass: "users" },
+                      { staticClass: "users user-scroll" },
                       [
                         _c(
                           "li",

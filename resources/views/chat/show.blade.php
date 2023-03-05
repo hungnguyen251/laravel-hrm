@@ -37,7 +37,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="users">
+                                <ul class="users user-scroll">
                                     <li class="person" data-chat="person1" style="background-color: #6CCED6">
                                         <div class="user">
                                             <img src="{{ asset('dist/img/logo-gv.png') }}" alt="Retail Admin">

@@ -16,7 +16,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="users">
+                                <ul class="users user-scroll">
                                     <li class="person" data-chat="person1" @click="chatAll">
                                         <div class="user">
                                             <img src="dist/img/logo-gv.png" alt="User">
