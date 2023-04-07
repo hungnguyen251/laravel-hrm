@@ -40,7 +40,7 @@ class AuthController extends Controller
     {
         if($this->auth->authenticateUser($request)) {
             $user = Auth::user();
-            return redirect()->route('staffs.show',['id' => $user->id]);
+            return redirect()->route('staffs.show',['id' => $user->staff->id]);
 
         } else {
             return back()->withErrors([
