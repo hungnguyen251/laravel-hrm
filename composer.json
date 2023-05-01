@@ -12,9 +12,10 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "sendgrid/sendgrid": "^7.0",
         "pusher/pusher-php-server": "^7.2",
-        "spatie/laravel-query-builder": "^4.0"
+        "sendgrid/sendgrid": "^7.0",
+        "spatie/laravel-query-builder": "^4.0",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
